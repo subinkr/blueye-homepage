@@ -1,9 +1,6 @@
 'use client'
 
-import { useTranslations, useLocale } from 'next-intl'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { Facebook, Youtube, Instagram, MessageCircle, FileText, MapPin, Phone, Mail } from 'lucide-react'
+import { Facebook, Youtube, Instagram, MessageCircle, FileText } from 'lucide-react'
 import { Logo } from '@/components/ui/logo'
 
 const socialLinks = [
@@ -45,8 +42,6 @@ const globalCenters = [
 ]
 
 export function Footer() {
-  const t = useTranslations('footer')
-  const locale = useLocale()
 
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 min-h-screen flex items-center justify-center">

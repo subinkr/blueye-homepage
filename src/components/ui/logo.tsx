@@ -26,7 +26,7 @@ export function Logo({ className, size = 'md' }: LogoProps) {
       x="0px" 
       y="0px"
       viewBox="0 0 454.21 113.39" 
-      style={{ enableBackground: 'new 0 0 454.21 113.39' } as any} 
+      style={{ enableBackground: 'new 0 0 454.21 113.39' } as React.CSSProperties} 
       xmlSpace="preserve"
     >
       <g>

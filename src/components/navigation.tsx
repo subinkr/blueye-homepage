@@ -1,13 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
-import { useTranslations, useLocale } from 'next-intl'
+import { useLocale } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Globe, ChevronDown } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { Logo } from '@/components/ui/logo'
-import { cn } from '@/lib/utils'
 import { countries } from '@/lib/countries'
 
 const locales = [
@@ -20,7 +18,6 @@ export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
   const [isCountriesOpen, setIsCountriesOpen] = useState(false)
-  const t = useTranslations('navigation')
   const locale = useLocale()
 
   const currentLocale = locales.find(l => l.code === locale)
@@ -53,7 +50,7 @@ export function Navigation() {
               }}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
-              {t('home')}
+              홈
             </button>
 
             
@@ -105,7 +102,7 @@ export function Navigation() {
               }}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
-              {t('contact')}
+              문의하기
             </button>
 
             {/* Language Selector */}
@@ -173,7 +170,7 @@ export function Navigation() {
                   }}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
-                  {t('home')}
+                  홈
                 </button>
 
                 
@@ -226,13 +223,13 @@ export function Navigation() {
                   }}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
-                  {t('contact')}
+                  문의하기
                 </button>
 
                 {/* Mobile Language Selector */}
                 <div className="px-3 py-2">
                   <div className="text-sm font-medium text-gray-500 mb-2">
-                    {t('language')}
+                    언어
                   </div>
                   <div className="space-y-1">
                     {locales.map((loc) => (

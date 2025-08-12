@@ -1,11 +1,9 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button'
-import { Logo } from '@/components/ui/logo'
 import Earth3D from './earth-3d'
 import { countries } from '@/lib/countries'
 import { useRouter } from 'next/navigation'
@@ -13,7 +11,6 @@ import { CTA } from './cta'
 import { Footer } from './footer'
 
 export function Hero() {
-  const t = useTranslations('hero')
   const router = useRouter()
   const [scrollProgress, setScrollProgress] = useState(0)
   const [currentCountryIndex, setCurrentCountryIndex] = useState(-1)
@@ -21,13 +18,6 @@ export function Hero() {
   const [isScrolling, setIsScrolling] = useState(false)
   const [isNavigating, setIsNavigating] = useState(true)
   const contentRef = useRef<HTMLDivElement>(null)
-
-  const scrollToNext = () => {
-    const nextSection = document.getElementById('country-0')
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: 'smooth' })
-    }
-  }
 
   // 국가별 페이지로 이동하는 함수
   const navigateToCountry = (countryCode: string) => {
@@ -110,7 +100,7 @@ export function Hero() {
     return () => {
       window.removeEventListener('hashchange', handleHashChange)
     }
-  }, [countries.length])
+  }, [])
 
   // 초기 로드 시 해시가 있으면 지구 로딩 완료 후 이동
   useEffect(() => {
@@ -168,7 +158,7 @@ export function Hero() {
       setCurrentCountryIndex(-1)
       setScrollProgress(0)
     }
-  }, [countries.length])
+  }, [])
 
   useEffect(() => {
     const totalSections = countries.length + 3
@@ -366,7 +356,7 @@ export function Hero() {
       window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [currentSection, isScrolling, countries.length])
+  }, [currentSection, isScrolling])
 
   return (
     <>
@@ -485,145 +475,111 @@ export function Hero() {
         </section>
 
         {/* Country Description Sections */}
-        {countries.map((country, index) => {
-          const [imageOpacity, setImageOpacity] = useState(0)
-          
-          useEffect(() => {
-            const updateImageOpacity = () => {
-              const section = document.getElementById(`country-${index}`)
-              if (section) {
-                const rect = section.getBoundingClientRect()
-                const windowHeight = window.innerHeight
-                
-                if (rect.top <= windowHeight && rect.bottom >= 0) {
-                  const sectionCenter = rect.top + rect.height / 2
-                  const windowCenter = windowHeight / 2
-                  const distance = Math.abs(sectionCenter - windowCenter)
-                  const maxDistance = windowHeight / 2
-                  
-                  const opacity = Math.max(0, 1.0 - (distance / maxDistance) * 1.0)
-                  setImageOpacity(opacity)
-                } else {
-                  setImageOpacity(0)
-                }
-              }
-            }
-            
-            window.addEventListener('scroll', updateImageOpacity, { passive: true })
-            updateImageOpacity()
-            
-            return () => {
-              window.removeEventListener('scroll', updateImageOpacity)
-            }
-          }, [index])
-          
-          return (
-            <section 
-              key={country.name} 
-              id={`country-${index}`}
-              className="min-h-screen flex items-center justify-center relative"
+        {countries.map((country, index) => (
+          <section 
+            key={country.name} 
+            id={`country-${index}`}
+            className="min-h-screen flex items-center justify-center relative"
+          >
+            <div 
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url(${country.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundAttachment: 'fixed',
+                transition: 'opacity 2s ease-in-out'
+              }}
             >
-              <div 
-                className="absolute inset-0"
-                style={{
-                  backgroundImage: `url(${country.image})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundAttachment: 'fixed',
-                  opacity: imageOpacity,
-                  transition: 'opacity 2s ease-in-out'
-                }}
-              >
-                {index === countries.length - 1 && (
+              {index === countries.length - 1 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+                  style={{
+                    filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))'
+                  }}
+                >
                   <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    viewport={{ once: true }}
-                    className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                    className="text-center"
                     style={{
                       filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))'
                     }}
                   >
-                    <motion.div
-                      animate={{ y: [0, 10, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="text-center"
-                      style={{
-                        filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))'
-                      }}
-                    >
-                      <ChevronDown className="w-6 h-6 mx-auto mb-2" />
-                      <div className="text-sm">다음 섹션</div>
-                    </motion.div>
-                  </motion.div>
-                )}
-              </div>
-              <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1 }}
-                  viewport={{ once: true }}
-                  className="space-y-8"
-                >
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 drop-shadow-lg" style={{ 
-                    color: country.color,
-                    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
-                  }}>
-                    {country.name}
-                  </h2>
-                  <p className="text-lg md:text-xl lg:text-2xl font-korean text-white font-semibold leading-relaxed mb-12 drop-shadow-lg" style={{
-                    textShadow: '1px 1px 3px rgba(0, 0, 0, 0.9)'
-                  }}>
-                    {country.description}
-                  </p>
-                  
-                  <div className="md:grid hidden md:grid-cols-3 gap-6 md:gap-8">
-                    {country.features.map((feature, featureIndex) => (
-                      <motion.div 
-                        key={feature.title}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: featureIndex * 0.2 }}
-                        viewport={{ once: true }}
-                        className="bg-black/30 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/30 hover:bg-black/40 transition-all duration-300"
-                        style={{ borderColor: `${country.color}40` }}
-                      >
-                        <h3 className="font-display font-semibold mb-4 text-lg md:text-xl" style={{ color: country.color }}>
-                          {feature.title}
-                        </h3>
-                        <p className="font-korean text-gray-300 leading-relaxed text-sm md:text-base">
-                          {feature.description}
-                        </p>
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    viewport={{ once: true }}
-                    className="mt-12"
-                  >
-                    <Button
-                      onClick={() => navigateToCountry(country.code)}
-                      className="text-lg px-8 py-4 bg-black/40 backdrop-blur-md border border-white/40 hover:bg-black/50 transition-all duration-300 group"
-                      style={{ 
-                        color: country.color,
-                        borderColor: `${country.color}60`
-                      }}
-                    >
-                      <span className="mr-2">자세히 알아보기</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
+                    <ChevronDown className="w-6 h-6 mx-auto mb-2" />
+                    <div className="text-sm">다음 섹션</div>
                   </motion.div>
                 </motion.div>
-              </div>
-            </section>
-          )
-        })}
+              )}
+            </div>
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                className="space-y-8"
+              >
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 drop-shadow-lg" style={{ 
+                  color: country.color,
+                  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
+                }}>
+                  {country.name}
+                </h2>
+                <p className="text-lg md:text-xl lg:text-2xl font-korean text-white font-semibold leading-relaxed mb-12 drop-shadow-lg" style={{
+                  textShadow: '1px 1px 3px rgba(0, 0, 0, 0.9)'
+                }}>
+                  {country.description}
+                </p>
+                
+                <div className="md:grid hidden md:grid-cols-3 gap-6 md:gap-8">
+                  {country.features.map((feature, featureIndex) => (
+                    <motion.div 
+                      key={feature.title}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8, delay: featureIndex * 0.2 }}
+                      viewport={{ once: true }}
+                      className="bg-black/30 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/30 hover:bg-black/40 transition-all duration-300"
+                      style={{ borderColor: `${country.color}40` }}
+                    >
+                      <h3 className="font-display font-semibold mb-4 text-lg md:text-xl" style={{ color: country.color }}>
+                        {feature.title}
+                      </h3>
+                      <p className="font-korean text-gray-300 leading-relaxed text-sm md:text-base">
+                        {feature.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="mt-12"
+                >
+                  <Button
+                    onClick={() => navigateToCountry(country.code)}
+                    className="text-lg px-8 py-4 bg-black/40 backdrop-blur-md border border-white/40 hover:bg-black/50 transition-all duration-300 group"
+                    style={{ 
+                      color: country.color,
+                      borderColor: `${country.color}60`
+                    }}
+                  >
+                    <span className="mr-2">자세히 알아보기</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </motion.div>
+              </motion.div>
+            </div>
+          </section>
+        ))}
 
         {/* CTA Section */}
         <section id="cta" className="min-h-screen flex items-center justify-center relative">

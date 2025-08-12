@@ -1,12 +1,9 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
-import { ChevronDown, Phone, Mail, MapPin, MessageCircle, Clock } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 
 export function CTA() {
-  const t = useTranslations('cta')
 
   return (
     <section className="w-full py-24 bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">

@@ -1,10 +1,9 @@
 'use client'
 
-import { useRef, useState, useEffect, useMemo } from 'react'
+import { useRef, useState, useEffect, useMemo, useCallback } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Stars, Html, useTexture } from '@react-three/drei'
+import { OrbitControls, Stars, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
-import { motion } from 'framer-motion'
 import { countries, Country } from '@/lib/countries'
 
 interface Earth3DProps {
@@ -199,7 +198,7 @@ function CameraController({ scrollProgress, currentCountryIndex, isNavigating }:
   const animationCompletedRef = useRef(false)
   const [isUserInteracting, setIsUserInteracting] = useState(false)
   const [screenSize, setScreenSize] = useState({ width: 1920, height: 1080 })
-  const [animationProgress, setAnimationProgress] = useState(0)
+
   
   // 화면 크기 감지
   useEffect(() => {
@@ -219,7 +218,7 @@ function CameraController({ scrollProgress, currentCountryIndex, isNavigating }:
   }, [])
   
   // 화면 크기에 따른 카메라 거리 계산
-  const getCameraDistance = () => {
+  const getCameraDistance = useCallback(() => {
     if (screenSize.width < 768) { // 모바일
       return 4.5
     } else if (screenSize.width < 1024) { // 태블릿
@@ -229,7 +228,7 @@ function CameraController({ scrollProgress, currentCountryIndex, isNavigating }:
     } else { // 큰 데스크톱
       return 3.0
     }
-  }
+  }, [screenSize.width])
   
   const targetPosition = useMemo(() => {
     const distance = getCameraDistance()
@@ -268,7 +267,7 @@ function CameraController({ scrollProgress, currentCountryIndex, isNavigating }:
         target: new THREE.Vector3(0, 0, 0)
       }
     }
-  }, [currentCountryIndex, scrollProgress, screenSize, isNavigating])
+  }, [currentCountryIndex, scrollProgress, isNavigating, getCameraDistance])
 
   useFrame((state) => {
     if (controlsRef.current && !isUserInteracting) {
