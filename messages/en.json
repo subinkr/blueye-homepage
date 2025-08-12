@@ -1,0 +1,96 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "properties": "Properties",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "hero": {
+    "title": "Global Premium Life Solutions",
+    "subtitle": "From overseas real estate investment to local lifestyle support, experience global lifestyle with Blueye",
+    "cta": "Get Free Consultation",
+    "scroll": "Learn More",
+    "description": "Presenting new standards for global real estate through decades of expertise and worldwide network.",
+    "experienceYears": "Years of Experience",
+    "countries": "Countries",
+    "managedProperties": "Managed Properties",
+    "learnMore": "Learn More"
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "Comprehensive solutions for global lifestyle",
+    "learnMore": "Learn More",
+    "detailTitle": "Service Details",
+    "detailSubtitle": "Learn more about each service",
+    "realEstate": {
+      "title": "Overseas Real Estate Investment",
+      "description": "Premium real estate investment opportunities in Korea, China, and Vietnam"
+    },
+    "management": {
+      "title": "Property Management",
+      "description": "Professional rental management and asset management services"
+    },
+    "lifestyle": {
+      "title": "Local Lifestyle Support",
+      "description": "Comprehensive local lifestyle support including visas, education, and healthcare"
+    },
+    "consulting": {
+      "title": "Investment Consulting",
+      "description": "Personalized overseas investment strategies and asset allocation planning"
+    }
+  },
+  "targetAudience": {
+    "title": "Target Audience",
+    "subtitle": "Customized solutions for customers with diverse lifestyles and goals",
+    "retirement": {
+      "title": "Retirement Immigration",
+      "description": "Support for safe and prosperous retirement living abroad"
+    },
+    "investment": {
+      "title": "Overseas Investment",
+      "description": "Stable investment portfolio through global asset diversification"
+    },
+    "monthlyStay": {
+      "title": "Monthly Living",
+      "description": "New lifestyle experiences through seasonal local living"
+    },
+    "assetAllocation": {
+      "title": "Asset Allocation",
+      "description": "Efficient global asset allocation and tax optimization"
+    },
+    "globalExperience": "Global Market Experience"
+  },
+  "cta": {
+    "title": "Start Your Global Lifestyle",
+    "subtitle": "Consult with our experts to receive personalized solutions",
+    "button": "Request Free Consultation",
+    "inquiry": "Inquiry",
+    "consultation": "Consultation",
+    "description": "If you have any questions about overseas real estate investment, please feel free to contact us. Our experts will provide friendly consultation.",
+    "contactInfo": "Contact Information",
+    "phone": "Phone",
+    "kakao": "KakaoTalk",
+    "kakaoLink": "Start KakaoTalk Consultation",
+    "email": "Email",
+    "address": "Company Address",
+    "addressDetail": "5th Floor, Room 502, 5 Gukhoe-daero 62-gil, Yeongdeungpo-gu, Seoul (Yeouido-dong, Shintaejin Building)"
+  },
+  "footer": {
+    "description": "Global Premium Life Solutions",
+    "contact": "Contact",
+    "address": "123 Teheran-ro, Gangnam-gu, Seoul",
+    "phone": "+82-2-1234-5678",
+    "email": "info@blueye.com",
+    "social": "Social Media",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2024 Blueye. All rights reserved.",
+    "countries": "Korea · Malaysia · Vietnam · Singapore · UAE · China · Cambodia",
+    "magazine": "Asia Life Magazine The Litchi",
+    "education": "EDU ASIA",
+    "newspaper": "Vietnam-Korea Times",
+    "representativePhone": "Main Phone"
+  }
+}
