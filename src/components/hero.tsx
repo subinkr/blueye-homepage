@@ -481,16 +481,36 @@ export function Hero() {
             id={`country-${index}`}
             className="min-h-screen flex items-center justify-center relative"
           >
-            <div 
+            {/* Background Image with Fade Animation */}
+            <motion.div 
               className="absolute inset-0"
               style={{
                 backgroundImage: `url(${country.image})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundAttachment: 'fixed',
-                transition: 'opacity 2s ease-in-out'
               }}
+              initial={{ opacity: 0, scale: 1.1 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ 
+                duration: 3,
+                ease: "easeOut",
+                delay: 0.2
+              }}
+              viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
             >
+              {/* Overlay with Fade Animation */}
+              <motion.div 
+                className="absolute inset-0 bg-black/30"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ 
+                  duration: 2,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+                viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
+              />
               {index === countries.length - 1 && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -515,13 +535,17 @@ export function Hero() {
                   </motion.div>
                 </motion.div>
               )}
-            </div>
+            </motion.div>
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 80 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
+                transition={{ 
+                  duration: 1.5,
+                  ease: "easeOut",
+                  delay: 0.8
+                }}
+                viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
                 className="space-y-8"
               >
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-8 drop-shadow-lg" style={{ 
@@ -540,10 +564,14 @@ export function Hero() {
                   {country.features.map((feature, featureIndex) => (
                     <motion.div 
                       key={feature.title}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: featureIndex * 0.2 }}
-                      viewport={{ once: true }}
+                      initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{ 
+                        duration: 1,
+                        ease: "easeOut",
+                        delay: 1.2 + featureIndex * 0.3
+                      }}
+                      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
                       className="bg-black/30 backdrop-blur-md rounded-xl p-6 md:p-8 border border-white/30 hover:bg-black/40 transition-all duration-300"
                       style={{ borderColor: `${country.color}40` }}
                     >
@@ -558,10 +586,14 @@ export function Hero() {
                 </div>
                 
                 <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                  viewport={{ once: true }}
+                  initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ 
+                    duration: 1.2,
+                    ease: "easeOut",
+                    delay: 2.0
+                  }}
+                  viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
                   className="mt-12"
                 >
                   <Button
