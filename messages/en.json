@@ -11,7 +11,7 @@
     "title": "Global Premium Life Solutions",
     "subtitle": "From overseas real estate investment to local lifestyle support, experience global lifestyle with Blueye",
     "cta": "Get Free Consultation",
-    "scroll": "Learn More",
+    "scroll": "Next Section",
     "description": "Presenting new standards for global real estate through decades of expertise and worldwide network.",
     "experienceYears": "Years of Experience",
     "countries": "Countries",
@@ -22,8 +22,9 @@
     "title": "Services",
     "subtitle": "Comprehensive solutions for global lifestyle",
     "learnMore": "Learn More",
-    "detailTitle": "Service Details",
-    "detailSubtitle": "Learn more about each service",
+    "scroll": "Next Section",
+    "detailTitle": "Service Overview",
+    "detailSubtitle": "Check detailed information and contact methods for each service",
     "realEstate": {
       "title": "Overseas Real Estate Investment",
       "description": "Premium real estate investment opportunities in Korea, China, and Vietnam"
@@ -60,7 +61,9 @@
       "title": "Asset Allocation",
       "description": "Efficient global asset allocation and tax optimization"
     },
-    "globalExperience": "Global Market Experience"
+    "globalExperience": "Global Market Experience",
+    "satisfiedCustomers": "Satisfied Customers",
+    "totalTransactionVolume": "Total Transaction Volume"
   },
   "cta": {
     "title": "Start Your Global Lifestyle",
@@ -91,6 +94,147 @@
     "magazine": "Asia Life Magazine The Litchi",
     "education": "EDU ASIA",
     "newspaper": "Vietnam-Korea Times",
-    "representativePhone": "Main Phone"
+    "representativePhone": "Main Phone",
+    "centers": {
+      "shanghai": {
+        "name": "Shanghai Center",
+        "address": "上海市闵行区虹泉路1000号 A座701室",
+        "phone": "(186) 1694 0029"
+      },
+      "seoul": {
+        "name": "Seoul Center",
+        "address": "서울특별시 영등포구 국회대로 62길 5, 5층 502호(여의도동, 신태진빌딩)",
+        "phone": "010 5763 0617"
+      },
+      "cambodia": {
+        "name": "Cambodia Center",
+        "address": "St.Sopheak Monkol RD, Tonle Basak, koh Pich Phnom Penh",
+        "phone": "(855) 15 493 600"
+      },
+      "malaysia": {
+        "name": "Malaysia Center",
+        "address": "HI JAUAN MACROLINK, BLOCK A-32-05,Medini Central1,79250, Iskandar PuteriI,Johor"
+      },
+      "hochiminh": {
+        "name": "Ho Chi Minh Center",
+        "address": "2F, 8/6 Vo Truong Toan Street , An Phu Ward, Thu Duc City, HCMC"
+      },
+      "hanoi": {
+        "name": "Hanoi Center",
+        "address": "The garden 1002, my dinh 1, nam tu liem, hanoi"
+      }
+    }
+  },
+  "countries": {
+    "names": {
+      "dubai": "Dubai",
+      "hochiminh": "Ho Chi Minh",
+      "johorbahru": "Johor Bahru",
+      "phnompenh": "Phnom Penh",
+      "shanghai": "Shanghai",
+      "seoul": "Seoul"
+    },
+    "dubai": {
+      "description": "A mirror-like city rising from the desert. In 2010, when I first came to Dubai, only sandstorms blew. Now golden buildings pierce the sky, and dreams from around the world gather here. Blueye director's 15-year record of change.",
+      "features": {
+        "gdpGrowth": {
+          "title": "GDP Growth Rate",
+          "description": "Maintains a stable annual economic growth rate of 4.2%, serving as the economic center of the Middle East region."
+        },
+        "foreignInvestment": {
+          "title": "Foreign Investment",
+          "description": "Foreign direct investment (FDI) of $185 billion in 2023, making it the largest investment attraction city in the Middle East."
+        },
+        "tourism": {
+          "title": "Tourism Industry",
+          "description": "Attracts 16.8 million tourists annually, with tourism revenue accounting for 12% of GDP as a major industry."
+        }
+      }
+    },
+    "hochiminh": {
+      "description": "A city where the Mekong River flows. Before 2002, Ho Chi Minh was a small fishing village. Now it's where Southeast Asia's heart beats. Blueye director's memory of Vietnam, witnessed over 23 years.",
+      "features": {
+        "gdpGrowth": {
+          "title": "GDP Growth Rate",
+          "description": "Achieved 8.2% GDP growth in 2023, the highest economic growth level in Southeast Asia."
+        },
+        "population": {
+          "title": "Population Structure",
+          "description": "Composed of young population with average age of 31, with economically active population ratio of 68%."
+        },
+        "startup": {
+          "title": "Startup Ecosystem",
+          "description": "Over 2,800 startups active as of 2023, with venture capital investment reaching $1.5 billion."
+        }
+      }
+    },
+    "johorbahru": {
+      "description": "A city shining in Singapore's shadow. In 2017, Johor Bahru was just a small border town. 8 years later, Southeast Asia's hidden gem has emerged. The real face of Malaysia discovered by Blueye director.",
+      "features": {
+        "economicGrowth": {
+          "title": "Economic Growth Rate",
+          "description": "6.8% economic growth rate in 2023, recording the highest growth rate in Malaysia."
+        },
+        "manufacturing": {
+          "title": "Manufacturing Center",
+          "description": "Manufacturing accounts for 45% of GDP, with electronics exports accounting for 38% of total exports."
+        },
+        "education": {
+          "title": "Education Infrastructure",
+          "description": "45 international schools and 12 universities operate, serving as an education hub adjacent to Singapore."
+        }
+      }
+    },
+    "phnompenh": {
+      "description": "A small city by Tonle Sap Lake. In 2019, Phnom Penh was asleep. 6 years later, young blood flows abundantly. New buildings grow toward the sky, and hope springs from the ground. Cambodia's revival witnessed by Blueye director.",
+      "features": {
+        "gdpGrowth": {
+          "title": "GDP Growth Rate",
+          "description": "7.1% GDP growth rate in 2023, showing the fastest economic growth in Southeast Asia."
+        },
+        "population": {
+          "title": "Population Structure",
+          "description": "Composed of very young population with average age of 25, with economically active population ratio of 72%."
+        },
+        "culture": {
+          "title": "Cultural Heritage",
+          "description": "Possesses 3 UNESCO World Heritage sites, serving as a cultural center attracting 2.8 million cultural tourists annually."
+        }
+      }
+    },
+    "shanghai": {
+      "description": "A city where the Huangpu River flows. Before 2002, Shanghai was a small fishing port. 23 years later, it's where the world economy's heart beats. Shanghai of Blueye director who witnessed the record of massive change.",
+      "features": {
+        "gdpSize": {
+          "title": "GDP Size",
+          "description": "GDP of $472 billion in 2023, China's largest economic city and the world's 3rd largest economic city."
+        },
+        "financialCenter": {
+          "title": "Financial Center",
+          "description": "Shanghai Stock Exchange market cap of $7.2 trillion, possessing Asia's largest financial market."
+        },
+        "globalCompanies": {
+          "title": "Global Companies",
+          "description": "480 Fortune 500 companies have entered, operating the world's largest free trade port as a global business hub."
+        }
+      }
+    },
+    "seoul": {
+      "description": "A city where the Han River flows. In 2018, when I returned to Seoul, it felt unfamiliar. 7 years later, it's where technology and tradition coexist. A city where innovation DNA has taken deep root. Seoul's new face discovered by Blueye director.",
+      "features": {
+        "gdpSize": {
+          "title": "GDP Size",
+          "description": "GDP of $385 billion in 2023, accounting for 50% of Korea's economy and Asia's 4th largest economic city."
+        },
+        "techInnovation": {
+          "title": "Technology Innovation",
+          "description": "R&D investment ratio of 4.2%, the highest level in OECD, with 150,000 patent applications annually."
+        },
+        "digitalInfra": {
+          "title": "Digital Infrastructure",
+          "description": "95% 5G network penetration, world's fastest internet speed, leading digital innovation."
+        }
+      }
+    }
   }
 }

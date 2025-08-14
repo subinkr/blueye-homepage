@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Globe, ChevronDown } from 'lucide-react'
 import { Logo } from '@/components/ui/logo'
-import { countries } from '@/lib/countries'
+import { countries, getCountryName } from '@/lib/countries'
 
 const locales = [
   { code: 'ko', name: '한국어', flag: '🇰🇷' },
@@ -15,6 +15,7 @@ const locales = [
 ]
 
 export function Navigation() {
+  const t = useTranslations('navigation')
   const [isOpen, setIsOpen] = useState(false)
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
   const [isCountriesOpen, setIsCountriesOpen] = useState(false)
@@ -50,7 +51,7 @@ export function Navigation() {
               }}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
-              홈
+              {t('home')}
             </button>
 
             
@@ -60,7 +61,7 @@ export function Navigation() {
                 onClick={() => setIsCountriesOpen(!isCountriesOpen)}
                 className="flex items-center space-x-2 text-white hover:text-blue-200 transition-colors font-medium"
               >
-                <span>진출국가</span>
+                <span>{t('properties')}</span>
                 <ChevronDown className="w-4 h-4" />
               </button>
 
@@ -86,7 +87,7 @@ export function Navigation() {
                           className="w-3 h-3 rounded-full mr-3" 
                           style={{ backgroundColor: country.color }}
                         />
-                        <span>{country.name}</span>
+                        <span>{getCountryName(country.code, locale)}</span>
                       </button>
                     ))}
                   </motion.div>
@@ -102,7 +103,7 @@ export function Navigation() {
               }}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
-              문의하기
+              {t('contact')}
             </button>
 
             {/* Language Selector */}
@@ -170,50 +171,48 @@ export function Navigation() {
                   }}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
-                  홈
+                  {t('home')}
                 </button>
 
                 
                 {/* Mobile Countries Dropdown */}
-                <div className="px-3 py-2">
-                  <button
-                    onClick={() => setIsCountriesOpen(!isCountriesOpen)}
-                    className="flex items-center justify-between w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
-                  >
-                    <span>진출국가</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform ${isCountriesOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  
-                  <AnimatePresence>
-                    {isCountriesOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="mt-2 ml-4 space-y-1"
-                      >
-                        {countries.map((country) => (
-                          <button
-                            key={country.code}
-                            onClick={() => {
-                              setIsOpen(false)
-                              setIsCountriesOpen(false)
-                              // 해당 국가 섹션으로 이동
-                              window.location.hash = `country-${countries.findIndex(c => c.code === country.code)}`
-                            }}
-                            className="flex items-center w-full px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors text-left"
-                          >
-                            <div 
-                              className="w-3 h-3 rounded-full mr-3" 
-                              style={{ backgroundColor: country.color }}
-                            />
-                            <span>{country.name}</span>
-                          </button>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                <button
+                  onClick={() => setIsCountriesOpen(!isCountriesOpen)}
+                  className="flex items-center justify-between w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  <span>{t('properties')}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isCountriesOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                <AnimatePresence>
+                  {isCountriesOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="space-y-1"
+                    >
+                      {countries.map((country) => (
+                        <button
+                          key={country.code}
+                          onClick={() => {
+                            setIsOpen(false)
+                            setIsCountriesOpen(false)
+                            // 해당 국가 섹션으로 이동
+                            window.location.hash = `country-${countries.findIndex(c => c.code === country.code)}`
+                          }}
+                          className="flex items-center w-full px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors text-left"
+                        >
+                          <div 
+                            className="w-3 h-3 rounded-full mr-3" 
+                            style={{ backgroundColor: country.color }}
+                          />
+                          <span>{getCountryName(country.code, locale)}</span>
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 <button
                   onClick={() => {
@@ -223,13 +222,13 @@ export function Navigation() {
                   }}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
-                  문의하기
+                  {t('contact')}
                 </button>
 
                 {/* Mobile Language Selector */}
                 <div className="px-3 py-2">
                   <div className="text-sm font-medium text-gray-500 mb-2">
-                    언어
+                    {t('language')}
                   </div>
                   <div className="space-y-1">
                     {locales.map((loc) => (

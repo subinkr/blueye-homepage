@@ -59,7 +59,23 @@
   
   /* Global word breaking */
   h1, h2, h3, h4, h5, h6, p, span, div {
-    word-break: break-words;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Korean text specific word breaking */
+  .font-korean, 
+  .font-korean * {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  
+  /* English text specific word breaking */
+  .font-english,
+  .font-english * {
+    word-break: break-word;
     overflow-wrap: break-word;
   }
   

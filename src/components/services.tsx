@@ -46,10 +46,10 @@ export function Services() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6 break-words">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
             {t('title')}
           </h2>
-          <p className="text-xl font-korean text-gray-600 max-w-3xl mx-auto break-words">
+          <p className="text-xl font-korean text-gray-600 max-w-3xl mx-auto">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -72,16 +72,16 @@ export function Services() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-display font-bold text-gray-900 mb-4 break-words">
+                <h3 className="text-xl font-display font-bold text-gray-900 mb-4">
                   {t(`${service.key}.title`)}
                 </h3>
-                <p className="text-gray-600 font-korean mb-6 leading-relaxed break-words">
+                <p className="text-gray-600 font-korean mb-6 leading-relaxed">
                   {t(`${service.key}.description`)}
                 </p>
 
                 {/* Arrow */}
                 <div className="flex items-center text-primary-600 font-medium group-hover:translate-x-2 transition-transform duration-300">
-                  <span className="mr-2">자세히 보기</span>
+                  <span className="mr-2">{t('learnMore')}</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
 
@@ -101,7 +101,7 @@ export function Services() {
           className="text-center mt-16"
         >
           <Button variant="luxury" size="lg" className="text-lg px-8 py-4">
-            모든 서비스 보기
+            {t('detailTitle')}
           </Button>
         </motion.div>
         
@@ -119,7 +119,7 @@ export function Services() {
             className="text-gray-500"
           >
             <ChevronDown className="w-6 h-6 mx-auto mb-2" />
-            <div className="text-sm">다음 섹션</div>
+            <div className="text-sm">{t('scroll')}</div>
           </motion.div>
         </motion.div>
       </div>

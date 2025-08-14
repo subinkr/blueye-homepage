@@ -46,11 +46,11 @@ export function ServicesDetail() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6 break-keep-all">
-            서비스 개요
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+            {t('detailTitle')}
           </h2>
-          <p className="text-xl font-korean text-gray-600 max-w-3xl mx-auto break-keep-all">
-            각 서비스에 대한 자세한 정보와 문의 방법을 확인하세요
+          <p className="text-xl font-korean text-gray-600 max-w-3xl mx-auto">
+            {t('detailSubtitle')}
           </p>
         </motion.div>
 
@@ -72,10 +72,10 @@ export function ServicesDetail() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-display font-bold text-gray-900 mb-4 break-keep-all">
+                <h3 className="text-xl font-display font-bold text-gray-900 mb-4">
                   {t(`${service.key}.title`)}
                 </h3>
-                <p className="text-gray-600 font-korean mb-6 leading-relaxed break-keep-all">
+                <p className="text-gray-600 font-korean mb-6 leading-relaxed">
                   {t(`${service.key}.description`)}
                 </p>
 

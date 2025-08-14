@@ -1,5 +1,6 @@
 'use client'
 
+import { useTranslations } from 'next-intl'
 import { Facebook, Youtube, Instagram, MessageCircle, FileText } from 'lucide-react'
 import { Logo } from '@/components/ui/logo'
 
@@ -12,36 +13,16 @@ const socialLinks = [
 ]
 
 const globalCenters = [
-  {
-    name: '상하이센터',
-    address: '上海市闵行区虹泉路1000号 A座701室',
-    phone: '(186) 1694 0029'
-  },
-  {
-    name: '서울센터',
-    address: '서울특별시 영등포구 국회대로 62길 5, 5층 502호(여의도동, 신태진빌딩)',
-    phone: '010 5763 0617'
-  },
-  {
-    name: '캄보디아센터',
-    address: 'St.Sopheak Monkol RD, Tonle Basak, koh Pich Phnom Penh',
-    phone: '(855) 15 493 600'
-  },
-  {
-    name: '말레이시아센터',
-    address: 'HI JAUAN MACROLINK, BLOCK A-32-05,Medini Central1,79250, Iskandar PuteriI,Johor'
-  },
-  {
-    name: '호치민센터',
-    address: '2F, 8/6 Vo Truong Toan Street , An Phu Ward, Thu Duc City, HCMC'
-  },
-  {
-    name: '하노이센터',
-    address: 'The garden 1002, my dinh 1, nam tu liem, hanoi'
-  }
+  { key: 'shanghai' },
+  { key: 'seoul' },
+  { key: 'cambodia' },
+  { key: 'malaysia' },
+  { key: 'hochiminh' },
+  { key: 'hanoi' }
 ]
 
 export function Footer() {
+  const t = useTranslations('footer')
 
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 min-h-screen flex items-center justify-center">
@@ -52,15 +33,15 @@ export function Footer() {
             <div className="flex items-center mb-8">
               <Logo size="lg" className="h-12" />
             </div>
-            <div className="text-base font-bold mt-8 text-center break-words">
-              대한민국 · 말레이시아 · 베트남 · 싱가포르 · 아랍에미리트 · 중국 · 캄보디아
+            <div className="text-base font-bold mt-8 text-center">
+              {t('countries')}
             </div>
             <div className="lg:flex gap-4 font-bold text-center mt-4">
-              <div>아시아 라이프 매거진 더리치(The Litchi)</div>
+              <div>{t('magazine')}</div>
               <div className="hidden lg:block">|</div>
-              <div>에듀아시아(EDU ASIA)</div>
+              <div>{t('education')}</div>
               <div className="hidden lg:block">|</div>
-              <div>베한타임즈(Vietnam-Korea Times)</div>
+              <div>{t('newspaper')}</div>
             </div>
           </div>
           
@@ -71,22 +52,25 @@ export function Footer() {
           </div>
           
           {/* Global Centers */}
-          {globalCenters.map((center, index) => (
-            <div key={index} className="lg:flex gap-4">
-              <div className="font-bold w-24">{center.name}</div>
-              <div className="hidden lg:block">|</div>
-              <div className="break-words">{center.address}</div>
-              {center.phone && (
-                <>
-                  <div className="hidden lg:block">|</div>
-                  <div>대표전화 {center.phone}</div>
-                </>
-              )}
-            </div>
-          ))}
+          {globalCenters.map((center, index) => {
+            const hasPhone = ['shanghai', 'seoul', 'cambodia'].includes(center.key)
+            return (
+              <div key={index} className="lg:flex gap-4">
+                <div className="font-bold w-24">{t(`centers.${center.key}.name`)}</div>
+                <div className="hidden lg:block">|</div>
+                <div>{t(`centers.${center.key}.address`)}</div>
+                {hasPhone && (
+                  <>
+                    <div className="hidden lg:block">|</div>
+                    <div>{t('representativePhone')} {t(`centers.${center.key}.phone`)}</div>
+                  </>
+                )}
+              </div>
+            )
+          })}
           
           <br />
-          <div className="font-normal text-center">ⓒCopyright 2002 - 2024 BLUEYE. All Rights Reserved.</div>
+          <div className="font-normal text-center">{t('copyright')}</div>
         </div>
 
         {/* Social Media Links */}

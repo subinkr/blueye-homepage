@@ -3,14 +3,18 @@
 import { motion } from 'framer-motion'
 import { ChevronDown, ArrowRight } from 'lucide-react'
 import { useState, useEffect, useRef } from 'react'
+import { useTranslations, useLocale } from 'next-intl'
 import { Button } from '@/components/ui/button'
 import Earth3D from './earth-3d'
-import { countries } from '@/lib/countries'
+import { countries, getCountryName } from '@/lib/countries'
 import { useRouter } from 'next/navigation'
 import { CTA } from './cta'
 import { Footer } from './footer'
 
 export function Hero() {
+  const t = useTranslations('hero')
+  const tCountries = useTranslations('countries')
+  const locale = useLocale()
   const router = useRouter()
   const [scrollProgress, setScrollProgress] = useState(0)
   const [currentCountryIndex, setCurrentCountryIndex] = useState(-1)
@@ -429,9 +433,9 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
-                className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight drop-shadow-lg break-words"
+                className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white leading-tight drop-shadow-lg"
               >
-                <span className="luxury-text-gradient">글로벌 프리미엄 라이프 솔루션</span>
+                <span className="luxury-text-gradient">{t('title')}</span>
               </motion.h1>
 
               {/* Subtitle */}
@@ -441,7 +445,7 @@ export function Hero() {
                 transition={{ delay: 0.6, duration: 0.8 }}
                 className="text-lg md:text-xl lg:text-2xl font-korean text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md"
               >
-                수십 년의 전문성과 전세계 네트워크를 통해 글로벌 부동산의 새로운 기준을 제시합니다.
+                {t('description')}
               </motion.p>
 
               {/* Stats */}
@@ -455,19 +459,19 @@ export function Hero() {
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-lg">
                     23
                   </div>
-                  <div className="text-sm md:text-base text-white/80">경험 연수</div>
+                  <div className="text-sm md:text-base text-white/80">{t('experienceYears')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-lg">
                     6
                   </div>
-                  <div className="text-sm md:text-base text-white/80">진출 국가</div>
+                  <div className="text-sm md:text-base text-white/80">{t('countries')}</div>
                 </div>
                 <div className="text-center col-span-2 md:col-span-1">
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-lg">
                     30,000+
                   </div>
-                  <div className="text-sm md:text-base text-white/80">관리 부동산</div>
+                  <div className="text-sm md:text-base text-white/80">{t('managedProperties')}</div>
                 </div>
               </motion.div>
             </motion.div>
@@ -477,7 +481,7 @@ export function Hero() {
         {/* Country Description Sections */}
         {countries.map((country, index) => (
           <section 
-            key={country.name} 
+            key={country.code} 
             id={`country-${index}`}
             className="min-h-screen flex items-center justify-center relative"
           >
@@ -531,7 +535,7 @@ export function Hero() {
                     }}
                   >
                     <ChevronDown className="w-6 h-6 mx-auto mb-2" />
-                    <div className="text-sm">다음 섹션</div>
+                    <div className="text-sm">{t('scroll')}</div>
                   </motion.div>
                 </motion.div>
               )}
@@ -552,12 +556,12 @@ export function Hero() {
                   color: country.color,
                   textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)'
                 }}>
-                  {country.name}
+                  {getCountryName(country.code, locale)}
                 </h2>
                 <p className="text-lg md:text-xl lg:text-2xl font-korean text-white font-semibold leading-relaxed mb-12 drop-shadow-lg" style={{
                   textShadow: '1px 1px 3px rgba(0, 0, 0, 0.9)'
                 }}>
-                  {country.description}
+                  {tCountries(`${country.code}.description`)}
                 </p>
                 
                 <div className="md:grid hidden md:grid-cols-3 gap-6 md:gap-8">
@@ -576,10 +580,10 @@ export function Hero() {
                       style={{ borderColor: `${country.color}40` }}
                     >
                       <h3 className="font-display font-semibold mb-4 text-lg md:text-xl" style={{ color: country.color }}>
-                        {feature.title}
+                        {tCountries(`${country.code}.features.${feature.key}.title`)}
                       </h3>
                       <p className="font-korean text-gray-300 leading-relaxed text-sm md:text-base">
-                        {feature.description}
+                        {tCountries(`${country.code}.features.${feature.key}.description`)}
                       </p>
                     </motion.div>
                   ))}
@@ -604,7 +608,7 @@ export function Hero() {
                       borderColor: `${country.color}60`
                     }}
                   >
-                    <span className="mr-2">자세히 알아보기</span>
+                    <span className="mr-2">{t('learnMore')}</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </motion.div>

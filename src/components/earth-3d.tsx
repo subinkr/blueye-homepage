@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useMemo, useCallback } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Stars, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
-import { countries, Country } from '@/lib/countries'
+import { countries, Country, getCountryName } from '@/lib/countries'
 
 interface Earth3DProps {
   scrollProgress?: number
@@ -148,7 +148,7 @@ function CityMarkers({ scrollProgress, currentCountryIndex }: {
     <>
       {countries.map((city, index) => (
         <CityMarker 
-          key={city.name} 
+          key={city.code} 
           city={city} 
           isActive={index === currentCountryIndex}
           scrollProgress={scrollProgress}

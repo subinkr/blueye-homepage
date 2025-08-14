@@ -11,7 +11,7 @@
     "title": "全球高端生活解决方案",
     "subtitle": "从海外房地产投资到当地生活支持，与Blueye一起体验全球生活方式",
     "cta": "免费咨询",
-    "scroll": "了解更多",
+    "scroll": "下一节",
     "description": "通过数十年的专业知识和全球网络，为全球房地产树立新标准。",
     "experienceYears": "经验年数",
     "countries": "进驻国家",
@@ -22,8 +22,9 @@
     "title": "服务",
     "subtitle": "全球生活方式的综合解决方案",
     "learnMore": "了解更多",
-    "detailTitle": "服务详情",
-    "detailSubtitle": "了解每个服务的详细信息",
+    "scroll": "下一节",
+    "detailTitle": "服务概览",
+    "detailSubtitle": "查看每个服务的详细信息和联系方式",
     "realEstate": {
       "title": "海外房地产投资",
       "description": "韩国、中国、越南的优质房地产投资机会"
@@ -60,7 +61,9 @@
       "title": "资产配置",
       "description": "高效的全球资产配置和税务优化"
     },
-    "globalExperience": "全球市场经验"
+    "globalExperience": "全球市场经验",
+    "satisfiedCustomers": "满意客户",
+    "totalTransactionVolume": "总交易规模"
   },
   "cta": {
     "title": "开启您的全球生活方式",
@@ -91,6 +94,147 @@
     "magazine": "亚洲生活杂志荔枝",
     "education": "教育亚洲",
     "newspaper": "越韩时报",
-    "representativePhone": "代表电话"
+    "representativePhone": "代表电话",
+    "centers": {
+      "shanghai": {
+        "name": "上海中心",
+        "address": "上海市闵行区虹泉路1000号 A座701室",
+        "phone": "(186) 1694 0029"
+      },
+      "seoul": {
+        "name": "首尔中心",
+        "address": "서울특별시 영등포구 국회대로 62길 5, 5층 502호(여의도동, 신태진빌딩)",
+        "phone": "010 5763 0617"
+      },
+      "cambodia": {
+        "name": "柬埔寨中心",
+        "address": "St.Sopheak Monkol RD, Tonle Basak, koh Pich Phnom Penh",
+        "phone": "(855) 15 493 600"
+      },
+      "malaysia": {
+        "name": "马来西亚中心",
+        "address": "HI JAUAN MACROLINK, BLOCK A-32-05,Medini Central1,79250, Iskandar PuteriI,Johor"
+      },
+      "hochiminh": {
+        "name": "胡志明中心",
+        "address": "2F, 8/6 Vo Truong Toan Street , An Phu Ward, Thu Duc City, HCMC"
+      },
+      "hanoi": {
+        "name": "河内中心",
+        "address": "The garden 1002, my dinh 1, nam tu liem, hanoi"
+      }
+    }
+  },
+  "countries": {
+    "names": {
+      "dubai": "迪拜",
+      "hochiminh": "胡志明市",
+      "johorbahru": "新山",
+      "phnompenh": "金边",
+      "shanghai": "上海",
+      "seoul": "首尔"
+    },
+    "dubai": {
+      "description": "沙漠上升起的镜面之城。2010年，初到迪拜时只有沙尘暴在吹。如今金色建筑刺破天空，全世界的梦想在此汇聚。Blueye总监15年变迁记录。",
+      "features": {
+        "gdpGrowth": {
+          "title": "GDP增长率",
+          "description": "保持年均4.2%的稳定经济增长率，作为中东地区的经济中心。"
+        },
+        "foreignInvestment": {
+          "title": "外商投资",
+          "description": "2023年外商直接投资(FDI)1850亿美元，成为中东最大投资吸引城市。"
+        },
+        "tourism": {
+          "title": "旅游产业",
+          "description": "年吸引1680万游客，旅游收入占GDP的12%，为主要产业。"
+        }
+      }
+    },
+    "hochiminh": {
+      "description": "湄公河流淌的城市。2002年之前，胡志明市还是小渔村。如今是东南亚心脏跳动的地方。Blueye总监23年见证的越南记忆。",
+      "features": {
+        "gdpGrowth": {
+          "title": "GDP增长率",
+          "description": "2023年GDP增长率8.2%，达到东南亚最高水平的经济增长。"
+        },
+        "population": {
+          "title": "人口结构",
+          "description": "平均年龄31岁的年轻人口构成，经济活动人口比例68%。"
+        },
+        "startup": {
+          "title": "创业生态",
+          "description": "2023年基准超过2800家创业公司活跃，风险投资规模达15亿美元。"
+        }
+      }
+    },
+    "johorbahru": {
+      "description": "新加坡阴影下闪耀的城市。2017年，新山还只是小边境城市。8年后的今天，东南亚隐藏的宝石已经显现。Blueye总监发现的马来西亚真面目。",
+      "features": {
+        "economicGrowth": {
+          "title": "经济增长率",
+          "description": "2023年经济增长率6.8%，记录马来西亚内最高增长率。"
+        },
+        "manufacturing": {
+          "title": "制造业中心",
+          "description": "制造业占GDP的45%，电子产品出口占全部出口的38%。"
+        },
+        "education": {
+          "title": "教育基础设施",
+          "description": "45所国际学校、12所大学运营，与新加坡相邻的教育枢纽。"
+        }
+      }
+    },
+    "phnompenh": {
+      "description": "洞里萨湖畔的小城。2019年，金边还在沉睡。6年后的今天，年轻血液奔流不息。新建筑向天空生长，希望从大地涌出。Blueye总监目睹的柬埔寨复兴。",
+      "features": {
+        "gdpGrowth": {
+          "title": "GDP增长率",
+          "description": "2023年GDP增长率7.1%，显示东南亚最快经济增长。"
+        },
+        "population": {
+          "title": "人口结构",
+          "description": "平均年龄25岁的非常年轻人口构成，经济活动人口比例72%。"
+        },
+        "culture": {
+          "title": "文化遗产",
+          "description": "拥有3处联合国教科文组织世界文化遗产，年吸引280万文化游客的文化中心。"
+        }
+      }
+    },
+    "shanghai": {
+      "description": "黄浦江流淌的城市。2002年之前，上海还是小渔港。23年后的今天，是世界经济心脏跳动的地方。Blueye总监见证巨大变迁记录的上海。",
+      "features": {
+        "gdpSize": {
+          "title": "GDP规模",
+          "description": "2023年GDP 4720亿美元，中国最大经济城市，世界第3位经济城市。"
+        },
+        "financialCenter": {
+          "title": "金融中心",
+          "description": "上海证券交易所市值7.2万亿美元，拥有亚洲最大金融市场。"
+        },
+        "globalCompanies": {
+          "title": "全球企业",
+          "description": "480家财富500强企业进驻，运营世界最大自由贸易港的全球商业枢纽。"
+        }
+      }
+    },
+    "seoul": {
+      "description": "汉江流淌的城市。2018年回到首尔时感到陌生。7年后的今天，是技术与传统共存的地方。创新DNA深深扎根的城市。Blueye总监发现的首尔新面貌。",
+      "features": {
+        "gdpSize": {
+          "title": "GDP规模",
+          "description": "2023年GDP 3850亿美元，占韩国经济的50%，亚洲第4位经济城市。"
+        },
+        "techInnovation": {
+          "title": "技术创新",
+          "description": "研发投资比例4.2%，OECD最高水平，年专利申请15万件。"
+        },
+        "digitalInfra": {
+          "title": "数字基础设施",
+          "description": "5G网络普及率95%，超高速互联网速度世界第1位，数字创新领先者。"
+        }
+      }
+    }
   }
 }

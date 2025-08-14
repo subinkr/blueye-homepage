@@ -45,10 +45,10 @@ export function TargetAudience() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6 break-keep-all">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
             {t('title')}
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto break-keep-all">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -71,10 +71,10 @@ export function TargetAudience() {
                 </div>
 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-gray-900 mb-4 break-keep-all">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {t(`${audience.key}.title`)}
                 </h3>
-                <p className="text-gray-600 leading-relaxed break-keep-all">
+                <p className="text-gray-600 leading-relaxed">
                   {t(`${audience.key}.description`)}
                 </p>
 
@@ -103,13 +103,13 @@ export function TargetAudience() {
             <div className="text-4xl md:text-5xl font-bold luxury-text-gradient mb-4">
               1,000+
             </div>
-            <div className="text-gray-600 text-lg">만족한 고객</div>
+            <div className="text-gray-600 text-lg">{t('satisfiedCustomers')}</div>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold luxury-text-gradient mb-4">
               50억+
             </div>
-            <div className="text-gray-600 text-lg">총 거래 규모</div>
+            <div className="text-gray-600 text-lg">{t('totalTransactionVolume')}</div>
           </div>
         </motion.div>
       </div>

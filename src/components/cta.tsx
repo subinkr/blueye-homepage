@@ -1,9 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useTranslations } from 'next-intl'
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
 
 export function CTA() {
+  const t = useTranslations('cta')
 
   return (
     <section className="w-full py-24 bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
@@ -17,14 +19,14 @@ export function CTA() {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-medium tracking-widest uppercase mb-3">
-            문의하기
+            {t('inquiry')}
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 break-words">
-            상담 문의
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            {t('consultation')}
           </h2>
           <div className="w-24 h-1 bg-yellow-400 mx-auto mb-6"></div>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto break-words">
-            해외 부동산 투자에 관한 궁금한 점이 있으시면 언제든지 문의해 주세요. 전문가가 친절하게 상담해 드립니다.
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            {t('description')}
           </p>
         </motion.div>
         
@@ -39,7 +41,7 @@ export function CTA() {
           >
             <div className="bg-gray-50 dark:bg-gray-800 p-8 rounded-sm shadow-md h-full">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 border-b border-gray-200 dark:border-gray-700 pb-4">
-                연락처 정보
+                {t('contactInfo')}
               </h3>
               
               <div className="space-y-6">
@@ -49,10 +51,10 @@ export function CTA() {
                     <Phone className="text-gray-900 w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1 break-words">
-                      전화번호
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                      {t('phone')}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 break-words">
+                    <p className="text-gray-600 dark:text-gray-300">
                       010 5763 0617
                     </p>
                   </div>
@@ -64,16 +66,16 @@ export function CTA() {
                     <MessageCircle className="text-gray-900 w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1 break-words">
-                      카카오톡
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                      {t('kakao')}
                     </h4>
                     <a 
                       href="https://pf.kakao.com/_qpRxjxb/chat" 
-                      className="text-blue-600 dark:text-blue-400 hover:underline transition-all duration-300 break-words"
+                      className="text-blue-600 dark:text-blue-400 hover:underline transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      카카오톡 상담 시작하기
+                      {t('kakaoLink')}
                     </a>
                   </div>
                 </div>
@@ -84,10 +86,10 @@ export function CTA() {
                     <Mail className="text-gray-900 w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1 break-words">
-                      이메일
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                      {t('email')}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 break-words">
+                    <p className="text-gray-600 dark:text-gray-300">
                       support@blueye.asia
                     </p>
                   </div>
@@ -99,12 +101,11 @@ export function CTA() {
                     <MapPin className="text-gray-900 w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1 break-words">
-                      회사주소
+                    <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                      {t('address')}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300 break-words">
-                      서울특별시 영등포구 국회대로 62길 5, 5층 502호<br />
-                      (여의도동, 신태진빌딩)
+                    <p className="text-gray-600 dark:text-gray-300">
+                      {t('addressDetail')}
                     </p>
                   </div>
                 </div>
