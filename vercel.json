@@ -15,9 +15,19 @@
       "headers": [
         {
           "key": "Accept-Language",
-          "value": "ko,en,zh;q=0.9"
+          "value": "ko,ko-KR,en;q=0.9,zh;q=0.8"
+        },
+        {
+          "key": "X-Forwarded-Host",
+          "value": "blueye.asia"
         }
       ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/ko"
     }
   ]
 }
