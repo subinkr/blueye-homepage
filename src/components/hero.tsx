@@ -392,30 +392,11 @@ export function Hero() {
       isTouchScrolling = false
     }
 
-    // 모바일에서 기본 스크롤 방지
-    const preventDefaultScroll = (e: Event) => {
-      const heroSection = document.getElementById('hero')
-      const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
-      
-      if (heroSection && lastCountrySection) {
-        const heroRect = heroSection.getBoundingClientRect()
-        const lastCountryRect = lastCountrySection.getBoundingClientRect()
-        
-        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
-          e.preventDefault()
-        }
-      }
-    }
-
     window.addEventListener('wheel', handleWheel, { passive: false })
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: false })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
     window.addEventListener('keydown', handleKeyDown, { passive: false })
-    
-    // 모바일 스크롤 방지
-    document.addEventListener('touchmove', preventDefaultScroll, { passive: false })
-    document.addEventListener('scroll', preventDefaultScroll, { passive: false })
     
     return () => {
       window.removeEventListener('wheel', handleWheel)
@@ -423,8 +404,6 @@ export function Hero() {
       window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('touchmove', preventDefaultScroll)
-      document.removeEventListener('scroll', preventDefaultScroll)
     }
   }, [currentSection, isScrolling])
 
@@ -438,7 +417,7 @@ export function Hero() {
       {/* Scrollable Content */}
       <div ref={contentRef} className="relative z-10">
         {/* Hero Section */}
-        <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden">
+        <section id="hero" className="hero-section min-h-screen flex items-center justify-center overflow-hidden">
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/20" />
           
@@ -549,7 +528,7 @@ export function Hero() {
           <section 
             key={country.code} 
             id={`country-${index}`}
-            className="min-h-screen flex items-center justify-center relative"
+            className="hero-section min-h-screen flex items-center justify-center relative"
           >
             {/* Background Image with Fade Animation */}
             <motion.div 
@@ -560,14 +539,14 @@ export function Hero() {
                 backgroundPosition: 'center',
                 backgroundAttachment: 'fixed',
               }}
-              initial={{ opacity: 0, scale: 1.1 }}
+              initial={{ opacity: 0, scale: 1.05 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ 
-                duration: 3,
-                ease: "easeOut",
-                delay: 0.2
+                duration: 4,
+                ease: "easeInOut",
+                delay: 0.1
               }}
-              viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
+              viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
             >
               {/* Overlay with Fade Animation */}
               <motion.div 
