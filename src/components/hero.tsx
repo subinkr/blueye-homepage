@@ -282,20 +282,23 @@ export function Hero() {
       const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
       const ctaSection = document.getElementById('cta')
       
-      if (heroSection && lastCountrySection && ctaSection && !isScrolling && !isTouchScrolling) {
+      if (heroSection && lastCountrySection && ctaSection) {
         const heroRect = heroSection.getBoundingClientRect()
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
         const ctaRect = ctaSection.getBoundingClientRect()
         
-        // Hero → 국가 섹션들 범위에서만 터치 스크롤 처리
+        // Hero → 국가 섹션들 범위에서 기본 스크롤 완전 차단
         if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
+          e.preventDefault()
+          
+          if (isScrolling || isTouchScrolling) return
+          
           const currentY = e.touches[0].clientY
           const touchDiff = touchStartY - currentY
           const touchDuration = Date.now() - touchStartTime
           
-          // 더 민감한 터치 감지 (25px, 200-500ms)
-          if (Math.abs(touchDiff) > 25 && touchDuration > 200 && touchDuration < 500) {
-            e.preventDefault()
+          // 더 민감한 터치 감지 (20px, 150-800ms)
+          if (Math.abs(touchDiff) > 20 && touchDuration > 150 && touchDuration < 800) {
             isTouchScrolling = true
             
             let newSection = currentSection
@@ -357,12 +360,15 @@ export function Hero() {
         }
         // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
         else if (ctaRect.top <= window.innerHeight) {
+          e.preventDefault()
+          
+          if (isScrolling || isTouchScrolling) return
+          
           const currentY = e.touches[0].clientY
           const touchDiff = touchStartY - currentY
           const touchDuration = Date.now() - touchStartTime
           
-          if (touchDiff < -25 && touchDuration > 200 && touchDuration < 500) {
-            e.preventDefault()
+          if (touchDiff < -20 && touchDuration > 150 && touchDuration < 800) {
             isTouchScrolling = true
             
             // 마지막 국가 섹션으로 이동
@@ -386,11 +392,30 @@ export function Hero() {
       isTouchScrolling = false
     }
 
+    // 모바일에서 기본 스크롤 방지
+    const preventDefaultScroll = (e: Event) => {
+      const heroSection = document.getElementById('hero')
+      const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
+      
+      if (heroSection && lastCountrySection) {
+        const heroRect = heroSection.getBoundingClientRect()
+        const lastCountryRect = lastCountrySection.getBoundingClientRect()
+        
+        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
+          e.preventDefault()
+        }
+      }
+    }
+
     window.addEventListener('wheel', handleWheel, { passive: false })
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: false })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
     window.addEventListener('keydown', handleKeyDown, { passive: false })
+    
+    // 모바일 스크롤 방지
+    document.addEventListener('touchmove', preventDefaultScroll, { passive: false })
+    document.addEventListener('scroll', preventDefaultScroll, { passive: false })
     
     return () => {
       window.removeEventListener('wheel', handleWheel)
@@ -398,6 +423,8 @@ export function Hero() {
       window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('touchmove', preventDefaultScroll)
+      document.removeEventListener('scroll', preventDefaultScroll)
     }
   }, [currentSection, isScrolling])
 
