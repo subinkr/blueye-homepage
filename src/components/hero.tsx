@@ -644,12 +644,21 @@ export function Hero() {
                 >
                   <Button
                     onClick={navigateToCTA}
-                    className="text-lg px-8 py-4 bg-white/20 backdrop-blur-md border-2 border-white/60 hover:bg-white/30 hover:border-white/80 transition-all duration-300 group shadow-lg hover:shadow-xl"
+                    className="text-lg px-8 py-4 backdrop-blur-md border-2 transition-all duration-300 group shadow-lg hover:shadow-xl"
                     style={{ 
+                      backgroundColor: `${country.color}20`,
                       color: country.color,
                       borderColor: `${country.color}80`,
                       textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
                       boxShadow: `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px ${country.color}40`
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = `${country.color}40`
+                      e.currentTarget.style.borderColor = `${country.color}`
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = `${country.color}20`
+                      e.currentTarget.style.borderColor = `${country.color}80`
                     }}
                   >
                     <span className="mr-2 font-semibold">{t('learnMore')}</span>
