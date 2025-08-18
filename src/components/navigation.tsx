@@ -57,14 +57,14 @@ export function Navigation() {
             </Link>
 
             <Link
-              href="/notices"
+              href={`/${locale}/notices`}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
               {t('notices')}
             </Link>
 
             <Link
-              href="/magazine"
+              href={`/${locale}/magazine`}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
               {t('magazine')}
@@ -190,7 +190,7 @@ export function Navigation() {
                 </Link>
 
                 <Link
-                  href="/notices"
+                  href={`/${locale}/notices`}
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
@@ -198,7 +198,7 @@ export function Navigation() {
                 </Link>
 
                 <Link
-                  href="/magazine"
+                  href={`/${locale}/magazine`}
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
