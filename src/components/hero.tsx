@@ -268,39 +268,41 @@ export function Hero() {
     }
 
     let touchStartY = 0
-    let touchStartTime = 0
-    let isTouchScrolling = false
+    let touchEndY = 0
     
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY
-      touchStartTime = Date.now()
-      isTouchScrolling = false
     }
     
     const handleTouchMove = (e: TouchEvent) => {
       const heroSection = document.getElementById('hero')
       const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
-      const ctaSection = document.getElementById('cta')
       
-      if (heroSection && lastCountrySection && ctaSection) {
+      if (heroSection && lastCountrySection) {
         const heroRect = heroSection.getBoundingClientRect()
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
-        const ctaRect = ctaSection.getBoundingClientRect()
         
-        // Hero → 국가 섹션들 범위에서 기본 스크롤 완전 차단
         if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
           e.preventDefault()
+        }
+      }
+    }
+    
+    const handleTouchEnd = (e: TouchEvent) => {
+      const heroSection = document.getElementById('hero')
+      const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
+      
+      if (heroSection && lastCountrySection) {
+        const heroRect = heroSection.getBoundingClientRect()
+        const lastCountryRect = lastCountrySection.getBoundingClientRect()
+        
+        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
+          if (isScrolling) return
           
-          if (isScrolling || isTouchScrolling) return
+          touchEndY = e.changedTouches[0].clientY
+          const touchDiff = touchStartY - touchEndY
           
-          const currentY = e.touches[0].clientY
-          const touchDiff = touchStartY - currentY
-          const touchDuration = Date.now() - touchStartTime
-          
-          // 더 민감한 터치 감지 (20px, 150-800ms)
-          if (Math.abs(touchDiff) > 20 && touchDuration > 150 && touchDuration < 800) {
-            isTouchScrolling = true
-            
+          if (Math.abs(touchDiff) > 30) {
             let newSection = currentSection
             
             if (touchDiff > 0 && currentSection < totalSections - 1) {
@@ -355,55 +357,8 @@ export function Hero() {
             
             setTimeout(() => {
               setIsScrolling(false)
-            }, 1200)
+            }, 1000)
           }
-        }
-        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
-        else if (ctaRect.top <= window.innerHeight) {
-          e.preventDefault()
-          
-          if (isScrolling || isTouchScrolling) return
-          
-          const currentY = e.touches[0].clientY
-          const touchDiff = touchStartY - currentY
-          const touchDuration = Date.now() - touchStartTime
-          
-          if (touchDiff < -20 && touchDuration > 150 && touchDuration < 800) {
-            isTouchScrolling = true
-            
-            // 마지막 국가 섹션으로 이동
-            const newSection = countries.length
-            setCurrentSection(newSection)
-            setCurrentCountryIndex(countries.length - 1)
-            setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
-            
-            lastCountrySection.scrollIntoView({ behavior: 'smooth' })
-            window.history.replaceState(null, '', `#country-${countries.length - 1}`)
-            
-            setIsScrolling(true)
-            setTimeout(() => setIsScrolling(false), 1200)
-          }
-        }
-      }
-    }
-    
-    const handleTouchEnd = (e: TouchEvent) => {
-      // 터치 종료 시 추가 처리 (필요시)
-      isTouchScrolling = false
-    }
-
-    // 모바일에서 해당 섹션에서만 스크롤 방지
-    const preventDefaultScroll = (e: Event) => {
-      const heroSection = document.getElementById('hero')
-      const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
-      
-      if (heroSection && lastCountrySection) {
-        const heroRect = heroSection.getBoundingClientRect()
-        const lastCountryRect = lastCountrySection.getBoundingClientRect()
-        
-        // Hero 섹션이 화면에 있고 마지막 국가 섹션이 아직 화면에 있을 때만 스크롤 방지
-        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight && !isScrolling) {
-          e.preventDefault()
         }
       }
     }
@@ -414,16 +369,12 @@ export function Hero() {
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
     window.addEventListener('keydown', handleKeyDown, { passive: false })
     
-    // 모바일 스크롤 방지 (해당 섹션에서만)
-    document.addEventListener('touchmove', preventDefaultScroll, { passive: false })
-    
     return () => {
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('touchstart', handleTouchStart)
       window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('touchmove', preventDefaultScroll)
     }
   }, [currentSection, isScrolling])
 
@@ -552,19 +503,18 @@ export function Hero() {
           >
             {/* Background Image with Fade Animation */}
             <motion.div 
-              className="absolute inset-0"
+              className="absolute inset-0 md:bg-fixed bg-scroll"
               style={{
                 backgroundImage: `url(${country.image})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                backgroundAttachment: 'fixed',
               }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, scale: 1.02 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               transition={{ 
                 duration: 2,
-                ease: "easeInOut",
-                delay: 0.1
+                ease: "easeOut",
+                delay: 0.2
               }}
               viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
             >

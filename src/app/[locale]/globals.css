@@ -146,14 +146,20 @@ html {
   outline-offset: 2px;
 }
 
-/* Mobile scroll prevention */
+/* Mobile touch optimization */
 @media (max-width: 768px) {
-  body {
-    overscroll-behavior: contain;
-    -webkit-overflow-scrolling: touch;
+  /* Prevent zoom on double tap */
+  * {
+    touch-action: manipulation;
   }
   
-  html {
-    overscroll-behavior: contain;
+  /* Optimize background images for mobile */
+  .bg-fixed {
+    background-attachment: scroll !important;
+  }
+  
+  /* Improve touch scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
   }
 }
