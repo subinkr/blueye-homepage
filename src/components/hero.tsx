@@ -62,7 +62,12 @@ export function Hero() {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '')
       
-      if (hash === 'cta') {
+      if (hash === 'hero') {
+        window.scrollTo(0, 0)
+        setCurrentSection(0)
+        setCurrentCountryIndex(-1)
+        setScrollProgress(0)
+      } else if (hash === 'cta') {
         setCurrentSection(countries.length + 1)
         setCurrentCountryIndex(-1)
         setScrollProgress(Math.min((countries.length + 1) / (countries.length + 2), 1))
@@ -120,7 +125,12 @@ export function Hero() {
     if (hash) {
       const timer = setTimeout(() => {
         const handleInitialHash = () => {
-          if (hash === 'cta') {
+          if (hash === 'hero') {
+            window.scrollTo(0, 0)
+            setCurrentSection(0)
+            setCurrentCountryIndex(-1)
+            setScrollProgress(0)
+          } else if (hash === 'cta') {
             setCurrentSection(countries.length + 1)
             setCurrentCountryIndex(-1)
             setScrollProgress(Math.min((countries.length + 1) / (countries.length + 2), 1))
