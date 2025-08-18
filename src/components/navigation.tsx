@@ -81,11 +81,15 @@ export function Navigation() {
                     exit={{ opacity: 0, y: -10 }}
                     className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2"
                   >
-                    {countries.map((country) => (
+                    {countries.map((country, index) => (
                       <Link
                         key={country.code}
-                        href={`/${locale}#country-${countries.findIndex(c => c.code === country.code)}`}
-                        onClick={() => setIsCountriesOpen(false)}
+                        href={`/${locale}#country-${index}`}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          setIsCountriesOpen(false)
+                          window.location.href = `/${locale}#country-${index}`
+                        }}
                         className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors text-left"
                       >
                         <div 
@@ -207,13 +211,15 @@ export function Navigation() {
                       exit={{ opacity: 0, height: 0 }}
                       className="space-y-1"
                     >
-                      {countries.map((country) => (
+                      {countries.map((country, index) => (
                         <Link
                           key={country.code}
-                          href={`/${locale}#country-${countries.findIndex(c => c.code === country.code)}`}
-                          onClick={() => {
+                          href={`/${locale}#country-${index}`}
+                          onClick={(e) => {
+                            e.preventDefault()
                             setIsOpen(false)
                             setIsCountriesOpen(false)
+                            window.location.href = `/${locale}#country-${index}`
                           }}
                           className="flex items-center w-full px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors text-left"
                         >
