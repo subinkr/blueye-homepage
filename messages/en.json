@@ -267,5 +267,60 @@
     "totalNotices": "Total Notices",
     "realTimeUpdates": "Real-time Updates",
     "reliableInformation": "Reliable Information"
+  },
+  "lifestyleVision": {
+    "title": "Your Dream Lifestyle",
+    "subtitle": "What kind of lifestyle are you dreaming of?",
+    "description": "Start your global premium lifestyle with Blueye",
+    "retirement": {
+      "title": "Free Retirement",
+      "description": "Relaxed and prosperous retirement life in a stress-free environment",
+      "feature1": "Safe Environment",
+      "feature2": "Low Cost of Living",
+      "feature3": "Friendly Community",
+      "feature4": "Healthcare Services"
+    },
+    "education": {
+      "title": "Global Education",
+      "description": "The best educational environment to raise children as global talents",
+      "feature1": "World-class Education System",
+      "feature2": "Multicultural Environment",
+      "feature3": "English Education",
+      "feature4": "International Schools"
+    },
+    "business": {
+      "title": "Global Business",
+      "description": "Challenging life seeking business opportunities in new markets",
+      "feature1": "Growing Markets",
+      "feature2": "Government Support",
+      "feature3": "Tax Benefits",
+      "feature4": "Networking"
+    },
+    "culture": {
+      "title": "Cultural Experience",
+      "description": "Abundant life experiencing diverse cultures",
+      "feature1": "Diverse Cultures",
+      "feature2": "Natural Environment",
+      "feature3": "Leisure Activities",
+      "feature4": "Arts & Culture"
+    },
+    "health": {
+      "title": "Healthy Life",
+      "description": "Choice to enjoy a healthy life with clean environment and healthy eating habits",
+      "feature1": "Clean Environment",
+      "feature2": "Fresh Ingredients",
+      "feature3": "Healthcare System",
+      "feature4": "Wellness Culture"
+    },
+    "community": {
+      "title": "Community",
+      "description": "Warm neighborly relationships with local Korean communities",
+      "feature1": "Korean Communities",
+      "feature2": "Regular Meetings",
+      "feature3": "Information Sharing",
+      "feature4": "Mutual Support"
+    },
+    "cta": "Design My Lifestyle",
+    "learnMore": "Learn More"
   }
 }

@@ -477,7 +477,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-6 sm:space-y-8"
             >
               {/* Logo */}
               <div className="w-32 h-20 flex items-center justify-center">
@@ -508,7 +508,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto pt-6"
+                className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto pt-4 sm:pt-6"
               >
                 <div className="text-center">
                   <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-lg">
@@ -528,6 +528,22 @@ export function Hero() {
                   </div>
                   <div className="text-sm md:text-base text-white/80">{t('managedProperties')}</div>
                 </div>
+              </motion.div>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.0, duration: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 sm:pt-8"
+              >
+                <Button
+                  onClick={() => router.push(`/${locale}/lifestyle`)}
+                  variant="outline"
+                  className="text-lg px-6 py-4 border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold backdrop-blur-sm transition-all duration-300"
+                >
+                  라이프스타일 알아보기
+                </Button>
               </motion.div>
             </motion.div>
           </div>
@@ -653,7 +669,7 @@ export function Hero() {
                   className="mt-12"
                 >
                   <Button
-                    onClick={navigateToCTA}
+                    onClick={() => window.open('https://pf.kakao.com/_qpRxjxb/chat', '_blank')}
                     className="text-lg px-8 py-4 backdrop-blur-md border-2 transition-all duration-300 group shadow-lg hover:shadow-xl"
                     style={{ 
                       backgroundColor: `${country.color}`,

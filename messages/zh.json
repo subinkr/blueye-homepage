@@ -267,5 +267,60 @@
     "totalNotices": "总公告数",
     "realTimeUpdates": "实时更新",
     "reliableInformation": "可靠信息"
+  },
+  "lifestyleVision": {
+    "title": "您的梦想生活方式",
+    "subtitle": "您梦想着什么样的生活方式？",
+    "description": "与Blueye一起开启全球优质生活方式",
+    "retirement": {
+      "title": "自由退休",
+      "description": "在无压力环境中享受轻松富足的退休生活",
+      "feature1": "安全环境",
+      "feature2": "低廉生活成本",
+      "feature3": "友好社区",
+      "feature4": "医疗服务"
+    },
+    "education": {
+      "title": "全球教育",
+      "description": "培养孩子成为全球人才的最佳教育环境",
+      "feature1": "世界级教育体系",
+      "feature2": "多元文化环境",
+      "feature3": "英语教育",
+      "feature4": "国际学校"
+    },
+    "business": {
+      "title": "全球商业",
+      "description": "在新市场寻求商业机会的挑战性生活",
+      "feature1": "成长市场",
+      "feature2": "政府支持",
+      "feature3": "税收优惠",
+      "feature4": "人脉网络"
+    },
+    "culture": {
+      "title": "文化体验",
+      "description": "体验多元文化的丰富生活",
+      "feature1": "多元文化",
+      "feature2": "自然环境",
+      "feature3": "休闲活动",
+      "feature4": "艺术文化"
+    },
+    "health": {
+      "title": "健康生活",
+      "description": "选择在清洁环境和健康饮食习惯中享受健康生活",
+      "feature1": "清洁环境",
+      "feature2": "新鲜食材",
+      "feature3": "医疗系统",
+      "feature4": "健康文化"
+    },
+    "community": {
+      "title": "社区",
+      "description": "与当地韩国社区的温暖邻里关系",
+      "feature1": "韩国社区",
+      "feature2": "定期聚会",
+      "feature3": "信息分享",
+      "feature4": "相互支持"
+    },
+    "cta": "设计我的生活方式",
+    "learnMore": "了解更多"
   }
 }

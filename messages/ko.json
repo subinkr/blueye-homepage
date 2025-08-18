@@ -267,5 +267,60 @@
     "totalNotices": "총 공지사항",
     "realTimeUpdates": "실시간 업데이트",
     "reliableInformation": "신뢰할 수 있는 정보"
+  },
+  "lifestyleVision": {
+    "title": "당신의 꿈의 라이프스타일",
+    "subtitle": "어떤 라이프스타일을 꿈꾸고 계신가요?",
+    "description": "Blueye와 함께 글로벌 프리미엄 라이프스타일을 시작하세요",
+    "retirement": {
+      "title": "자유로운 은퇴",
+      "description": "스트레스 없는 환경에서 여유롭고 풍요로운 은퇴 생활",
+      "feature1": "안전한 환경",
+      "feature2": "저렴한 생활비",
+      "feature3": "친절한 커뮤니티",
+      "feature4": "의료 서비스"
+    },
+    "education": {
+      "title": "글로벌 교육",
+      "description": "자녀를 글로벌 인재로 키우는 최고의 교육 환경",
+      "feature1": "세계적 교육 시스템",
+      "feature2": "다문화 환경",
+      "feature3": "영어 교육",
+      "feature4": "국제 학교"
+    },
+    "business": {
+      "title": "글로벌 비즈니스",
+      "description": "새로운 시장에서 비즈니스 기회를 찾는 도전적인 삶",
+      "feature1": "성장하는 시장",
+      "feature2": "정부 지원",
+      "feature3": "세무 혜택",
+      "feature4": "네트워킹"
+    },
+    "culture": {
+      "title": "문화 체험",
+      "description": "다양한 문화를 경험하며 풍요로운 삶을 살아가는 여유",
+      "feature1": "다양한 문화",
+      "feature2": "자연 환경",
+      "feature3": "레저 활동",
+      "feature4": "예술 문화"
+    },
+    "health": {
+      "title": "건강한 삶",
+      "description": "깨끗한 환경과 건강한 식습관으로 건강한 삶을 누리는 선택",
+      "feature1": "깨끗한 환경",
+      "feature2": "신선한 식재료",
+      "feature3": "의료 시스템",
+      "feature4": "웰빙 문화"
+    },
+    "community": {
+      "title": "커뮤니티",
+      "description": "현지 한국인 커뮤니티와 함께하는 따뜻한 이웃 관계",
+      "feature1": "한국인 커뮤니티",
+      "feature2": "정기 모임",
+      "feature3": "정보 공유",
+      "feature4": "상호 지원"
+    },
+    "cta": "나의 라이프스타일 설계하기",
+    "learnMore": "자세히 보기"
   }
 }
