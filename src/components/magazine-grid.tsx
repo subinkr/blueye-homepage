@@ -13,43 +13,60 @@ interface Category {
   display_order: number
 }
 
-// const categories = ['All', 'Real Estate', 'Investment', 'Market Analysis', 'Technology', 'Sustainability'] // 제거됨
-
 export function MagazineGrid() {
   const t = useTranslations('magazine')
   const locale = useLocale()
   const [magazines, setMagazines] = useState<Magazine[]>([])
-  const [filteredMagazines, setFilteredMagazines] = useState<Magazine[]>([])
   const [categories, setCategories] = useState<Category[]>([])
   const [selectedCategory, setSelectedCategory] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const [isLoading, setIsLoading] = useState(true)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
 
   useEffect(() => {
-    fetchMagazines()
     fetchCategories()
   }, [locale])
 
-  const fetchMagazines = async () => {
+  useEffect(() => {
+    setCurrentPage(1)
+    fetchMagazines(1, true)
+  }, [locale, selectedCategory, searchTerm])
+
+  const fetchMagazines = async (page: number = 1, reset: boolean = false) => {
     try {
-      setIsLoading(true)
+      if (reset) {
+        setIsLoading(true)
+      } else {
+        setIsLoadingMore(true)
+      }
+
       const url = new URL('/api/magazines', window.location.origin)
       url.searchParams.set('locale', locale)
       url.searchParams.set('status', 'published')
-      if (selectedCategory !== 'all') {
+      url.searchParams.set('page', page.toString())
+      url.searchParams.set('limit', '8')
+      
+      if (selectedCategory) {
         url.searchParams.set('categoryId', selectedCategory)
       }
-      
-      console.log('매거진 API 호출:', url.toString())
+
       const response = await fetch(url.toString())
       const data = await response.json()
-      console.log('받은 매거진 데이터:', data.data?.length || 0, '개')
-      setMagazines(data.data || [])
-      setFilteredMagazines(data.data || [])
+      
+      if (reset) {
+        setMagazines(data.data || [])
+      } else {
+        setMagazines(prev => [...prev, ...(data.data || [])])
+      }
+      
+      setHasMore(data.pagination?.totalPages > page)
     } catch (error) {
       console.error('매거진 로딩 오류:', error)
     } finally {
       setIsLoading(false)
+      setIsLoadingMore(false)
     }
   }
 
@@ -60,7 +77,6 @@ export function MagazineGrid() {
       const categoriesData = data.data || []
       setCategories(categoriesData)
       
-      // 첫 번째 카테고리를 자동으로 선택
       if (categoriesData.length > 0 && !selectedCategory) {
         setSelectedCategory(categoriesData[0].id)
       }
@@ -69,36 +85,19 @@ export function MagazineGrid() {
     }
   }
 
-  useEffect(() => {
-    fetchMagazines()
-  }, [locale, selectedCategory])
-
-  useEffect(() => {
-    let filtered = magazines
-
-    // 카테고리 필터링
-    if (selectedCategory) {
-      filtered = filtered.filter(mag => mag.category_id === selectedCategory)
-    }
-
-    // 검색어 필터링
-    if (searchTerm) {
-      filtered = filtered.filter(mag => 
-        mag.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        mag.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    }
-
-    setFilteredMagazines(filtered)
-  }, [magazines, searchTerm, selectedCategory])
-
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+  const loadMore = () => {
+    const nextPage = currentPage + 1
+    setCurrentPage(nextPage)
+    fetchMagazines(nextPage, false)
   }
+
+  const filteredMagazines = magazines.filter(magazine => {
+    if (searchTerm) {
+      return magazine.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+             magazine.excerpt.toLowerCase().includes(searchTerm.toLowerCase())
+    }
+    return true
+  })
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -117,7 +116,7 @@ export function MagazineGrid() {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
+        ease: 'easeOut'
       }
     }
   }
@@ -127,14 +126,13 @@ export function MagazineGrid() {
       <div className="min-h-screen flex items-center justify-center">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           className="w-12 h-12 border-4 border-purple-400 border-t-transparent rounded-full"
         />
       </div>
     )
   }
 
-  // 카테고리가 없을 때
   if (categories.length === 0) {
     return (
       <section className="pt-0 pb-20 px-4 sm:px-6 lg:px-8 relative">
@@ -152,8 +150,6 @@ export function MagazineGrid() {
   return (
     <section className="pt-0 pb-20 px-4 sm:px-6 lg:px-8 relative">
       <div className="max-w-7xl mx-auto">
-
-
         {/* Search */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -186,10 +182,7 @@ export function MagazineGrid() {
             {categories.map((category) => (
               <motion.button
                 key={category.id}
-                onClick={() => {
-                  console.log('카테고리 선택:', category.name, category.id)
-                  setSelectedCategory(category.id)
-                }}
+                onClick={() => setSelectedCategory(category.id)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category.id
                     ? 'bg-purple-500 text-white'
@@ -221,85 +214,96 @@ export function MagazineGrid() {
               <p className="text-gray-400">{t('tryAdjusting')}</p>
             </motion.div>
           ) : (
-            <motion.div
-              key={`${searchTerm}`}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="hidden"
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-            >
-              {filteredMagazines.map((magazine) => (
-                <motion.div
-                  key={magazine.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-300"
-                >
-                  {/* Cover Image */}
-                  <div className="aspect-[3/4] relative overflow-hidden group">
-                    {magazine.cover_image ? (
-                      <img
-                        src={magazine.cover_image}
-                        alt={magazine.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="h-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 relative">
-                        <motion.div
-                          animate={{
-                            background: [
-                              "linear-gradient(45deg, rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3))",
-                              "linear-gradient(45deg, rgba(236, 72, 153, 0.3), rgba(59, 130, 246, 0.3))",
-                              "linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3))"
-                            ]
-                          }}
-                          transition={{
-                            duration: 8,
-                            repeat: Infinity,
-                            ease: "linear"
-                          }}
-                          className="absolute inset-0"
+            <>
+              <motion.div
+                key={`${searchTerm}-${selectedCategory}`}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              >
+                {filteredMagazines.map((magazine) => (
+                  <motion.div
+                    key={magazine.id}
+                    variants={itemVariants}
+                    whileHover={{ y: -10, scale: 1.02 }}
+                    className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-300"
+                  >
+                    <div className="aspect-[3/4] relative overflow-hidden group">
+                      {magazine.cover_image ? (
+                        <img
+                          src={magazine.cover_image}
+                          alt={magazine.title}
+                          className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <BookOpen className="w-16 h-16 text-white/60" />
+                      ) : (
+                        <div className="h-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 relative">
+                          <motion.div
+                            animate={{
+                              background: [
+                                'linear-gradient(45deg, rgba(147, 51, 234, 0.3), rgba(236, 72, 153, 0.3))',
+                                'linear-gradient(45deg, rgba(236, 72, 153, 0.3), rgba(59, 130, 246, 0.3))',
+                                'linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(147, 51, 234, 0.3))'
+                              ]
+                            }}
+                            transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+                            className="absolute inset-0"
+                          />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <BookOpen className="w-16 h-16 text-white/60" />
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                          <h4 className="text-sm font-semibold mb-2 line-clamp-2">{magazine.title}</h4>
+                          <div
+                            className="text-xs text-gray-200 whitespace-pre-line max-h-32 overflow-y-auto"
+                            dangerouslySetInnerHTML={{ __html: magazine.excerpt.replace(/\n/g, '<br>') }}
+                          />
                         </div>
                       </div>
-                    )}
-                    
-                    {/* Image Overlay with Description */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                        <h4 className="text-sm font-semibold mb-2 line-clamp-2">{magazine.title}</h4>
-                        <div 
-                          className="text-xs text-gray-200 whitespace-pre-line max-h-32 overflow-y-auto"
-                          dangerouslySetInnerHTML={{ __html: magazine.excerpt.replace(/\n/g, '<br>') }}
-                        />
-                      </div>
+
+                      <motion.a
+                        href={magazine.content}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 z-10"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      />
                     </div>
-                    
-                    {/* Click Overlay */}
-                    <motion.a
-                      href={magazine.content}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="absolute inset-0 z-10"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 1 }}
+                      className="absolute inset-0 bg-gradient-to-t from-purple-500/10 to-transparent pointer-events-none"
                     />
-                  </div>
+                  </motion.div>
+                ))}
+              </motion.div>
 
-
-
-                  {/* Hover Effect */}
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-t from-purple-500/10 to-transparent pointer-events-none"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
+              {hasMore && (
+                <div className="flex justify-center mt-10">
+                  <button
+                    onClick={loadMore}
+                    disabled={isLoadingMore}
+                    className="px-6 py-3 rounded-lg bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoadingMore ? (
+                      <div className="flex items-center gap-2">
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                        로딩 중...
+                      </div>
+                    ) : (
+                      '더 불러오기'
+                    )}
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </AnimatePresence>
       </div>

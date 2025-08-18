@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     const status = searchParams.get('status') || 'published'
     const categoryId = searchParams.get('categoryId')
     const page = parseInt(searchParams.get('page') || '1')
-    const limit = parseInt(searchParams.get('limit') || '10')
+    const limit = parseInt(searchParams.get('limit') || '8')
     const offset = (page - 1) * limit
 
 
@@ -42,7 +42,30 @@ export async function GET(request: NextRequest) {
       query = query.eq('category_id', categoryId)
     }
 
-    const { data, error, count } = await query
+    // 전체 개수를 먼저 가져오기
+    const countQuery = supabase
+      .from('magazines')
+      .select('*', { count: 'exact', head: true })
+      .eq('locale', locale)
+      .order('published_at', { ascending: false })
+
+    if (status && status !== 'all') {
+      countQuery.eq('status', status)
+    }
+
+    if (categoryId && categoryId !== 'all') {
+      countQuery.eq('category_id', categoryId)
+    }
+
+    const { count: totalCount, error: countError } = await countQuery
+    
+    if (countError) {
+      console.error('카운트 쿼리 오류:', countError)
+      throw countError
+    }
+
+    // 실제 데이터 가져오기
+    const { data, error } = await query
       .range(offset, offset + limit - 1)
 
     if (error) {
@@ -57,8 +80,8 @@ export async function GET(request: NextRequest) {
       pagination: {
         page,
         limit,
-        total: count || 0,
-        totalPages: Math.ceil((count || 0) / limit)
+        total: totalCount || 0,
+        totalPages: Math.ceil((totalCount || 0) / limit)
       }
     })
   } catch (error) {
