@@ -542,7 +542,7 @@ export function Hero() {
                   variant="outline"
                   className="text-lg px-6 py-4 border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold backdrop-blur-sm transition-all duration-300"
                 >
-                  라이프스타일 알아보기
+                  {t('exploreLifestyle')}
                 </Button>
               </motion.div>
             </motion.div>

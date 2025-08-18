@@ -18,7 +18,8 @@
     "experienceYears": "Years of Experience",
     "countries": "Countries",
     "managedProperties": "Managed Properties",
-    "learnMore": "Contact Us"
+    "learnMore": "Contact Us",
+    "exploreLifestyle": "Explore Lifestyle"
   },
   "services": {
     "title": "Services",
@@ -321,6 +322,136 @@
       "feature4": "Mutual Support"
     },
     "cta": "Design My Lifestyle",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "ctaDescription": "Design your ideal global lifestyle with our expert consultants"
+  },
+  "lifestyleQuiz": {
+    "title": "Lifestyle World Cup",
+    "subtitle": "Find the lifestyle that best suits you",
+    "round": "Round",
+    "completed": "Completed",
+    "congratulations": "Congratulations! 🎉",
+    "foundLifestyle": "We found your ideal lifestyle",
+    "recommendedCountries": "Recommended Countries",
+    "consultationRequest": "Request Consultation",
+    "quizAgain": "Take Quiz Again",
+    "backToHome": "Back to Home",
+    "categories": {
+      "retirement": {
+        "title": "Free Retirement",
+        "description": "Relaxed and prosperous retirement life in a stress-free environment",
+        "feature1": "Safe Environment",
+        "feature2": "Low Cost of Living",
+        "feature3": "Friendly Community",
+        "feature4": "Healthcare Services"
+      },
+      "education": {
+        "title": "Global Education",
+        "description": "The best educational environment to raise children as global talents",
+        "feature1": "World-class Education System",
+        "feature2": "Multicultural Environment",
+        "feature3": "English Education",
+        "feature4": "International Schools"
+      },
+      "business": {
+        "title": "Global Business",
+        "description": "Challenging life seeking business opportunities in new markets",
+        "feature1": "Growing Markets",
+        "feature2": "Government Support",
+        "feature3": "Tax Benefits",
+        "feature4": "Networking"
+      },
+      "culture": {
+        "title": "Cultural Experience",
+        "description": "Abundant life experiencing diverse cultures",
+        "feature1": "Diverse Cultures",
+        "feature2": "Natural Environment",
+        "feature3": "Leisure Activities",
+        "feature4": "Arts & Culture"
+      },
+      "health": {
+        "title": "Healthy Life",
+        "description": "Choice to enjoy a healthy life with clean environment and healthy eating habits",
+        "feature1": "Clean Environment",
+        "feature2": "Fresh Ingredients",
+        "feature3": "Healthcare System",
+        "feature4": "Wellness Culture"
+      },
+      "community": {
+        "title": "Community",
+        "description": "Warm neighborly relationships with local Korean communities",
+        "feature1": "Korean Communities",
+        "feature2": "Regular Meetings",
+        "feature3": "Information Sharing",
+        "feature4": "Mutual Support"
+      },
+      "investment": {
+        "title": "Investment Growth",
+        "description": "Asset appreciation and stable returns through real estate investment",
+        "feature1": "Real Estate Investment",
+        "feature2": "Asset Appreciation",
+        "feature3": "Return Generation",
+        "feature4": "Portfolio"
+      },
+      "luxury": {
+        "title": "Luxury Life",
+        "description": "Premium life with top-tier facilities and services",
+        "feature1": "Premium Facilities",
+        "feature2": "High-end Services",
+        "feature3": "Luxury Environment",
+        "feature4": "VIP Benefits"
+      }
+    },
+    "countries": {
+      "malaysia": "Malaysia",
+      "cambodia": "Cambodia",
+      "vietnam": "Vietnam",
+      "china": "China",
+      "dubai": "Dubai",
+      "korea": "Korea"
+    },
+    "reasons": {
+      "retirement": {
+        "malaysia": "Low cost of living and safe environment",
+        "cambodia": "Warm climate and friendly community",
+        "vietnam": "Diverse culture and convenient healthcare services"
+      },
+      "education": {
+        "china": "Strong education system and global opportunities",
+        "malaysia": "International schools and English education environment",
+        "vietnam": "Growing education environment and multicultural experience"
+      },
+      "business": {
+        "vietnam": "High economic growth rate and government support",
+        "cambodia": "New market opportunities and tax benefits",
+        "malaysia": "Stable business environment"
+      },
+      "culture": {
+        "cambodia": "Rich cultural heritage and natural environment",
+        "vietnam": "Diverse culture and artistic activities",
+        "malaysia": "Multicultural society and leisure activities"
+      },
+      "health": {
+        "malaysia": "Clean environment and modern healthcare system",
+        "vietnam": "Natural healing environment and wellness culture",
+        "cambodia": "Peaceful environment and traditional medicine"
+      },
+      "community": {
+        "malaysia": "Active Korean community",
+        "vietnam": "Growing Korean network",
+        "cambodia": "Close-knit Korean community"
+      },
+      "investment": {
+        "dubai": "World-class real estate investment environment and high returns",
+        "vietnam": "High growth rate and investment opportunities",
+        "malaysia": "Stable real estate market and government support"
+      },
+      "luxury": {
+        "dubai": "World's finest luxury environment and services",
+        "china": "Luxury brands and high-end culture",
+        "malaysia": "Premium facilities and high-end services"
+      }
+    },
+    "highScoreCountry": "Country that received high scores during the selection process"
   }
 }

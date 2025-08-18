@@ -189,10 +189,10 @@ export function LifestyleVision() {
         >
           <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 md:p-12 text-white">
             <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">
-              나만의 라이프스타일을 설계해보세요
+              {t('cta')}
             </h3>
             <p className="text-lg font-korean mb-8 opacity-90 max-w-2xl mx-auto">
-              전문 컨설턴트와 함께 당신에게 가장 적합한 글로벌 라이프스타일을 설계해드립니다
+              {t('ctaDescription')}
             </p>
             <Button 
               onClick={scrollToCTA}
