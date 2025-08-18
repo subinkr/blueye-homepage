@@ -559,10 +559,10 @@ export function Hero() {
                 backgroundPosition: 'center',
                 backgroundAttachment: 'fixed',
               }}
-              initial={{ opacity: 0, scale: 1.05 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               transition={{ 
-                duration: 2.5,
+                duration: 2,
                 ease: "easeInOut",
                 delay: 0.1
               }}
