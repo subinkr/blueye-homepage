@@ -32,27 +32,35 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
-          <button 
-            onClick={() => {
-              // URL 해시 제거하여 홈으로 이동
-              window.location.hash = ''
-            }}
+          <Link 
+            href={`/${locale}`}
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <Logo size="sm" className="h-8 text-white" />
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
-            <button
-              onClick={() => {
-                // URL 해시 제거하여 홈으로 이동
-                window.location.hash = ''
-              }}
+            <Link
+              href={`/${locale}`}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
               {t('home')}
-            </button>
+            </Link>
+
+            <Link
+              href="/notices"
+              className="text-white hover:text-blue-200 transition-colors font-medium"
+            >
+              {t('notices')}
+            </Link>
+
+            <Link
+              href="/magazine"
+              className="text-white hover:text-blue-200 transition-colors font-medium"
+            >
+              {t('magazine')}
+            </Link>
 
             
             {/* Countries Dropdown */}
@@ -74,13 +82,10 @@ export function Navigation() {
                     className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-2"
                   >
                     {countries.map((country) => (
-                      <button
+                      <Link
                         key={country.code}
-                        onClick={() => {
-                          setIsCountriesOpen(false)
-                          // 해당 국가 섹션으로 이동
-                          window.location.hash = `country-${countries.findIndex(c => c.code === country.code)}`
-                        }}
+                        href={`/${locale}#country-${countries.findIndex(c => c.code === country.code)}`}
+                        onClick={() => setIsCountriesOpen(false)}
                         className="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-50 transition-colors text-left"
                       >
                         <div 
@@ -88,7 +93,7 @@ export function Navigation() {
                           style={{ backgroundColor: country.color }}
                         />
                         <span>{getCountryName(country.code, locale)}</span>
-                      </button>
+                      </Link>
                     ))}
                   </motion.div>
                 )}
@@ -96,15 +101,12 @@ export function Navigation() {
             </div>
             
 
-            <button
-              onClick={() => {
-                // URL 해시 업데이트
-                window.location.hash = 'cta'
-              }}
+            <Link
+              href={`/${locale}#cta`}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
               {t('contact')}
-            </button>
+            </Link>
 
             {/* Language Selector */}
             <div className="relative">
@@ -163,16 +165,29 @@ export function Navigation() {
               className="lg:hidden bg-white border-t border-gray-100"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <button
-                  onClick={() => {
-                    setIsOpen(false)
-                    // URL 해시 제거하여 홈으로 이동
-                    window.location.hash = ''
-                  }}
+                <Link
+                  href={`/${locale}`}
+                  onClick={() => setIsOpen(false)}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
                   {t('home')}
-                </button>
+                </Link>
+
+                <Link
+                  href="/notices"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  {t('notices')}
+                </Link>
+
+                <Link
+                  href="/magazine"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  {t('magazine')}
+                </Link>
 
                 
                 {/* Mobile Countries Dropdown */}
@@ -193,13 +208,12 @@ export function Navigation() {
                       className="space-y-1"
                     >
                       {countries.map((country) => (
-                        <button
+                        <Link
                           key={country.code}
+                          href={`/${locale}#country-${countries.findIndex(c => c.code === country.code)}`}
                           onClick={() => {
                             setIsOpen(false)
                             setIsCountriesOpen(false)
-                            // 해당 국가 섹션으로 이동
-                            window.location.hash = `country-${countries.findIndex(c => c.code === country.code)}`
                           }}
                           className="flex items-center w-full px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors text-left"
                         >
@@ -208,22 +222,19 @@ export function Navigation() {
                             style={{ backgroundColor: country.color }}
                           />
                           <span>{getCountryName(country.code, locale)}</span>
-                        </button>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                <button
-                  onClick={() => {
-                    setIsOpen(false)
-                    // URL 해시 업데이트
-                    window.location.hash = 'cta'
-                  }}
+                <Link
+                  href={`/${locale}#cta`}
+                  onClick={() => setIsOpen(false)}
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
                   {t('contact')}
-                </button>
+                </Link>
 
                 {/* Mobile Language Selector */}
                 <div className="px-3 py-2">

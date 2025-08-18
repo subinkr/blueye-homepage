@@ -5,7 +5,9 @@
     "properties": "Properties",
     "about": "About",
     "contact": "Contact",
-    "language": "Language"
+    "language": "Language",
+    "magazine": "Magazine",
+    "notices": "Notices"
   },
   "hero": {
     "title": "Global Premium Life Solutions",
@@ -236,5 +238,32 @@
         }
       }
     }
+  },
+  "magazine": {
+    "title": "Magazine",
+    "subtitle": "Discover the latest insights, trends, and stories from around the world",
+    "exploreArticles": "Explore Articles",
+    "subscribe": "Subscribe",
+    "latestPublications": "Latest Publications",
+    "stayUpdated": "Stay updated with our curated collection of insightful articles and reports",
+    "searchMagazines": "Search magazines...",
+    "noMagazinesFound": "No magazines found",
+    "tryAdjusting": "Try adjusting your search or filter criteria",
+    "readMore": "Read More"
+  },
+  "notices": {
+    "title": "Notices",
+    "subtitle": "Stay informed with the latest announcements, updates, and important information",
+    "viewAllNotices": "View All Notices",
+    "subscribe": "Subscribe",
+    "latestNotices": "Latest Notices",
+    "stayUpdated": "Stay updated with important announcements and company news",
+    "searchNotices": "Search notices...",
+    "noNoticesFound": "No notices found",
+    "tryAdjusting": "Try adjusting your search or filter criteria",
+    "readMore": "Read More",
+    "totalNotices": "Total Notices",
+    "realTimeUpdates": "Real-time Updates",
+    "reliableInformation": "Reliable Information"
   }
 }
