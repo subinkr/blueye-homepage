@@ -3,13 +3,101 @@
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
 export function CTA() {
   const t = useTranslations('cta')
+  const ctaRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const ctaSection = ctaRef.current
+    if (!ctaSection) return
+
+    let touchStartY = 0
+    let touchStartX = 0
+    let isScrolling = false
+    let touchStartTime = 0
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY
+      touchStartX = e.touches[0].clientX
+      touchStartTime = Date.now()
+      isScrolling = false
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const touchY = e.touches[0].clientY
+      const touchX = e.touches[0].clientX
+      const deltaY = Math.abs(touchY - touchStartY)
+      const deltaX = Math.abs(touchX - touchStartX)
+
+      // 수직 스크롤이 수평 스크롤보다 클 때만 스크롤 처리
+      if (deltaY > deltaX && deltaY > 10) {
+        isScrolling = true
+      }
+    }
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      const touchEndTime = Date.now()
+      const touchDuration = touchEndTime - touchStartTime
+      
+      // 터치 시간이 너무 길면 스크롤로 간주하지 않음
+      if (touchDuration > 500) {
+        isScrolling = false
+        return
+      }
+
+      if (!isScrolling) return
+
+      const touchEndY = e.changedTouches[0].clientY
+      const deltaY = touchStartY - touchEndY
+
+      // 최소 스와이프 거리
+      if (Math.abs(deltaY) > 50) {
+        // 위로 스와이프 (다음 섹션으로)
+        if (deltaY > 0) {
+          const footerSection = document.getElementById('footer')
+          if (footerSection) {
+            footerSection.scrollIntoView({ behavior: 'smooth' })
+          }
+        }
+        // 아래로 스와이프 (이전 섹션으로)
+        else {
+          const lastCountrySection = document.getElementById('country-5') // 마지막 국가 섹션
+          if (lastCountrySection) {
+            lastCountrySection.scrollIntoView({ behavior: 'smooth' })
+          }
+        }
+      }
+    }
+
+    ctaSection.addEventListener('touchstart', handleTouchStart, { passive: true })
+    ctaSection.addEventListener('touchmove', handleTouchMove, { passive: true })
+    ctaSection.addEventListener('touchend', handleTouchEnd, { passive: true })
+
+    return () => {
+      ctaSection.removeEventListener('touchstart', handleTouchStart)
+      ctaSection.removeEventListener('touchmove', handleTouchMove)
+      ctaSection.removeEventListener('touchend', handleTouchEnd)
+    }
+  }, [])
 
   return (
-    <section className="w-full py-24 bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center">
-      <div className="container mx-auto px-4 lg:px-8">
+    <section 
+      ref={ctaRef}
+      className="w-full py-24 bg-white dark:bg-gray-900 min-h-screen flex items-center justify-center touch-pan-y"
+      style={{
+        touchAction: 'pan-y',
+        WebkitOverflowScrolling: 'touch'
+      }}
+    >
+      <div 
+        className="container mx-auto px-4 lg:px-8"
+        style={{
+          touchAction: 'pan-y',
+          WebkitOverflowScrolling: 'touch'
+        }}
+      >
         {/* 섹션 헤더 */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -123,7 +211,7 @@ export function CTA() {
           >
             <div className="rounded-sm shadow-md overflow-hidden h-full min-h-[500px]">
               <iframe 
-                className="w-full h-full" 
+                className="w-full h-full touch-pan-y" 
                 id="blue-asia" 
                 title="Blue asia position" 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.156366564428!2d126.91368262596914!3d37.52781112634754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9f215e10f7ef%3A0x7552f6599a041aa!2z7Iug7YOc7KeE67mM65Sp!5e0!3m2!1sko!2skr!4v1735799955650!5m2!1sko!2skr" 
