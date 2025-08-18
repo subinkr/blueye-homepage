@@ -366,7 +366,7 @@ export default function LifestyleQuizPage() {
         </div>
 
         <Navigation />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 min-h-screen flex flex-col justify-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20 min-h-screen flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
