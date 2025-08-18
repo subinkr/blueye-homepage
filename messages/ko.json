@@ -242,6 +242,7 @@
   "magazine": {
     "title": "매거진",
     "subtitle": "최신 인사이트, 트렌드, 그리고 전 세계의 스토리를 발견하세요",
+    "description": "세계 각국의 인사이트와 트렌드를 담은 프리미엄 매거진",
     "exploreArticles": "기사 탐색",
     "subscribe": "구독하기",
     "latestPublications": "최신 발행물",
@@ -254,6 +255,7 @@
   "notices": {
     "title": "공지사항",
     "subtitle": "최신 공지사항, 업데이트 및 중요한 정보로 최신 정보를 유지하세요",
+    "description": "글로벌 네트워크를 통한 최신 소식과 업데이트를 전달합니다",
     "viewAllNotices": "모든 공지사항 보기",
     "subscribe": "구독하기",
     "latestNotices": "최신 공지사항",

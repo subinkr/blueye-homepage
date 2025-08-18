@@ -104,7 +104,7 @@ export function NoticeHero() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            글로벌 네트워크를 통한 최신 소식과 업데이트를 전달합니다
+            {t('description')}
           </motion.p>
 
 

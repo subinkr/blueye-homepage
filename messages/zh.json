@@ -5,7 +5,9 @@
     "properties": "房产",
     "about": "关于我们",
     "contact": "联系我们",
-    "language": "语言"
+    "language": "语言",
+    "magazine": "杂志",
+    "notices": "公告"
   },
   "hero": {
     "title": "全球高端生活解决方案",
@@ -236,5 +238,34 @@
         }
       }
     }
+  },
+  "magazine": {
+    "title": "杂志",
+    "subtitle": "发现来自世界各地的最新见解、趋势和故事",
+    "description": "包含世界各国见解和趋势的优质杂志",
+    "exploreArticles": "探索文章",
+    "subscribe": "订阅",
+    "latestPublications": "最新出版物",
+    "stayUpdated": "通过我们精心策划的见解文章和报告集合保持最新信息",
+    "searchMagazines": "搜索杂志...",
+    "noMagazinesFound": "未找到杂志",
+    "tryAdjusting": "尝试调整搜索或筛选条件",
+    "readMore": "阅读更多"
+  },
+  "notices": {
+    "title": "公告",
+    "subtitle": "通过最新公告、更新和重要信息保持信息更新",
+    "description": "通过全球网络传递最新消息和更新",
+    "viewAllNotices": "查看所有公告",
+    "subscribe": "订阅",
+    "latestNotices": "最新公告",
+    "stayUpdated": "通过重要公告和公司新闻保持更新",
+    "searchNotices": "搜索公告...",
+    "noNoticesFound": "未找到公告",
+    "tryAdjusting": "尝试调整搜索或筛选条件",
+    "readMore": "阅读更多",
+    "totalNotices": "总公告数",
+    "realTimeUpdates": "实时更新",
+    "reliableInformation": "可靠信息"
   }
 }

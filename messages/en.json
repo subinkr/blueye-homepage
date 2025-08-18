@@ -3,7 +3,7 @@
     "home": "Home",
     "services": "Services",
     "properties": "Properties",
-    "about": "About",
+    "about": "About Us",
     "contact": "Contact",
     "language": "Language",
     "magazine": "Magazine",
@@ -137,7 +137,7 @@
       "seoul": "Seoul"
     },
     "dubai": {
-      "description": "In the evening when the sea's salt met the desert's dust, glass and steel split the sun vertically and sent it flowing to the sea. The fingertips of migrant workers and the breath of the Persian Gulf built the city in the same rhythm. When night came, the sand cooled and the lights stretched paths over the water, lighting tomorrow first.",
+      "description": "As fountains push music upward, the sea becomes smooth like polished glass edges, and towers along the coast use each other's shadows as stepping stones to build another layer of height. I quietly wrote that curves not on the map would become tomorrow's coastline.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -154,7 +154,7 @@
       }
     },
     "hochiminh": {
-      "description": "The wave of motorcycles caught their breath at each signal, and coffee dripped slowly like black rain. When a downpour passed, the streets became shallow rivers, and people laughed as they wet their ankles. In a city where old signs and new buildings sat overlapping, speed that never lost led time.",
+      "description": "In the noon heat, as cranes in Thu Thiem draw long lines across the Saigon River, neon lights on rain-wet roads spread further, and the city's pulse makes people believe in new skylines, just like flyers piled in mailboxes.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -171,7 +171,7 @@
       }
     },
     "johorbahru": {
-      "description": "The morning traffic crossing the Causeway drew thin lines over the sea. Mangrove winds and factory sirens took turns opening the day. Steam rose from street food bowls, and invisible borders often shrank between people.",
+      "description": "As morning queues on the Causeway grow longer, the sea holds its breath, and lights in Tanjung Balai turn on one more as the sun sets. The line connecting that city and this place becomes thinner and more certain, like the speed at which 'sea view room' stickers disappear from windows.",
       "features": {
         "economicGrowth": {
           "title": "Economic Growth Rate",
@@ -188,7 +188,7 @@
       }
     },
     "phnompenh": {
-      "description": "At the point where two rivers meet, the water's color changed, and the city leaned quietly on its shoulder. The footsteps of alms seekers passed through dawn, making the air thin. As old scars and newly risen cranes shared the same sky, the night's lights slowly spread over the river.",
+      "description": "When the palace's golden light trembles thinly in the river wind, the Tonle Sap changes its waterway, and glass towers along the river test different heights each season, making even new address plates embedded in old eaves sparkle with evening light.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -205,7 +205,7 @@
       }
     },
     "shanghai": {
-      "description": "In the Huangpu River fog, ship horns sounded low, and plane tree leaves shook summer's heat. Old words seeped coolly through the gaps in alley bricks. Glass towers measured each other with light, and dawn markets opened doors to another world.",
+      "description": "When the Bund's stone walls measure the river's time and Lujiazui's forest hangs glass like new leaves, the night sky's skyscrapers grow not by seasons but by construction rhythms. Even nameplates in old alleys under plane tree shade lower their voices to match the new heights.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
@@ -222,7 +222,7 @@
       }
     },
     "seoul": {
-      "description": "The mountain's outline caressed the city's shoulder every evening. Wind lay under Han River bridges, and convenience store lights created small safe zones of night. Old stairs and electronic sounds mixed together, and a heart that hurries but doesn't forget protected this place.",
+      "description": "When Namsan's lights breathe in sync with clouds, glass by the Han River adds floors each night, redrawing the horizon. New names brushing past bus windows also lift my heart's map one square at a time.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
@@ -242,6 +242,7 @@
   "magazine": {
     "title": "Magazine",
     "subtitle": "Discover the latest insights, trends, and stories from around the world",
+    "description": "Premium magazine featuring insights and trends from countries around the world",
     "exploreArticles": "Explore Articles",
     "subscribe": "Subscribe",
     "latestPublications": "Latest Publications",
@@ -254,6 +255,7 @@
   "notices": {
     "title": "Notices",
     "subtitle": "Stay informed with the latest announcements, updates, and important information",
+    "description": "Delivering the latest news and updates through our global network",
     "viewAllNotices": "View All Notices",
     "subscribe": "Subscribe",
     "latestNotices": "Latest Notices",

@@ -84,7 +84,7 @@ export function MagazineHero() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            세계 각국의 인사이트와 트렌드를 담은 프리미엄 매거진
+            {t('description')}
           </motion.p>
 
           <motion.div 
