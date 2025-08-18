@@ -256,7 +256,7 @@ export function Hero() {
             setIsScrolling(false)
           }, 2000)
         } 
-        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
+        // CTA 섹션에서 위로 스크롤할 때만 마지막 국가 섹션으로 이동 (아래로는 자유롭게)
         else if (ctaRect.top <= window.innerHeight && e.deltaY < 0) {
           e.preventDefault()
           
@@ -274,6 +274,7 @@ export function Hero() {
           setIsScrolling(true)
           setTimeout(() => setIsScrolling(false), 2000)
         }
+        // CTA → Footer 구간에서는 자유로운 스크롤 허용
       }
     }
 
@@ -301,10 +302,15 @@ export function Hero() {
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
         const ctaRect = ctaSection.getBoundingClientRect()
         
-        if ((heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) || 
-            (ctaRect.top <= window.innerHeight)) {
+        // Hero → 국가 섹션들: 터치 스크롤 방지
+        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
           e.preventDefault()
         }
+        // CTA 섹션에서 위로 스크롤할 때만 방지 (아래로는 자유롭게)
+        else if (ctaRect.top <= window.innerHeight && touchStartY - e.touches[0].clientY < 0) {
+          e.preventDefault()
+        }
+        // CTA → Footer 구간에서는 자유로운 터치 스크롤 허용
       }
     }
     
@@ -325,65 +331,85 @@ export function Hero() {
         touchEndY = e.changedTouches[0].clientY
         const touchDiff = touchStartY - touchEndY
         
-        if (Math.abs(touchDiff) > 20) {
-          let newSection = currentSection
-          
-          if (touchDiff > 0 && currentSection < totalSections - 1) {
-            // 아래로 스크롤
-            newSection = currentSection + 1
-          } else if (touchDiff < 0 && currentSection > 0) {
-            // 위로 스크롤
-            newSection = currentSection - 1
-          } else {
-            return
+        // Hero → 국가 섹션들: 섹션 단위 터치 스크롤
+        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
+          if (Math.abs(touchDiff) > 20) {
+            let newSection = currentSection
+            
+            if (touchDiff > 0 && currentSection < totalSections - 1) {
+              // 아래로 스크롤
+              newSection = currentSection + 1
+            } else if (touchDiff < 0 && currentSection > 0) {
+              // 위로 스크롤
+              newSection = currentSection - 1
+            } else {
+              return
+            }
+            
+            let newHash = ''
+            if (newSection === 0) {
+              newHash = ''
+            } else if (newSection <= countries.length) {
+              newHash = `country-${newSection - 1}`
+            } else if (newSection === countries.length + 1) {
+              newHash = 'cta'
+            } else if (newSection === countries.length + 2) {
+              newHash = 'footer'
+            }
+            
+            if (newHash) {
+              window.history.replaceState(null, '', `#${newHash}`)
+            } else {
+              window.history.replaceState(null, '', window.location.pathname)
+            }
+            
+            setIsScrolling(true)
+            setIsNavigating(true)
+            setCurrentSection(newSection)
+            
+            let targetElement: HTMLElement | null = null
+            if (newSection === 0) {
+              targetElement = document.getElementById('hero')
+            } else if (newSection <= countries.length) {
+              targetElement = document.getElementById(`country-${newSection - 1}`)
+            } else if (newSection === countries.length + 1) {
+              targetElement = document.getElementById('cta')
+            } else if (newSection === countries.length + 2) {
+              targetElement = document.getElementById('footer')
+            }
+            
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' })
+            }
+            
+            const countryIndex = newSection === 0 ? -1 : newSection - 1
+            setCurrentCountryIndex(countryIndex)
+            
+            const totalProgress = Math.min(newSection / (totalSections - 1), 1)
+            setScrollProgress(totalProgress)
+            
+            setTimeout(() => {
+              setIsScrolling(false)
+            }, 800)
           }
-          
-          let newHash = ''
-          if (newSection === 0) {
-            newHash = ''
-          } else if (newSection <= countries.length) {
-            newHash = `country-${newSection - 1}`
-          } else if (newSection === countries.length + 1) {
-            newHash = 'cta'
-          } else if (newSection === countries.length + 2) {
-            newHash = 'footer'
-          }
-          
-          if (newHash) {
-            window.history.replaceState(null, '', `#${newHash}`)
-          } else {
-            window.history.replaceState(null, '', window.location.pathname)
-          }
-          
-          setIsScrolling(true)
-          setIsNavigating(true)
-          setCurrentSection(newSection)
-          
-          let targetElement: HTMLElement | null = null
-          if (newSection === 0) {
-            targetElement = document.getElementById('hero')
-          } else if (newSection <= countries.length) {
-            targetElement = document.getElementById(`country-${newSection - 1}`)
-          } else if (newSection === countries.length + 1) {
-            targetElement = document.getElementById('cta')
-          } else if (newSection === countries.length + 2) {
-            targetElement = document.getElementById('footer')
-          }
-          
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' })
-          }
-          
-          const countryIndex = newSection === 0 ? -1 : newSection - 1
-          setCurrentCountryIndex(countryIndex)
-          
-          const totalProgress = Math.min(newSection / (totalSections - 1), 1)
-          setScrollProgress(totalProgress)
-          
-          setTimeout(() => {
-            setIsScrolling(false)
-          }, 800)
         }
+        // CTA 섹션에서 위로 스크롤할 때만 마지막 국가 섹션으로 이동
+        else if (ctaRect.top <= window.innerHeight && touchDiff < 0) {
+          if (Math.abs(touchDiff) > 20) {
+            // 마지막 국가 섹션으로 이동
+            const newSection = countries.length
+            setCurrentSection(newSection)
+            setCurrentCountryIndex(countries.length - 1)
+            setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+            
+            lastCountrySection.scrollIntoView({ behavior: 'smooth' })
+            window.history.replaceState(null, '', `#country-${countries.length - 1}`)
+            
+            setIsScrolling(true)
+            setTimeout(() => setIsScrolling(false), 800)
+          }
+        }
+        // CTA → Footer 구간에서는 자유로운 터치 스크롤 허용 (아무것도 하지 않음)
       }
     }
 
