@@ -25,9 +25,7 @@ export function Hero() {
 
   // CTA 섹션으로 이동하는 함수
   const navigateToCTA = () => {
-    if (isNavigating) return
-    
-    setIsNavigating(true)
+    console.log('navigateToCTA called, isNavigating:', isNavigating)
     
     // CTA 섹션으로 스크롤
     const ctaSection = document.getElementById('cta')
@@ -42,10 +40,6 @@ export function Hero() {
       setCurrentCountryIndex(-1)
       setScrollProgress(Math.min((countries.length + 1) / (countries.length + 2), 1))
     }
-    
-    setTimeout(() => {
-      setIsNavigating(false)
-    }, 1000)
   }
 
   // 전역 이벤트 리스너 등록
