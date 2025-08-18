@@ -284,12 +284,15 @@ export function Hero() {
     const handleTouchMove = (e: TouchEvent) => {
       const heroSection = document.getElementById('hero')
       const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
+      const ctaSection = document.getElementById('cta')
       
-      if (heroSection && lastCountrySection) {
+      if (heroSection && lastCountrySection && ctaSection) {
         const heroRect = heroSection.getBoundingClientRect()
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
+        const ctaRect = ctaSection.getBoundingClientRect()
         
-        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
+        if ((heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) || 
+            (ctaRect.top <= window.innerHeight)) {
           e.preventDefault()
         }
       }
@@ -298,11 +301,14 @@ export function Hero() {
     const handleTouchEnd = (e: TouchEvent) => {
       const heroSection = document.getElementById('hero')
       const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
+      const ctaSection = document.getElementById('cta')
       
-      if (heroSection && lastCountrySection) {
+      if (heroSection && lastCountrySection && ctaSection) {
         const heroRect = heroSection.getBoundingClientRect()
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
+        const ctaRect = ctaSection.getBoundingClientRect()
         
+        // 기존 범위: Hero → 국가 섹션들
         if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
           if (isScrolling) return
           
@@ -366,6 +372,22 @@ export function Hero() {
               setIsScrolling(false)
             }, 1000)
           }
+        }
+        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
+        else if (ctaRect.top <= window.innerHeight && touchStartY - e.changedTouches[0].clientY < 0) {
+          if (isScrolling) return
+          
+          // 마지막 국가 섹션으로 이동
+          const newSection = countries.length
+          setCurrentSection(newSection)
+          setCurrentCountryIndex(countries.length - 1)
+          setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+          
+          lastCountrySection.scrollIntoView({ behavior: 'smooth' })
+          window.history.replaceState(null, '', `#country-${countries.length - 1}`)
+          
+          setIsScrolling(true)
+          setTimeout(() => setIsScrolling(false), 1000)
         }
       }
     }
@@ -622,13 +644,15 @@ export function Hero() {
                 >
                   <Button
                     onClick={navigateToCTA}
-                    className="text-lg px-8 py-4 bg-black/40 backdrop-blur-md border border-white/40 hover:bg-black/50 transition-all duration-300 group"
+                    className="text-lg px-8 py-4 bg-white/20 backdrop-blur-md border-2 border-white/60 hover:bg-white/30 hover:border-white/80 transition-all duration-300 group shadow-lg hover:shadow-xl"
                     style={{ 
                       color: country.color,
-                      borderColor: `${country.color}60`
+                      borderColor: `${country.color}80`,
+                      textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
+                      boxShadow: `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px ${country.color}40`
                     }}
                   >
-                    <span className="mr-2">{t('learnMore')}</span>
+                    <span className="mr-2 font-semibold">{t('learnMore')}</span>
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </motion.div>
