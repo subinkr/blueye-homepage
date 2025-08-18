@@ -6,10 +6,13 @@ const locales = ['ko', 'en', 'zh']
 export default getRequestConfig(async ({ requestLocale }) => {
   const locale = await requestLocale
   
-  if (!locales.includes(locale as any)) notFound()
+  if (!locales.includes(locale as any)) {
+    notFound()
+  }
 
   return {
     messages: (await import(`../messages/${locale}.json`)).default,
-    locale: locale
+    locale: locale,
+    timeZone: 'Asia/Seoul'
   }
 })

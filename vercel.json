@@ -8,5 +8,16 @@
     "src/app/**/*.tsx": {
       "maxDuration": 30
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Accept-Language",
+          "value": "ko,en,zh;q=0.9"
+        }
+      ]
+    }
+  ]
 }
