@@ -543,30 +543,28 @@ export function Hero() {
                 }}
                 viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
               />
-              {index === countries.length - 1 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                viewport={{ once: true }}
+                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+                style={{
+                  filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))'
+                }}
+              >
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  viewport={{ once: true }}
-                  className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-center"
                   style={{
                     filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))'
                   }}
                 >
-                  <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                    className="text-center"
-                    style={{
-                      filter: 'drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8))'
-                    }}
-                  >
-                    <ChevronDown className="w-6 h-6 mx-auto mb-2" />
-                    <div className="text-sm">{t('scroll')}</div>
-                  </motion.div>
+                  <ChevronDown className="w-6 h-6 mx-auto mb-2" />
+                  <div className="text-sm">{t('scroll')}</div>
                 </motion.div>
-              )}
+              </motion.div>
             </motion.div>
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white relative z-10">
               <motion.div
