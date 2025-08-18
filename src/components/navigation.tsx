@@ -33,7 +33,11 @@ export function Navigation() {
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
           <Link 
-            href={`/${locale}`}
+            href={`/${locale}#hero`}
+            onClick={(e) => {
+              e.preventDefault()
+              window.location.href = `/${locale}#hero`
+            }}
             className="flex items-center hover:opacity-80 transition-opacity"
           >
             <Logo size="sm" className="h-8 text-white" />
