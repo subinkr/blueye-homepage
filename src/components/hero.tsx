@@ -268,27 +268,36 @@ export function Hero() {
     }
 
     let touchStartY = 0
-    let touchEndY = 0
+    let touchStartTime = 0
+    let isTouchScrolling = false
     
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY
+      touchStartTime = Date.now()
+      isTouchScrolling = false
     }
     
-    const handleTouchEnd = (e: TouchEvent) => {
+    const handleTouchMove = (e: TouchEvent) => {
       const heroSection = document.getElementById('hero')
       const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
+      const ctaSection = document.getElementById('cta')
       
-      if (heroSection && lastCountrySection) {
+      if (heroSection && lastCountrySection && ctaSection && !isScrolling && !isTouchScrolling) {
         const heroRect = heroSection.getBoundingClientRect()
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
+        const ctaRect = ctaSection.getBoundingClientRect()
         
+        // Hero → 국가 섹션들 범위에서만 터치 스크롤 처리
         if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
-          if (isScrolling) return
+          const currentY = e.touches[0].clientY
+          const touchDiff = touchStartY - currentY
+          const touchDuration = Date.now() - touchStartTime
           
-          touchEndY = e.changedTouches[0].clientY
-          const touchDiff = touchStartY - touchEndY
-          
-          if (Math.abs(touchDiff) > 50) {
+          // 더 민감한 터치 감지 (25px, 200-500ms)
+          if (Math.abs(touchDiff) > 25 && touchDuration > 200 && touchDuration < 500) {
+            e.preventDefault()
+            isTouchScrolling = true
+            
             let newSection = currentSection
             
             if (touchDiff > 0 && currentSection < totalSections - 1) {
@@ -343,20 +352,50 @@ export function Hero() {
             
             setTimeout(() => {
               setIsScrolling(false)
-            }, 2000)
+            }, 1200)
+          }
+        }
+        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
+        else if (ctaRect.top <= window.innerHeight) {
+          const currentY = e.touches[0].clientY
+          const touchDiff = touchStartY - currentY
+          const touchDuration = Date.now() - touchStartTime
+          
+          if (touchDiff < -25 && touchDuration > 200 && touchDuration < 500) {
+            e.preventDefault()
+            isTouchScrolling = true
+            
+            // 마지막 국가 섹션으로 이동
+            const newSection = countries.length
+            setCurrentSection(newSection)
+            setCurrentCountryIndex(countries.length - 1)
+            setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+            
+            lastCountrySection.scrollIntoView({ behavior: 'smooth' })
+            window.history.replaceState(null, '', `#country-${countries.length - 1}`)
+            
+            setIsScrolling(true)
+            setTimeout(() => setIsScrolling(false), 1200)
           }
         }
       }
     }
+    
+    const handleTouchEnd = (e: TouchEvent) => {
+      // 터치 종료 시 추가 처리 (필요시)
+      isTouchScrolling = false
+    }
 
     window.addEventListener('wheel', handleWheel, { passive: false })
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchmove', handleTouchMove, { passive: false })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
     window.addEventListener('keydown', handleKeyDown, { passive: false })
     
     return () => {
       window.removeEventListener('wheel', handleWheel)
       window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('keydown', handleKeyDown)
     }
