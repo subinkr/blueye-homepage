@@ -137,7 +137,7 @@
       "seoul": "Seoul"
     },
     "dubai": {
-      "description": "As fountains push music upward, the sea becomes smooth like polished glass edges, and towers along the coast use each other's shadows as stepping stones to build another layer of height. I quietly wrote that curves not on the map would become tomorrow's coastline.",
+      "description": "On nights when the Burj Khalifa fountains shoot up like music, the glass walls of Sheikh Zayed Road reflected each other's stars, and the monorail skimming the coast redrew the boundaries of sand outside the windows, while the lights turning on along the curves of the Palm stretched like leaf veins along the sea, and with each new line announced on the map, the skyline's musical notes rose one step higher.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -154,7 +154,7 @@
       }
     },
     "hochiminh": {
-      "description": "In the noon heat, as cranes in Thu Thiem draw long lines across the Saigon River, neon lights on rain-wet roads spread further, and the city's pulse makes people believe in new skylines, just like flyers piled in mailboxes.",
+      "description": "When the Ben Thanh clock strikes noon, the waves of Nguyen Hue shattered sunlight into fragments, and following the wind crossing the Saigon River, the empty lots of Thu Thiem drew their lines first from bridges and promenades, while window heights added one layer at a time like flyers stacked in mailboxes, until suddenly the outlines of landmarks attached themselves to the neighborhood's daily life.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -171,7 +171,7 @@
       }
     },
     "johorbahru": {
-      "description": "As morning queues on the Causeway grow longer, the sea holds its breath, and lights in Tanjung Balai turn on one more as the sun sets. The line connecting that city and this place becomes thinner and more certain, like the speed at which 'sea view room' stickers disappear from windows.",
+      "description": "Every morning when the Causeway's line stretches long over the sea, the steps of Sultan Abu Bakar sparkled in the sunlight, and as the sun set, lights turned on one by one along the Tanjung Balai promenade, while the dream of 'sea view rooms' gently swayed in each window, and as the lights of the city across the way grew closer, this place's skyline gradually grew its body from thin lines to thick lines.",
       "features": {
         "economicGrowth": {
           "title": "Economic Growth Rate",
@@ -188,7 +188,7 @@
       }
     },
     "phnompenh": {
-      "description": "When the palace's golden light trembles thinly in the river wind, the Tonle Sap changes its waterway, and glass towers along the river test different heights each season, making even new address plates embedded in old eaves sparkle with evening light.",
+      "description": "In the afternoon when the palace's golden light trembled thinly in the river wind, like the heat cooling under the Central Market dome, the shadows of old roofs were gradually pushed away, and as the Tonle Sap's waterway changed its body with each season, the signs and lights along the river also added layers, slowly carving the city's outline at different heights each night.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -205,7 +205,7 @@
       }
     },
     "shanghai": {
-      "description": "When the Bund's stone walls measure the river's time and Lujiazui's forest hangs glass like new leaves, the night sky's skyscrapers grow not by seasons but by construction rhythms. Even nameplates in old alleys under plane tree shade lower their voices to match the new heights.",
+      "description": "In the evening when the Bund and Lujiazui reflected each other across the river, while the maglev train outran the wind and the brick smell of old alleys under plane tree shade turned into coffee fragrance, the names of towers piled up in memory one floor at a time to the rhythm of steel behind fences, and the city measured time by construction numbers instead of seasons, dividing the river's night with new graduations.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
@@ -222,7 +222,7 @@
       }
     },
     "seoul": {
-      "description": "When Namsan's lights breathe in sync with clouds, glass by the Han River adds floors each night, redrawing the horizon. New names brushing past bus windows also lift my heart's map one square at a time.",
+      "description": "On nights when the N Seoul Tower lights breathed in sync with the weather, I saw that each time the Han River wind changed direction, the cranes beyond the barriers lowered one day at a time, and the names of new complexes flowing along bus windows became reality and rose above the skyline.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
