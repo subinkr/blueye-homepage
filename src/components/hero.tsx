@@ -392,11 +392,30 @@ export function Hero() {
       isTouchScrolling = false
     }
 
+    // 모바일에서 해당 섹션에서만 스크롤 방지
+    const preventDefaultScroll = (e: Event) => {
+      const heroSection = document.getElementById('hero')
+      const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
+      
+      if (heroSection && lastCountrySection) {
+        const heroRect = heroSection.getBoundingClientRect()
+        const lastCountryRect = lastCountrySection.getBoundingClientRect()
+        
+        // Hero 섹션이 화면에 있고 마지막 국가 섹션이 아직 화면에 있을 때만 스크롤 방지
+        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight && !isScrolling) {
+          e.preventDefault()
+        }
+      }
+    }
+
     window.addEventListener('wheel', handleWheel, { passive: false })
     window.addEventListener('touchstart', handleTouchStart, { passive: true })
     window.addEventListener('touchmove', handleTouchMove, { passive: false })
     window.addEventListener('touchend', handleTouchEnd, { passive: true })
     window.addEventListener('keydown', handleKeyDown, { passive: false })
+    
+    // 모바일 스크롤 방지 (해당 섹션에서만)
+    document.addEventListener('touchmove', preventDefaultScroll, { passive: false })
     
     return () => {
       window.removeEventListener('wheel', handleWheel)
@@ -404,6 +423,7 @@ export function Hero() {
       window.removeEventListener('touchmove', handleTouchMove)
       window.removeEventListener('touchend', handleTouchEnd)
       window.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('touchmove', preventDefaultScroll)
     }
   }, [currentSection, isScrolling])
 
@@ -417,7 +437,7 @@ export function Hero() {
       {/* Scrollable Content */}
       <div ref={contentRef} className="relative z-10">
         {/* Hero Section */}
-        <section id="hero" className="hero-section min-h-screen flex items-center justify-center overflow-hidden">
+        <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden">
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/20" />
           
@@ -528,7 +548,7 @@ export function Hero() {
           <section 
             key={country.code} 
             id={`country-${index}`}
-            className="hero-section min-h-screen flex items-center justify-center relative"
+            className="min-h-screen flex items-center justify-center relative"
           >
             {/* Background Image with Fade Animation */}
             <motion.div 
@@ -542,11 +562,11 @@ export function Hero() {
               initial={{ opacity: 0, scale: 1.05 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ 
-                duration: 4,
+                duration: 2.5,
                 ease: "easeInOut",
                 delay: 0.1
               }}
-              viewport={{ once: true, margin: "-30% 0px -30% 0px" }}
+              viewport={{ once: true, margin: "-20% 0px -20% 0px" }}
             >
               {/* Overlay with Fade Animation */}
               <motion.div 

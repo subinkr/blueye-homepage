@@ -146,14 +146,14 @@ html {
   outline-offset: 2px;
 }
 
-/* Mobile scroll prevention - only for specific sections */
-.hero-section {
-  overscroll-behavior: contain;
-}
-
+/* Mobile scroll prevention */
 @media (max-width: 768px) {
-  .hero-section {
+  body {
     overscroll-behavior: contain;
-    -webkit-overflow-scrolling: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  html {
+    overscroll-behavior: contain;
   }
 }
