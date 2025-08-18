@@ -135,7 +135,7 @@
       "seoul": "Seoul"
     },
     "dubai": {
-      "description": "A mirror of the future standing tall on the golden sands of the desert. Where endless sandstorms once blew yesterday, today dreams from around the world pierce the sky and shine. The modern miracle born from the desert, witnessed through Blueye's eyes over 15 years.",
+      "description": "In the evening when the sea's salt met the desert's dust, glass and steel split the sun vertically and sent it flowing to the sea. The fingertips of migrant workers and the breath of the Persian Gulf built the city in the same rhythm. When night came, the sand cooled and the lights stretched paths over the water, lighting tomorrow first.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -152,7 +152,7 @@
       }
     },
     "hochiminh": {
-      "description": "Where the silver waves of the Mekong River embrace the city. A place that was just a small fishing village yesterday, today a city where Southeast Asia's heart beats passionately. The ever-flowing change of Vietnam, witnessed by Blueye over 23 years.",
+      "description": "The wave of motorcycles caught their breath at each signal, and coffee dripped slowly like black rain. When a downpour passed, the streets became shallow rivers, and people laughed as they wet their ankles. In a city where old signs and new buildings sat overlapping, speed that never lost led time.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -169,7 +169,7 @@
       }
     },
     "johorbahru": {
-      "description": "A hidden gem secretly shining in Singapore's shadow. A place that was just a small border town yesterday, today a new star rising in Southeast Asia. The true beauty of Malaysia, discovered by Blueye over 8 years.",
+      "description": "The morning traffic crossing the Causeway drew thin lines over the sea. Mangrove winds and factory sirens took turns opening the day. Steam rose from street food bowls, and invisible borders often shrank between people.",
       "features": {
         "economicGrowth": {
           "title": "Economic Growth Rate",
@@ -186,7 +186,7 @@
       }
     },
     "phnompenh": {
-      "description": "Where the blue waves of Tonle Sap Lake embrace the city. A small city that was asleep yesterday, today a vibrant city overflowing with young energy. The beautiful revival and new beginning of Cambodia, witnessed by Blueye over 6 years.",
+      "description": "At the point where two rivers meet, the water's color changed, and the city leaned quietly on its shoulder. The footsteps of alms seekers passed through dawn, making the air thin. As old scars and newly risen cranes shared the same sky, the night's lights slowly spread over the river.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -203,7 +203,7 @@
       }
     },
     "shanghai": {
-      "description": "Where the golden waves of the Huangpu River embrace the city. A place that was just a small fishing port yesterday, today a global metropolis where the world economy's heart beats passionately. The massive transformation and leap toward the world, witnessed by Blueye over 23 years.",
+      "description": "In the Huangpu River fog, ship horns sounded low, and plane tree leaves shook summer's heat. Old words seeped coolly through the gaps in alley bricks. Glass towers measured each other with light, and dawn markets opened doors to another world.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
@@ -220,7 +220,7 @@
       }
     },
     "seoul": {
-      "description": "Where the silver waves of the Han River embrace the city. A place that felt unfamiliar yesterday, today a future city where technology and tradition harmoniously coexist. The new face of Seoul and the city where innovation DNA has taken deep root, discovered by Blueye over 7 years.",
+      "description": "The mountain's outline caressed the city's shoulder every evening. Wind lay under Han River bridges, and convenience store lights created small safe zones of night. Old stairs and electronic sounds mixed together, and a heart that hurries but doesn't forget protected this place.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
