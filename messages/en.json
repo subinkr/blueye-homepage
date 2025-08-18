@@ -414,42 +414,66 @@
       "retirement": {
         "malaysia": "Low cost of living and safe environment",
         "cambodia": "Warm climate and friendly community",
-        "vietnam": "Diverse culture and convenient healthcare services"
+        "vietnam": "Diverse culture and convenient healthcare services",
+        "korea": "Safe environment and convenient living infrastructure",
+        "china": "Diverse regions and cultural experiences",
+        "dubai": "Modern facilities and safe urban environment"
       },
       "education": {
         "china": "Strong education system and global opportunities",
         "malaysia": "International schools and English education environment",
-        "vietnam": "Growing education environment and multicultural experience"
+        "vietnam": "Growing education environment and multicultural experience",
+        "korea": "World-class education system",
+        "dubai": "International education environment and innovative education",
+        "cambodia": "New educational opportunities and growth environment"
       },
       "business": {
         "vietnam": "High economic growth rate and government support",
         "cambodia": "New market opportunities and tax benefits",
-        "malaysia": "Stable business environment"
+        "malaysia": "Stable business environment",
+        "china": "Huge market and business opportunities",
+        "dubai": "Global business hub and free trade",
+        "korea": "Advanced technology and innovative business environment"
       },
       "culture": {
         "cambodia": "Rich cultural heritage and natural environment",
         "vietnam": "Diverse culture and artistic activities",
-        "malaysia": "Multicultural society and leisure activities"
+        "malaysia": "Multicultural society and leisure activities",
+        "china": "Harmony of 5000 years of history and modern culture",
+        "korea": "K-pop culture and modern art harmony",
+        "dubai": "Modern architecture and multicultural experience"
       },
       "health": {
         "malaysia": "Clean environment and modern healthcare system",
         "vietnam": "Natural healing environment and wellness culture",
-        "cambodia": "Peaceful environment and traditional medicine"
+        "cambodia": "Peaceful environment and traditional medicine",
+        "korea": "Advanced healthcare system and health management",
+        "china": "Traditional medicine and modern healthcare harmony",
+        "dubai": "Latest medical technology and wellness facilities"
       },
       "community": {
         "malaysia": "Active Korean community",
         "vietnam": "Growing Korean network",
-        "cambodia": "Close-knit Korean community"
+        "cambodia": "Close-knit Korean community",
+        "korea": "Strong local community and network",
+        "china": "Diverse Korean communities",
+        "dubai": "International Korean network"
       },
       "investment": {
         "dubai": "World-class real estate investment environment and high returns",
         "vietnam": "High growth rate and investment opportunities",
-        "malaysia": "Stable real estate market and government support"
+        "malaysia": "Stable real estate market and government support",
+        "china": "Huge real estate market and investment opportunities",
+        "korea": "Stable real estate market and investment environment",
+        "cambodia": "New investment opportunities and growth potential"
       },
       "luxury": {
         "dubai": "World's finest luxury environment and services",
         "china": "Luxury brands and high-end culture",
-        "malaysia": "Premium facilities and high-end services"
+        "malaysia": "Premium facilities and high-end services",
+        "korea": "Sophisticated urban culture and premium lifestyle",
+        "vietnam": "High-end resorts and premium services",
+        "cambodia": "Unique luxury experience and culture"
       }
     },
     "highScoreCountry": "Country that received high scores during the selection process"

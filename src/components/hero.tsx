@@ -626,7 +626,7 @@ export function Hero() {
                 }}>
                   {getCountryName(country.code, locale)}
                 </h2>
-                <p className="text-lg md:text-xl lg:text-2xl font-korean text-white font-semibold leading-relaxed mb-12 drop-shadow-lg" style={{
+                <p className="text-base md:text-lg lg:text-xl font-korean text-white font-semibold leading-relaxed mb-8 md:mb-12 drop-shadow-lg" style={{
                   textShadow: '1px 1px 3px rgba(0, 0, 0, 0.9)'
                 }}>
                   {tCountries(`${country.code}.description`)}

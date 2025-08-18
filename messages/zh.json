@@ -414,42 +414,66 @@
       "retirement": {
         "malaysia": "低廉生活成本和安全环境",
         "cambodia": "温暖气候和友好社区",
-        "vietnam": "多元文化和便利医疗服务"
+        "vietnam": "多元文化和便利医疗服务",
+        "korea": "安全环境和便利生活基础设施",
+        "china": "多元地区和文化遗产体验",
+        "dubai": "现代设施和安全城市环境"
       },
       "education": {
         "china": "强大教育体系和全球机会",
         "malaysia": "国际学校和英语教育环境",
-        "vietnam": "成长教育环境和多元文化体验"
+        "vietnam": "成长教育环境和多元文化体验",
+        "korea": "世界级教育体系",
+        "dubai": "国际教育环境和创新教育",
+        "cambodia": "新教育机会和成长环境"
       },
       "business": {
         "vietnam": "高经济增长率和政府支持",
         "cambodia": "新市场机会和税收优惠",
-        "malaysia": "稳定商业环境"
+        "malaysia": "稳定商业环境",
+        "china": "巨大市场和商业机会",
+        "dubai": "全球商业中心和自由贸易",
+        "korea": "先进技术和创新商业环境"
       },
       "culture": {
         "cambodia": "丰富文化遗产和自然环境",
         "vietnam": "多元文化和艺术活动",
-        "malaysia": "多元社会和休闲活动"
+        "malaysia": "多元社会和休闲活动",
+        "china": "5000年历史与现代文化的和谐",
+        "korea": "韩流文化与现代艺术和谐",
+        "dubai": "现代建筑和多元文化体验"
       },
       "health": {
         "malaysia": "清洁环境和现代医疗系统",
         "vietnam": "自然疗愈环境和健康文化",
-        "cambodia": "宁静环境和传统医学"
+        "cambodia": "宁静环境和传统医学",
+        "korea": "先进医疗系统和健康管理",
+        "china": "传统医学与现代医疗和谐",
+        "dubai": "最新医疗技术和健康设施"
       },
       "community": {
         "malaysia": "活跃韩国社区",
         "vietnam": "成长韩国网络",
-        "cambodia": "紧密韩国社区"
+        "cambodia": "紧密韩国社区",
+        "korea": "强大本地社区和网络",
+        "china": "多元韩国社区",
+        "dubai": "国际韩国网络"
       },
       "investment": {
         "dubai": "世界级房地产投资环境和高回报",
         "vietnam": "高增长率和投资机会",
-        "malaysia": "稳定房地产市场和政府支持"
+        "malaysia": "稳定房地产市场和政府支持",
+        "china": "巨大房地产市场投资机会",
+        "korea": "稳定房地产市场和投资环境",
+        "cambodia": "新投资机会和增长潜力"
       },
       "luxury": {
         "dubai": "世界顶级奢华环境和服务",
         "china": "奢华品牌和高端文化",
-        "malaysia": "顶级设施和高端服务"
+        "malaysia": "顶级设施和高端服务",
+        "korea": "精致都市文化和优质生活方式",
+        "vietnam": "高端度假村和优质服务",
+        "cambodia": "独特奢华体验和文化"
       }
     },
     "highScoreCountry": "在选择过程中获得高分的国家"

@@ -37,47 +37,71 @@ export default function LifestyleQuizPage() {
   const [isProcessing, setIsProcessing] = useState(false)
   const [selectionHistory, setSelectionHistory] = useState<string[]>([])
 
-  // 라이프스타일별 추천 국가
+  // 라이프스타일별 추천 국가 (모든 국가 점수 포함)
   const getRecommendedCountries = () => ({
     retirement: [
       { name: t('countries.malaysia'), score: 95, reason: t('reasons.retirement.malaysia'), image: '/images/countries/malaysia.jpg' },
-      { name: t('countries.cambodia'), score: 88, reason: t('reasons.retirement.cambodia'), image: '/images/countries/cambodia.jpg' },
-      { name: t('countries.vietnam'), score: 82, reason: t('reasons.retirement.vietnam'), image: '/images/countries/vietnam.jpg' }
+      { name: t('countries.cambodia'), score: 92, reason: t('reasons.retirement.cambodia'), image: '/images/countries/cambodia.jpg' },
+      { name: t('countries.vietnam'), score: 88, reason: t('reasons.retirement.vietnam'), image: '/images/countries/vietnam.jpg' },
+      { name: t('countries.korea'), score: 82, reason: t('reasons.retirement.korea'), image: '/images/countries/korea.jpg' },
+      { name: t('countries.china'), score: 78, reason: t('reasons.retirement.china'), image: '/images/countries/china.jpg' },
+      { name: t('countries.dubai'), score: 75, reason: t('reasons.retirement.dubai'), image: '/images/countries/dubai.jpg' }
     ],
     education: [
-      { name: t('countries.china'), score: 96, reason: t('reasons.education.china'), image: '/images/countries/china.jpg' },
-      { name: t('countries.malaysia'), score: 90, reason: t('reasons.education.malaysia'), image: '/images/countries/malaysia.jpg' },
-      { name: t('countries.vietnam'), score: 85, reason: t('reasons.education.vietnam'), image: '/images/countries/vietnam.jpg' }
+      { name: t('countries.korea'), score: 96, reason: t('reasons.education.korea'), image: '/images/countries/korea.jpg' },
+      { name: t('countries.china'), score: 94, reason: t('reasons.education.china'), image: '/images/countries/china.jpg' },
+      { name: t('countries.malaysia'), score: 88, reason: t('reasons.education.malaysia'), image: '/images/countries/malaysia.jpg' },
+      { name: t('countries.dubai'), score: 85, reason: t('reasons.education.dubai'), image: '/images/countries/dubai.jpg' },
+      { name: t('countries.vietnam'), score: 82, reason: t('reasons.education.vietnam'), image: '/images/countries/vietnam.jpg' },
+      { name: t('countries.cambodia'), score: 75, reason: t('reasons.education.cambodia'), image: '/images/countries/cambodia.jpg' }
     ],
     business: [
+      { name: t('countries.dubai'), score: 98, reason: t('reasons.business.dubai'), image: '/images/countries/dubai.jpg' },
       { name: t('countries.vietnam'), score: 96, reason: t('reasons.business.vietnam'), image: '/images/countries/vietnam.jpg' },
-      { name: t('countries.cambodia'), score: 92, reason: t('reasons.business.cambodia'), image: '/images/countries/cambodia.jpg' },
-      { name: t('countries.malaysia'), score: 85, reason: t('reasons.business.malaysia'), image: '/images/countries/malaysia.jpg' }
+      { name: t('countries.china'), score: 92, reason: t('reasons.business.china'), image: '/images/countries/china.jpg' },
+      { name: t('countries.cambodia'), score: 88, reason: t('reasons.business.cambodia'), image: '/images/countries/cambodia.jpg' },
+      { name: t('countries.malaysia'), score: 82, reason: t('reasons.business.malaysia'), image: '/images/countries/malaysia.jpg' },
+      { name: t('countries.korea'), score: 78, reason: t('reasons.business.korea'), image: '/images/countries/korea.jpg' }
     ],
     culture: [
-      { name: t('countries.cambodia'), score: 98, reason: t('reasons.culture.cambodia'), image: '/images/countries/cambodia.jpg' },
-      { name: t('countries.vietnam'), score: 94, reason: t('reasons.culture.vietnam'), image: '/images/countries/vietnam.jpg' },
-      { name: t('countries.malaysia'), score: 87, reason: t('reasons.culture.malaysia'), image: '/images/countries/malaysia.jpg' }
+      { name: t('countries.china'), score: 98, reason: t('reasons.culture.china'), image: '/images/countries/china.jpg' },
+      { name: t('countries.cambodia'), score: 95, reason: t('reasons.culture.cambodia'), image: '/images/countries/cambodia.jpg' },
+      { name: t('countries.korea'), score: 92, reason: t('reasons.culture.korea'), image: '/images/countries/korea.jpg' },
+      { name: t('countries.vietnam'), score: 88, reason: t('reasons.culture.vietnam'), image: '/images/countries/vietnam.jpg' },
+      { name: t('countries.malaysia'), score: 82, reason: t('reasons.culture.malaysia'), image: '/images/countries/malaysia.jpg' },
+      { name: t('countries.dubai'), score: 78, reason: t('reasons.culture.dubai'), image: '/images/countries/dubai.jpg' }
     ],
     health: [
-      { name: t('countries.malaysia'), score: 94, reason: t('reasons.health.malaysia'), image: '/images/countries/malaysia.jpg' },
-      { name: t('countries.vietnam'), score: 88, reason: t('reasons.health.vietnam'), image: '/images/countries/vietnam.jpg' },
-      { name: t('countries.cambodia'), score: 84, reason: t('reasons.health.cambodia'), image: '/images/countries/cambodia.jpg' }
+      { name: t('countries.korea'), score: 96, reason: t('reasons.health.korea'), image: '/images/countries/korea.jpg' },
+      { name: t('countries.malaysia'), score: 92, reason: t('reasons.health.malaysia'), image: '/images/countries/malaysia.jpg' },
+      { name: t('countries.dubai'), score: 88, reason: t('reasons.health.dubai'), image: '/images/countries/dubai.jpg' },
+      { name: t('countries.vietnam'), score: 85, reason: t('reasons.health.vietnam'), image: '/images/countries/vietnam.jpg' },
+      { name: t('countries.china'), score: 82, reason: t('reasons.health.china'), image: '/images/countries/china.jpg' },
+      { name: t('countries.cambodia'), score: 78, reason: t('reasons.health.cambodia'), image: '/images/countries/cambodia.jpg' }
     ],
     community: [
-      { name: t('countries.malaysia'), score: 96, reason: t('reasons.community.malaysia'), image: '/images/countries/malaysia.jpg' },
+      { name: t('countries.korea'), score: 98, reason: t('reasons.community.korea'), image: '/images/countries/korea.jpg' },
+      { name: t('countries.malaysia'), score: 94, reason: t('reasons.community.malaysia'), image: '/images/countries/malaysia.jpg' },
       { name: t('countries.vietnam'), score: 90, reason: t('reasons.community.vietnam'), image: '/images/countries/vietnam.jpg' },
-      { name: t('countries.cambodia'), score: 88, reason: t('reasons.community.cambodia'), image: '/images/countries/cambodia.jpg' }
+      { name: t('countries.cambodia'), score: 86, reason: t('reasons.community.cambodia'), image: '/images/countries/cambodia.jpg' },
+      { name: t('countries.china'), score: 82, reason: t('reasons.community.china'), image: '/images/countries/china.jpg' },
+      { name: t('countries.dubai'), score: 78, reason: t('reasons.community.dubai'), image: '/images/countries/dubai.jpg' }
     ],
     investment: [
       { name: t('countries.dubai'), score: 98, reason: t('reasons.investment.dubai'), image: '/images/countries/dubai.jpg' },
-      { name: t('countries.vietnam'), score: 92, reason: t('reasons.investment.vietnam'), image: '/images/countries/vietnam.jpg' },
-      { name: t('countries.malaysia'), score: 88, reason: t('reasons.investment.malaysia'), image: '/images/countries/malaysia.jpg' }
+      { name: t('countries.china'), score: 94, reason: t('reasons.investment.china'), image: '/images/countries/china.jpg' },
+      { name: t('countries.vietnam'), score: 90, reason: t('reasons.investment.vietnam'), image: '/images/countries/vietnam.jpg' },
+      { name: t('countries.korea'), score: 86, reason: t('reasons.investment.korea'), image: '/images/countries/korea.jpg' },
+      { name: t('countries.malaysia'), score: 82, reason: t('reasons.investment.malaysia'), image: '/images/countries/malaysia.jpg' },
+      { name: t('countries.cambodia'), score: 78, reason: t('reasons.investment.cambodia'), image: '/images/countries/cambodia.jpg' }
     ],
     luxury: [
       { name: t('countries.dubai'), score: 98, reason: t('reasons.luxury.dubai'), image: '/images/countries/dubai.jpg' },
       { name: t('countries.china'), score: 94, reason: t('reasons.luxury.china'), image: '/images/countries/china.jpg' },
-      { name: t('countries.malaysia'), score: 88, reason: t('reasons.luxury.malaysia'), image: '/images/countries/malaysia.jpg' }
+      { name: t('countries.korea'), score: 90, reason: t('reasons.luxury.korea'), image: '/images/countries/korea.jpg' },
+      { name: t('countries.malaysia'), score: 84, reason: t('reasons.luxury.malaysia'), image: '/images/countries/malaysia.jpg' },
+      { name: t('countries.vietnam'), score: 78, reason: t('reasons.luxury.vietnam'), image: '/images/countries/vietnam.jpg' },
+      { name: t('countries.cambodia'), score: 72, reason: t('reasons.luxury.cambodia'), image: '/images/countries/cambodia.jpg' }
     ]
   })
 
@@ -342,19 +366,19 @@ export default function LifestyleQuizPage() {
         </div>
 
         <Navigation />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-20">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 min-h-screen flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="mb-6 sm:mb-8">
-              <Trophy className="w-16 h-16 sm:w-20 sm:h-20 text-yellow-500 mx-auto mb-3 sm:mb-4" />
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
+            <div className="mb-4 sm:mb-6">
+              <Trophy className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-yellow-500 mx-auto mb-2 sm:mb-3" />
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-2 sm:mb-3">
                 {t('congratulations')}
               </h1>
-              <p className="text-lg sm:text-xl font-korean text-gray-300 mb-6 sm:mb-8">
+              <p className="text-base sm:text-lg md:text-xl font-korean text-gray-300 mb-4 sm:mb-6">
                 {t('foundLifestyle')}
               </p>
             </div>
@@ -364,7 +388,7 @@ export default function LifestyleQuizPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-2xl border-2 border-gray-100 mb-12 sm:mb-16"
+              className="bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 lg:p-8 shadow-2xl border-2 border-gray-100 mb-6 sm:mb-8 md:mb-12"
             >
               <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-xl sm:rounded-2xl bg-gradient-to-br ${winnerCategory?.color} flex items-center justify-center mx-auto mb-4 sm:mb-6`}>
                 {winnerCategory && <winnerCategory.icon className="w-10 h-10 sm:w-12 sm:h-12 text-white" />}
@@ -393,12 +417,12 @@ export default function LifestyleQuizPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="mb-12 sm:mb-16"
+              className="mb-6 sm:mb-8 md:mb-12"
             >
-              <h2 className="text-2xl sm:text-3xl font-display font-bold text-white mb-6 sm:mb-8 text-center">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white mb-4 sm:mb-6 text-center">
                 {t('recommendedCountries')}
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
                 {recommendations.map((country, index) => (
                   <motion.div
                     key={country.name}
@@ -437,20 +461,20 @@ export default function LifestyleQuizPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-center mb-16"
+              className="text-center mb-6 sm:mb-8"
             >
               <Button 
                 onClick={() => window.open('https://pf.kakao.com/_qpRxjxb/chat', '_blank')}
                 size="lg" 
-                className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium px-6 sm:px-8 md:px-12 py-3 sm:py-4 text-base sm:text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px]"
+                className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-sm sm:text-base md:text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[180px]"
               >
-                <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3 flex-shrink-0" />
+                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 flex-shrink-0" />
                 <span className="whitespace-nowrap">{t('consultationRequest')}</span>
               </Button>
             </motion.div>
 
             {/* 네비게이션 */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center">
               <Button 
                 onClick={() => {
                   setCurrentRound(1)
@@ -464,15 +488,15 @@ export default function LifestyleQuizPage() {
                   setCurrentMatch(initialMatches[0])
                 }}
                 size="lg" 
-                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105"
+                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base rounded-2xl transition-all duration-300 hover:scale-105"
               >
-                <ArrowLeft className="w-5 h-5 mr-2" />
+                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 {t('quizAgain')}
               </Button>
               <Button 
                 onClick={goHome}
                 size="lg" 
-                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105"
+                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base rounded-2xl transition-all duration-300 hover:scale-105"
               >
                 {t('backToHome')}
               </Button>
@@ -506,18 +530,18 @@ export default function LifestyleQuizPage() {
       </div>
 
       <Navigation />
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 min-h-screen flex flex-col justify-center">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12 md:mb-16"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
             {t('title')}
           </h1>
-          <p className="text-lg sm:text-xl font-korean text-gray-300 mb-6">
+          <p className="text-base sm:text-lg md:text-xl font-korean text-gray-300 mb-4 sm:mb-6">
             {t('subtitle')}
           </p>
           <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
@@ -535,7 +559,7 @@ export default function LifestyleQuizPage() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 max-w-4xl mx-auto"
           >
             {currentMatch.map((categoryKey, index) => {
               const category = lifestyleCategories.find(cat => cat.key === categoryKey)
@@ -551,24 +575,24 @@ export default function LifestyleQuizPage() {
                   onClick={() => handleSelection(categoryKey)}
                 >
                   <div className={`
-                    relative bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 shadow-xl hover-lift border-2 
+                    relative bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 md:p-6 lg:p-8 shadow-xl hover-lift border-2 
                     transition-all duration-300 h-full
                     ${category.borderColor} hover:shadow-2xl hover:scale-105
                     ${isProcessing ? 'opacity-50' : ''}
                   `}>
                     {/* Icon */}
                     <div className={`
-                      w-16 h-16 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br ${category.color} 
-                      flex items-center justify-center mb-4 sm:mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-300
+                      w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-xl sm:rounded-2xl bg-gradient-to-br ${category.color} 
+                      flex items-center justify-center mb-3 sm:mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300
                     `}>
-                      <category.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                      <category.icon className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gray-900 mb-3 sm:mb-4">
+                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 mb-2 sm:mb-3">
                       {category.title}
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg font-korean text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base lg:text-lg font-korean text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                       {category.description}
                     </p>
 
@@ -604,14 +628,14 @@ export default function LifestyleQuizPage() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-8 sm:mt-12 md:mt-16"
         >
           <Button 
             onClick={goHome}
             size="lg"
-            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-8 py-4 rounded-2xl transition-all duration-300 hover:scale-105"
+            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base rounded-2xl transition-all duration-300 hover:scale-105"
           >
-            <ArrowLeft className="w-5 h-5 mr-2" />
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
             {t('backToHome')}
           </Button>
         </motion.div>
