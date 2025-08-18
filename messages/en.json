@@ -135,7 +135,7 @@
       "seoul": "Seoul"
     },
     "dubai": {
-      "description": "A mirror-like city rising from the desert. In 2010, when I first came to Dubai, only sandstorms blew. Now golden buildings pierce the sky, and dreams from around the world gather here. Blueye director's 15-year record of change.",
+      "description": "A mirror of the future standing tall on the golden sands of the desert. Where endless sandstorms once blew yesterday, today dreams from around the world pierce the sky and shine. The modern miracle born from the desert, witnessed through Blueye's eyes over 15 years.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -152,7 +152,7 @@
       }
     },
     "hochiminh": {
-      "description": "A city where the Mekong River flows. Before 2002, Ho Chi Minh was a small fishing village. Now it's where Southeast Asia's heart beats. Blueye director's memory of Vietnam, witnessed over 23 years.",
+      "description": "Where the silver waves of the Mekong River embrace the city. A place that was just a small fishing village yesterday, today a city where Southeast Asia's heart beats passionately. The ever-flowing change of Vietnam, witnessed by Blueye over 23 years.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -169,7 +169,7 @@
       }
     },
     "johorbahru": {
-      "description": "A city shining in Singapore's shadow. In 2017, Johor Bahru was just a small border town. 8 years later, Southeast Asia's hidden gem has emerged. The real face of Malaysia discovered by Blueye director.",
+      "description": "A hidden gem secretly shining in Singapore's shadow. A place that was just a small border town yesterday, today a new star rising in Southeast Asia. The true beauty of Malaysia, discovered by Blueye over 8 years.",
       "features": {
         "economicGrowth": {
           "title": "Economic Growth Rate",
@@ -186,7 +186,7 @@
       }
     },
     "phnompenh": {
-      "description": "A small city by Tonle Sap Lake. In 2019, Phnom Penh was asleep. 6 years later, young blood flows abundantly. New buildings grow toward the sky, and hope springs from the ground. Cambodia's revival witnessed by Blueye director.",
+      "description": "Where the blue waves of Tonle Sap Lake embrace the city. A small city that was asleep yesterday, today a vibrant city overflowing with young energy. The beautiful revival and new beginning of Cambodia, witnessed by Blueye over 6 years.",
       "features": {
         "gdpGrowth": {
           "title": "GDP Growth Rate",
@@ -203,7 +203,7 @@
       }
     },
     "shanghai": {
-      "description": "A city where the Huangpu River flows. Before 2002, Shanghai was a small fishing port. 23 years later, it's where the world economy's heart beats. Shanghai of Blueye director who witnessed the record of massive change.",
+      "description": "Where the golden waves of the Huangpu River embrace the city. A place that was just a small fishing port yesterday, today a global metropolis where the world economy's heart beats passionately. The massive transformation and leap toward the world, witnessed by Blueye over 23 years.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
@@ -220,7 +220,7 @@
       }
     },
     "seoul": {
-      "description": "A city where the Han River flows. In 2018, when I returned to Seoul, it felt unfamiliar. 7 years later, it's where technology and tradition coexist. A city where innovation DNA has taken deep root. Seoul's new face discovered by Blueye director.",
+      "description": "Where the silver waves of the Han River embrace the city. A place that felt unfamiliar yesterday, today a future city where technology and tradition harmoniously coexist. The new face of Seoul and the city where innovation DNA has taken deep root, discovered by Blueye over 7 years.",
       "features": {
         "gdpSize": {
           "title": "GDP Size",
