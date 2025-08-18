@@ -301,8 +301,7 @@ export function Hero() {
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
         const ctaRect = ctaSection.getBoundingClientRect()
         
-        if ((heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) || 
-            (ctaRect.top <= window.innerHeight)) {
+        if ((heroRect.top <= 0 && (lastCountryRect.bottom >= window.innerHeight || ctaRect.top <= window.innerHeight))) {
           e.preventDefault()
         }
       }
@@ -318,8 +317,8 @@ export function Hero() {
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
         const ctaRect = ctaSection.getBoundingClientRect()
         
-        // 기존 범위: Hero → 국가 섹션들
-        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
+        // 기존 범위: Hero → 국가 섹션들 → CTA
+        if (heroRect.top <= 0 && (lastCountryRect.bottom >= window.innerHeight || ctaRect.top <= window.innerHeight)) {
           if (isScrolling) return
           
           touchEndY = e.changedTouches[0].clientY
