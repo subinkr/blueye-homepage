@@ -23,16 +23,29 @@ export function Hero() {
   const [isNavigating, setIsNavigating] = useState(true)
   const contentRef = useRef<HTMLDivElement>(null)
 
-  // 국가별 페이지로 이동하는 함수
-  const navigateToCountry = (countryCode: string) => {
+  // CTA 섹션으로 이동하는 함수
+  const navigateToCTA = () => {
     if (isNavigating) return
     
     setIsNavigating(true)
     
-    // 지구 로딩 완료를 기다린 후 페이지 이동 (2초 후)
+    // CTA 섹션으로 스크롤
+    const ctaSection = document.getElementById('cta')
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: 'smooth' })
+      
+      // URL 해시 업데이트
+      window.history.replaceState(null, '', '#cta')
+      
+      // 섹션 상태 업데이트
+      setCurrentSection(countries.length + 1)
+      setCurrentCountryIndex(-1)
+      setScrollProgress(Math.min((countries.length + 1) / (countries.length + 2), 1))
+    }
+    
     setTimeout(() => {
-      router.push(`/${countryCode}`)
-    }, 2000)
+      setIsNavigating(false)
+    }, 1000)
   }
 
   // 전역 이벤트 리스너 등록
@@ -616,7 +629,7 @@ export function Hero() {
                   className="mt-12"
                 >
                   <Button
-                    onClick={() => navigateToCountry(country.code)}
+                    onClick={navigateToCTA}
                     className="text-lg px-8 py-4 bg-black/40 backdrop-blur-md border border-white/40 hover:bg-black/50 transition-all duration-300 group"
                     style={{ 
                       color: country.color,
