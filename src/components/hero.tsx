@@ -646,18 +646,18 @@ export function Hero() {
                     onClick={navigateToCTA}
                     className="text-lg px-8 py-4 backdrop-blur-md border-2 transition-all duration-300 group shadow-lg hover:shadow-xl"
                     style={{ 
-                      backgroundColor: `${country.color}20`,
-                      color: country.color,
+                      backgroundColor: `${country.color}`,
+                      color: 'white',
                       borderColor: `${country.color}80`,
                       textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
                       boxShadow: `0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px ${country.color}40`
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = `${country.color}40`
+                      e.currentTarget.style.backgroundColor = `${country.color}dd`
                       e.currentTarget.style.borderColor = `${country.color}`
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = `${country.color}20`
+                      e.currentTarget.style.backgroundColor = `${country.color}`
                       e.currentTarget.style.borderColor = `${country.color}80`
                     }}
                   >
