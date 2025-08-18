@@ -256,8 +256,8 @@ export function Hero() {
             setIsScrolling(false)
           }, 2000)
         } 
-        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
-        else if (ctaRect.top <= window.innerHeight && e.deltaY < 0) {
+        // CTA 섹션에서 위로 스크롤할 때만 마지막 국가 섹션으로 이동 (아래로는 자유롭게)
+        else if (ctaRect.top <= window.innerHeight && ctaRect.bottom >= window.innerHeight && e.deltaY < 0) {
           e.preventDefault()
           
           if (isScrolling) return
@@ -302,7 +302,7 @@ export function Hero() {
         const ctaRect = ctaSection.getBoundingClientRect()
         
         if ((heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) || 
-            (ctaRect.top <= window.innerHeight)) {
+            (ctaRect.top <= window.innerHeight && ctaRect.bottom >= window.innerHeight)) {
           e.preventDefault()
         }
       }
@@ -383,8 +383,8 @@ export function Hero() {
             }, 1000)
           }
         }
-        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
-        else if (ctaRect.top <= window.innerHeight && touchStartY - e.changedTouches[0].clientY < 0) {
+        // CTA 섹션에서 위로 스크롤할 때만 마지막 국가 섹션으로 이동 (아래로는 자유롭게)
+        else if (ctaRect.top <= window.innerHeight && ctaRect.bottom >= window.innerHeight && touchStartY - e.changedTouches[0].clientY < 0) {
           if (isScrolling) return
           
           // 마지막 국가 섹션으로 이동
