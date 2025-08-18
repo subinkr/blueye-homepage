@@ -306,6 +306,10 @@ export function Hero() {
         if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
           e.preventDefault()
         }
+        // 마지막 국가 섹션에서 CTA로 이동하는 터치 스크롤 방지
+        else if (lastCountryRect.bottom <= window.innerHeight && ctaRect.top <= window.innerHeight) {
+          e.preventDefault()
+        }
         // CTA 섹션에서 위로 스크롤할 때만 방지 (아래로는 자유롭게)
         else if (ctaRect.top <= window.innerHeight && touchStartY - e.touches[0].clientY < 0) {
           e.preventDefault()
@@ -393,7 +397,23 @@ export function Hero() {
             }, 800)
           }
         }
-        // CTA 섹션에서 위로 스크롤할 때만 마지막 국가 섹션으로 이동
+        // 마지막 국가 섹션에서 CTA로 이동하는 터치 스크롤
+        else if (lastCountryRect.bottom <= window.innerHeight && ctaRect.top <= window.innerHeight && touchDiff > 0) {
+          if (Math.abs(touchDiff) > 20) {
+            // CTA 섹션으로 이동
+            const newSection = countries.length + 1
+            setCurrentSection(newSection)
+            setCurrentCountryIndex(-1)
+            setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+            
+            ctaSection.scrollIntoView({ behavior: 'smooth' })
+            window.history.replaceState(null, '', '#cta')
+            
+            setIsScrolling(true)
+            setTimeout(() => setIsScrolling(false), 800)
+          }
+        }
+        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
         else if (ctaRect.top <= window.innerHeight && touchDiff < 0) {
           if (Math.abs(touchDiff) > 20) {
             // 마지막 국가 섹션으로 이동
