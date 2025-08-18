@@ -388,21 +388,49 @@ export function Hero() {
             }, 1000)
           }
         }
-        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
+        // CTA 섹션에서 위로 스크롤할 때 이전 섹션으로 이동
         else if (ctaRect.top <= window.innerHeight && ctaRect.bottom >= 0 && touchStartY - e.changedTouches[0].clientY < 0) {
           if (isScrolling) return
           
-          // 마지막 국가 섹션으로 이동
-          const newSection = countries.length
-          setCurrentSection(newSection)
-          setCurrentCountryIndex(countries.length - 1)
-          setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+          touchEndY = e.changedTouches[0].clientY
+          const touchDiff = touchStartY - touchEndY
           
-          lastCountrySection.scrollIntoView({ behavior: 'smooth' })
-          window.history.replaceState(null, '', `#country-${countries.length - 1}`)
+          if (Math.abs(touchDiff) > 30) {
+            // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
+            const newSection = countries.length
+            setCurrentSection(newSection)
+            setCurrentCountryIndex(countries.length - 1)
+            setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+            
+            lastCountrySection.scrollIntoView({ behavior: 'smooth' })
+            window.history.replaceState(null, '', `#country-${countries.length - 1}`)
+            
+            setIsScrolling(true)
+            setTimeout(() => setIsScrolling(false), 1000)
+          }
+        }
+        // CTA 섹션에서 아래로 스크롤할 때 다음 섹션으로 이동
+        else if (ctaRect.top <= window.innerHeight && ctaRect.bottom >= 0 && touchStartY - e.changedTouches[0].clientY > 0) {
+          if (isScrolling) return
           
-          setIsScrolling(true)
-          setTimeout(() => setIsScrolling(false), 1000)
+          touchEndY = e.changedTouches[0].clientY
+          const touchDiff = touchStartY - touchEndY
+          
+          if (Math.abs(touchDiff) > 30) {
+            // CTA 섹션에서 아래로 스크롤할 때 footer 섹션으로 이동
+            const newSection = countries.length + 2
+            setCurrentSection(newSection)
+            setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+            
+            const footerSection = document.getElementById('footer')
+            if (footerSection) {
+              footerSection.scrollIntoView({ behavior: 'smooth' })
+              window.history.replaceState(null, '', '#footer')
+            }
+            
+            setIsScrolling(true)
+            setTimeout(() => setIsScrolling(false), 1000)
+          }
         }
       }
     }

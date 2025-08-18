@@ -59,6 +59,8 @@ export function CTA() {
           const footerSection = document.getElementById('footer')
           if (footerSection) {
             footerSection.scrollIntoView({ behavior: 'smooth' })
+            // URL 해시 업데이트
+            window.history.replaceState(null, '', '#footer')
           }
         }
         // 아래로 스와이프 (이전 섹션으로)
@@ -66,6 +68,8 @@ export function CTA() {
           const lastCountrySection = document.getElementById('country-5') // 마지막 국가 섹션
           if (lastCountrySection) {
             lastCountrySection.scrollIntoView({ behavior: 'smooth' })
+            // URL 해시 업데이트
+            window.history.replaceState(null, '', '#country-5')
           }
         }
       }
