@@ -256,8 +256,8 @@ export function Hero() {
             setIsScrolling(false)
           }, 2000)
         } 
-        // CTA 섹션에서 위로 스크롤할 때만 마지막 국가 섹션으로 이동 (아래로는 자유롭게)
-        else if (ctaRect.top <= window.innerHeight && ctaRect.bottom >= window.innerHeight && e.deltaY < 0) {
+        // CTA 섹션에서 위로 스크롤할 때 마지막 국가 섹션으로 이동
+        else if (ctaRect.top <= window.innerHeight && e.deltaY < 0) {
           e.preventDefault()
           
           if (isScrolling) return
@@ -302,7 +302,7 @@ export function Hero() {
         const ctaRect = ctaSection.getBoundingClientRect()
         
         if ((heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) || 
-            (ctaRect.top <= window.innerHeight && ctaRect.bottom >= window.innerHeight)) {
+            (ctaRect.top <= window.innerHeight)) {
           e.preventDefault()
         }
       }
@@ -312,92 +312,77 @@ export function Hero() {
       const heroSection = document.getElementById('hero')
       const lastCountrySection = document.getElementById(`country-${countries.length - 1}`)
       const ctaSection = document.getElementById('cta')
+      const footerSection = document.getElementById('footer')
       
-      if (heroSection && lastCountrySection && ctaSection) {
+      if (heroSection && lastCountrySection && ctaSection && footerSection) {
         const heroRect = heroSection.getBoundingClientRect()
         const lastCountryRect = lastCountrySection.getBoundingClientRect()
         const ctaRect = ctaSection.getBoundingClientRect()
+        const footerRect = footerSection.getBoundingClientRect()
         
-        // 기존 범위: Hero → 국가 섹션들
-        if (heroRect.top <= 0 && lastCountryRect.bottom >= window.innerHeight) {
-          if (isScrolling) return
+        if (isScrolling) return
+        
+        touchEndY = e.changedTouches[0].clientY
+        const touchDiff = touchStartY - touchEndY
+        
+        if (Math.abs(touchDiff) > 20) {
+          let newSection = currentSection
           
-          touchEndY = e.changedTouches[0].clientY
-          const touchDiff = touchStartY - touchEndY
-          
-          if (Math.abs(touchDiff) > 30) {
-            let newSection = currentSection
-            
-            if (touchDiff > 0 && currentSection < totalSections - 1) {
-              newSection = currentSection + 1
-            } else if (touchDiff < 0 && currentSection > 0) {
-              newSection = currentSection - 1
-            } else {
-              return
-            }
-            
-            let newHash = ''
-            if (newSection === 0) {
-              newHash = ''
-            } else if (newSection <= countries.length) {
-              newHash = `country-${newSection - 1}`
-            } else if (newSection === countries.length + 1) {
-              newHash = 'cta'
-            } else if (newSection === countries.length + 2) {
-              newHash = 'footer'
-            }
-            
-            if (newHash) {
-              window.history.replaceState(null, '', `#${newHash}`)
-            } else {
-              window.history.replaceState(null, '', window.location.pathname)
-            }
-            
-            setIsScrolling(true)
-            setIsNavigating(true)
-            setCurrentSection(newSection)
-            
-            let targetElement: HTMLElement | null = null
-            if (newSection === 0) {
-              targetElement = document.getElementById('hero')
-            } else if (newSection <= countries.length) {
-              targetElement = document.getElementById(`country-${newSection - 1}`)
-            } else if (newSection === countries.length + 1) {
-              targetElement = document.getElementById('cta')
-            } else if (newSection === countries.length + 2) {
-              targetElement = document.getElementById('footer')
-            }
-            
-            if (targetElement) {
-              targetElement.scrollIntoView({ behavior: 'smooth' })
-            }
-            
-            const countryIndex = newSection === 0 ? -1 : newSection - 1
-            setCurrentCountryIndex(countryIndex)
-            
-            const totalProgress = Math.min(newSection / (totalSections - 1), 1)
-            setScrollProgress(totalProgress)
-            
-            setTimeout(() => {
-              setIsScrolling(false)
-            }, 1000)
+          if (touchDiff > 0 && currentSection < totalSections - 1) {
+            // 아래로 스크롤
+            newSection = currentSection + 1
+          } else if (touchDiff < 0 && currentSection > 0) {
+            // 위로 스크롤
+            newSection = currentSection - 1
+          } else {
+            return
           }
-        }
-        // CTA 섹션에서 위로 스크롤할 때만 마지막 국가 섹션으로 이동 (아래로는 자유롭게)
-        else if (ctaRect.top <= window.innerHeight && ctaRect.bottom >= window.innerHeight && touchStartY - e.changedTouches[0].clientY < 0) {
-          if (isScrolling) return
           
-          // 마지막 국가 섹션으로 이동
-          const newSection = countries.length
-          setCurrentSection(newSection)
-          setCurrentCountryIndex(countries.length - 1)
-          setScrollProgress(Math.min(newSection / (totalSections - 1), 1))
+          let newHash = ''
+          if (newSection === 0) {
+            newHash = ''
+          } else if (newSection <= countries.length) {
+            newHash = `country-${newSection - 1}`
+          } else if (newSection === countries.length + 1) {
+            newHash = 'cta'
+          } else if (newSection === countries.length + 2) {
+            newHash = 'footer'
+          }
           
-          lastCountrySection.scrollIntoView({ behavior: 'smooth' })
-          window.history.replaceState(null, '', `#country-${countries.length - 1}`)
+          if (newHash) {
+            window.history.replaceState(null, '', `#${newHash}`)
+          } else {
+            window.history.replaceState(null, '', window.location.pathname)
+          }
           
           setIsScrolling(true)
-          setTimeout(() => setIsScrolling(false), 1000)
+          setIsNavigating(true)
+          setCurrentSection(newSection)
+          
+          let targetElement: HTMLElement | null = null
+          if (newSection === 0) {
+            targetElement = document.getElementById('hero')
+          } else if (newSection <= countries.length) {
+            targetElement = document.getElementById(`country-${newSection - 1}`)
+          } else if (newSection === countries.length + 1) {
+            targetElement = document.getElementById('cta')
+          } else if (newSection === countries.length + 2) {
+            targetElement = document.getElementById('footer')
+          }
+          
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' })
+          }
+          
+          const countryIndex = newSection === 0 ? -1 : newSection - 1
+          setCurrentCountryIndex(countryIndex)
+          
+          const totalProgress = Math.min(newSection / (totalSections - 1), 1)
+          setScrollProgress(totalProgress)
+          
+          setTimeout(() => {
+            setIsScrolling(false)
+          }, 800)
         }
       }
     }
