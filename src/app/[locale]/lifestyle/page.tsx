@@ -544,11 +544,95 @@ export default function LifestyleQuizPage() {
           <p className="text-base sm:text-lg md:text-xl font-korean text-gray-300 mb-4 sm:mb-6">
             {t('subtitle')}
           </p>
-          <div className="flex items-center justify-center gap-4 text-sm text-gray-400">
-            <span>{t('round')} {currentRound}</span>
-            <span>•</span>
-            <span>{winners.length} / {participants.length % 2 === 1 ? Math.floor(participants.length / 2) : Math.ceil(participants.length / 2)} {t('completed')}</span>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
+            {/* 라운드 표시 */}
+            <motion.div
+              key={currentRound}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              className="relative"
+            >
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg"
+              >
+                {t('round')} {currentRound}
+              </motion.div>
+              {/* 라운드 변경 시 스파클 효과 */}
+              <motion.div
+                initial={{ scale: 0, opacity: 1 }}
+                animate={{ scale: 2, opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0 bg-yellow-400 rounded-full"
+              />
+            </motion.div>
+            
+            {/* 진행률 표시 */}
+            <motion.div
+              key={`${winners.length}-${participants.length}`}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full font-medium text-sm relative"
+            >
+              <span>{winners.length} / {participants.length % 2 === 1 ? Math.floor(participants.length / 2) : Math.ceil(participants.length / 2)} {t('completed')}</span>
+              {/* 완료 시 체크 표시 */}
+              {winners.length === (participants.length % 2 === 1 ? Math.floor(participants.length / 2) : Math.ceil(participants.length / 2)) && (
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center"
+                >
+                  <span className="text-white text-xs">✓</span>
+                </motion.div>
+              )}
+            </motion.div>
+          </motion.div>
+          
+          {/* 진행률 원들 */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="flex items-center justify-center gap-2 mb-4"
+          >
+            {Array.from({ length: participants.length % 2 === 1 ? Math.floor(participants.length / 2) : Math.ceil(participants.length / 2) }).map((_, index) => (
+              <motion.div
+                key={index}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ 
+                  scale: 1, 
+                  opacity: 1,
+                  backgroundColor: index < winners.length ? '#3b82f6' : 'rgba(255, 255, 255, 0.2)'
+                }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 0.6 + index * 0.1,
+                  backgroundColor: { duration: 0.3 }
+                }}
+                className="w-3 h-3 rounded-full border-2 border-white/30 transition-all duration-300"
+              >
+                {index < winners.length && (
+                  <motion.div
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.4, delay: 0.1 }}
+                    className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
+                  >
+                    <span className="text-white text-xs font-bold">✓</span>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
 
         {/* Match */}
