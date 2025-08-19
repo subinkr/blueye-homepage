@@ -471,7 +471,7 @@ export function Hero() {
           </div>
 
           {/* Content */}
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="relative max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -497,7 +497,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-lg md:text-xl lg:text-2xl font-korean text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md"
+                className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-korean text-white/90 max-w-4xl mx-auto leading-relaxed drop-shadow-md px-4"
               >
                 {t('description')}
               </motion.p>
@@ -507,25 +507,25 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto pt-4 sm:pt-6"
+                className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto pt-4 sm:pt-6 px-4"
               >
                 <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-lg">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1 drop-shadow-lg">
                     23
                   </div>
-                  <div className="text-sm md:text-base text-white/80">{t('experienceYears')}</div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('experienceYears')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-lg">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1 drop-shadow-lg">
                     6
                   </div>
-                  <div className="text-sm md:text-base text-white/80">{t('countries')}</div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('countries')}</div>
                 </div>
                 <div className="text-center col-span-2 md:col-span-1">
-                  <div className="text-2xl md:text-3xl font-bold text-white mb-1 drop-shadow-lg">
+                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1 drop-shadow-lg">
                     30,000+
                   </div>
-                  <div className="text-sm md:text-base text-white/80">{t('managedProperties')}</div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('managedProperties')}</div>
                 </div>
               </motion.div>
 
@@ -534,7 +534,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 sm:pt-8"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-8 px-4"
               >
                 {/* Floating particles effect */}
                 <div className="absolute inset-0 pointer-events-none">
@@ -569,22 +569,22 @@ export function Hero() {
                   <Button
                     type="button"
                     onClick={() => router.push(`/${locale}/lifestyle`)}
-                    className="relative text-lg px-10 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-2 border-0 overflow-hidden rounded-xl z-50 cursor-pointer"
+                    className="relative text-sm sm:text-base md:text-lg px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-2 border-0 overflow-hidden rounded-xl z-50 cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="relative flex items-center gap-3">
+                    <div className="relative flex items-center gap-2 sm:gap-3">
                       <motion.div
                         animate={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
-                        className="text-2xl"
+                        className="text-lg sm:text-xl md:text-2xl"
                       >
                         🌟
                       </motion.div>
-                      <span className="text-xl">{t('exploreLifestyle')}</span>
+                      <span className="text-sm sm:text-base md:text-xl">{t('exploreLifestyle')}</span>
                       <motion.div
                         animate={{ x: [0, 8, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
-                        className="text-2xl"
+                        className="text-lg sm:text-xl md:text-2xl"
                       >
                         →
                       </motion.div>

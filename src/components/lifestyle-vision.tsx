@@ -144,7 +144,7 @@ export function LifestyleVision() {
                     <div className="grid grid-cols-2 gap-2">
                       {[1, 2, 3, 4].map((featureIndex) => (
                         <div key={featureIndex} className="flex items-center text-sm text-gray-600">
-                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          <category.icon className={`w-4 h-4 mr-2 flex-shrink-0 ${category.color.replace('from-', 'text-').replace(' to-', '')}`} />
                           <span className="font-korean">{t(`${category.key}.feature${featureIndex}`)}</span>
                         </div>
                       ))}

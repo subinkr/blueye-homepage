@@ -19,7 +19,8 @@ import {
   Mail,
   MessageCircle,
   TrendingUp,
-  Crown
+  Crown,
+  CheckCircle
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
@@ -374,14 +375,14 @@ export default function LifestyleQuizPage() {
         </div>
 
         <Navigation />
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20 min-h-screen flex flex-col justify-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 py-12 sm:py-16 md:py-20 lg:py-24 min-h-screen flex flex-col justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="mb-4 sm:mb-6">
+            <div className="mb-4 sm:mb-6 pt-8 sm:pt-12 md:pt-16">
               <Trophy className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 text-yellow-500 mx-auto mb-2 sm:mb-3" />
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-2 sm:mb-3">
                 {t('congratulations')}
@@ -420,11 +421,81 @@ export default function LifestyleQuizPage() {
               </div>
             </motion.div>
 
+            {/* 선택한 라이프스타일 아이콘들 */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mb-6 sm:mb-8"
+            >
+              {/* 준결승 선택 */}
+              <div className="mb-4 sm:mb-6">
+                <h4 className="text-sm sm:text-base font-display font-bold text-white/80 mb-3 text-center">
+                  {t('semifinal')}
+                </h4>
+                <div className="flex items-center justify-center gap-3 sm:gap-4">
+                  {selectionHistory.slice(-3, -1).map((lifestyleKey, index) => {
+                    const category = lifestyleCategories.find(cat => cat.key === lifestyleKey)
+                    const IconComponent = category?.icon
+                    const weight = 2 // 준결승은 가중치 2
+                    
+                    return (
+                      <motion.div
+                        key={`semifinal-${lifestyleKey}-${index}`}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                        className="flex flex-col items-center"
+                      >
+                        <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br ${category?.color} flex items-center justify-center shadow-lg border-2 border-white/20 mb-1`}>
+                          {IconComponent && <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-white" />}
+                        </div>
+                        <div className="text-xs sm:text-sm font-bold text-white/80 bg-white/10 px-2 py-1 rounded-full">
+                          x{weight}
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* 예선 선택 */}
+              <div>
+                <h4 className="text-sm sm:text-base font-display font-bold text-white/80 mb-3 text-center">
+                  {t('qualifying')}
+                </h4>
+                <div className="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+                  {selectionHistory.slice(0, -3).map((lifestyleKey, index) => {
+                    const category = lifestyleCategories.find(cat => cat.key === lifestyleKey)
+                    const IconComponent = category?.icon
+                    const weight = 1 // 예선은 가중치 1
+                    
+                    return (
+                      <motion.div
+                        key={`qualifying-${lifestyleKey}-${index}`}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
+                        className="flex flex-col items-center"
+                      >
+                        <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-md sm:rounded-lg bg-gradient-to-br ${category?.color} flex items-center justify-center shadow-lg border border-white/20 mb-1`}>
+                          {IconComponent && <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 text-white" />}
+                        </div>
+                        <div className="text-xs font-bold text-white/60 bg-white/5 px-1.5 py-0.5 rounded-full">
+                          x{weight}
+                        </div>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              </div>
+            </motion.div>
+
             {/* 추천 국가 */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
               className="mb-6 sm:mb-8 md:mb-12"
             >
               <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-white mb-4 sm:mb-6 text-center">
@@ -538,13 +609,13 @@ export default function LifestyleQuizPage() {
       </div>
 
       <Navigation />
-      <div className="relative z-10 max-w-6xl mx-auto px-4 min-h-screen flex flex-col justify-center">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-20 min-h-screen flex flex-col justify-center">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-8 sm:mb-12 md:mb-16"
+          className="text-center mb-4 sm:mb-6 md:mb-8 pt-8 sm:pt-12 md:pt-16"
         >
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-display font-bold text-white mb-3 sm:mb-4">
             {t('title')}
@@ -597,49 +668,57 @@ export default function LifestyleQuizPage() {
                   initial={{ scale: 0, rotate: -180 }}
                   animate={{ scale: 1, rotate: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
-                  className="absolute -top-1 -right-1 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center"
+                  className="absolute -top-1 -right-1"
                 >
-                  <span className="text-white text-xs">✓</span>
+                  <CheckCircle className="w-5 h-5 text-green-500" />
                 </motion.div>
               )}
             </motion.div>
           </motion.div>
           
-          {/* 진행률 원들 */}
+          {/* 진행률 아이콘들 */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex items-center justify-center gap-2 mb-4"
           >
-            {Array.from({ length: participants.length % 2 === 1 ? Math.floor(participants.length / 2) : Math.ceil(participants.length / 2) }).map((_, index) => (
-              <motion.div
-                key={index}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ 
-                  scale: 1, 
-                  opacity: 1,
-                  backgroundColor: index < winners.length ? '#3b82f6' : 'rgba(255, 255, 255, 0.2)'
-                }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.6 + index * 0.1,
-                  backgroundColor: { duration: 0.3 }
-                }}
-                className="w-3 h-3 rounded-full border-2 border-white/30 transition-all duration-300"
-              >
-                {index < winners.length && (
-                  <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.4, delay: 0.1 }}
-                    className="w-full h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
-                  >
-                    <span className="text-white text-xs font-bold">✓</span>
-                  </motion.div>
-                )}
-              </motion.div>
-            ))}
+            {Array.from({ length: participants.length % 2 === 1 ? Math.floor(participants.length / 2) : Math.ceil(participants.length / 2) }).map((_, index) => {
+              const winnerCategory = index < winners.length ? lifestyleCategories.find(cat => cat.key === winners[index]) : null
+              const IconComponent = winnerCategory?.icon
+              
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ 
+                    scale: 1, 
+                    opacity: 1
+                  }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.6 + index * 0.1
+                  }}
+                  className={`w-6 h-6 rounded-lg border-2 transition-all duration-300 flex items-center justify-center ${
+                    index < winners.length 
+                      ? `bg-gradient-to-br ${winnerCategory?.color} border-white/50` 
+                      : 'bg-white/10 border-white/30'
+                  }`}
+                >
+                  {index < winners.length && IconComponent ? (
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ duration: 0.4, delay: 0.1 }}
+                    >
+                      <IconComponent className="w-4 h-4 text-white" />
+                    </motion.div>
+                  ) : (
+                    <div className="w-2 h-2 bg-white/30 rounded-full" />
+                  )}
+                </motion.div>
+              )
+            })}
           </motion.div>
         </motion.div>
 
