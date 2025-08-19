@@ -34,6 +34,7 @@ export default function AdminPage() {
   const [magazinePage, setMagazinePage] = useState(1)
   const [hasMoreMagazines, setHasMoreMagazines] = useState(true)
   const [isLoadingMoreMagazines, setIsLoadingMoreMagazines] = useState(false)
+  const [totalMagazines, setTotalMagazines] = useState(0)
 
   useEffect(() => {
     // 인증 상태 확인
@@ -104,6 +105,7 @@ export default function AdminPage() {
       }
       
       setHasMoreMagazines(data.pagination?.totalPages > page)
+      setTotalMagazines(data.pagination?.total || 0)
     } catch (error) {
       console.error('매거진 로딩 오류:', error)
     } finally {
@@ -284,7 +286,7 @@ export default function AdminPage() {
                 <BookOpen className="w-8 h-8 text-purple-400" />
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-300">총 매거진</p>
-                  <p className="text-2xl font-bold text-white">{magazines.length}</p>
+                  <p className="text-2xl font-bold text-white">{totalMagazines}</p>
                 </div>
               </div>
             </div>
