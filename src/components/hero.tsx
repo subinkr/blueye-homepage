@@ -562,13 +562,14 @@ export function Hero() {
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="relative group"
+                  className="relative group z-40"
                 >
 
                   
                   <Button
+                    type="button"
                     onClick={() => router.push(`/${locale}/lifestyle`)}
-                    className="relative text-lg px-10 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-2 border-0 overflow-hidden rounded-xl"
+                    className="relative text-lg px-10 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-2 border-0 overflow-hidden rounded-xl z-50 cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="relative flex items-center gap-3">
