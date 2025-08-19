@@ -536,13 +536,77 @@ export function Hero() {
                 transition={{ delay: 1.0, duration: 0.8 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4 sm:pt-8"
               >
-                <Button
-                  onClick={() => router.push(`/${locale}/lifestyle`)}
-                  variant="outline"
-                  className="text-lg px-6 py-4 border-2 border-white text-white hover:bg-white hover:text-primary-600 font-semibold backdrop-blur-sm transition-all duration-300"
+                {/* Floating particles effect */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {[...Array(6)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute w-2 h-2 bg-blue-400 rounded-full opacity-60"
+                      animate={{
+                        x: [0, 100, 0],
+                        y: [0, -50, 0],
+                        opacity: [0.6, 1, 0.6],
+                      }}
+                      transition={{
+                        duration: 3 + i * 0.5,
+                        repeat: Infinity,
+                        delay: i * 0.3,
+                      }}
+                      style={{
+                        left: `${20 + i * 15}%`,
+                        top: `${30 + i * 10}%`,
+                      }}
+                    />
+                  ))}
+                </div>
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="relative group"
                 >
-                  {t('exploreLifestyle')}
-                </Button>
+
+                  
+                  <Button
+                    onClick={() => router.push(`/${locale}/lifestyle`)}
+                    className="relative text-lg px-10 py-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-700 hover:via-purple-700 hover:to-pink-700 text-white font-bold shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-2 border-0 overflow-hidden rounded-xl"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="relative flex items-center gap-3">
+                      <motion.div
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="text-2xl"
+                      >
+                        🌟
+                      </motion.div>
+                      <span className="text-xl">{t('exploreLifestyle')}</span>
+                      <motion.div
+                        animate={{ x: [0, 8, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="text-2xl"
+                      >
+                        →
+                      </motion.div>
+                    </div>
+                  </Button>
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-xl blur opacity-40 group-hover:opacity-70 transition duration-300 animate-pulse" />
+                  
+                  {/* Sparkle effects */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+                    className="absolute -top-4 -right-4 w-8 h-8 opacity-60"
+                  >
+                    <div className="w-full h-full bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full blur-sm" />
+                  </motion.div>
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+                    className="absolute -bottom-4 -left-4 w-6 h-6 opacity-60"
+                  >
+                    <div className="w-full h-full bg-gradient-to-r from-pink-400 to-purple-400 rounded-full blur-sm" />
+                  </motion.div>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
