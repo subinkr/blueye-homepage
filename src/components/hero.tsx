@@ -536,29 +536,6 @@ export function Hero() {
                 transition={{ delay: 1.0, duration: 0.8 }}
                 className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center pt-4 sm:pt-8 px-4"
               >
-                {/* Floating particles effect */}
-                <div className="absolute inset-0 pointer-events-none">
-                  {[...Array(6)].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute w-2 h-2 bg-blue-400 rounded-full opacity-60"
-                      animate={{
-                        x: [0, 100, 0],
-                        y: [0, -50, 0],
-                        opacity: [0.6, 1, 0.6],
-                      }}
-                      transition={{
-                        duration: 3 + i * 0.5,
-                        repeat: Infinity,
-                        delay: i * 0.3,
-                      }}
-                      style={{
-                        left: `${20 + i * 15}%`,
-                        top: `${30 + i * 10}%`,
-                      }}
-                    />
-                  ))}
-                </div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
