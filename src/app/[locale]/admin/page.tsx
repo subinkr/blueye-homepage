@@ -31,6 +31,9 @@ export default function AdminPage() {
   const [editingMagazine, setEditingMagazine] = useState<Magazine | null>(null)
   const [editingNotice, setEditingNotice] = useState<Notice | null>(null)
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all')
+  const [magazinePage, setMagazinePage] = useState(1)
+  const [hasMoreMagazines, setHasMoreMagazines] = useState(true)
+  const [isLoadingMoreMagazines, setIsLoadingMoreMagazines] = useState(false)
 
   useEffect(() => {
     // 인증 상태 확인
@@ -51,15 +54,17 @@ export default function AdminPage() {
     }
   }, [statusFilter, isAuthenticated])
 
+  useEffect(() => {
+    if (isAuthenticated) {
+      setMagazinePage(1)
+      fetchMagazines(1, true)
+    }
+  }, [statusFilter, isAuthenticated])
+
   const fetchData = async () => {
     try {
       setIsLoading(true)
       
-      // 매거진 데이터 가져오기
-      const magazineResponse = await fetch(`/api/magazines?status=${statusFilter}`)
-      const magazineData = await magazineResponse.json()
-      setMagazines(magazineData.data || [])
-
       // 공지사항 데이터 가져오기
       const noticeResponse = await fetch(`/api/notices?status=${statusFilter}`)
       const noticeData = await noticeResponse.json()
@@ -76,6 +81,43 @@ export default function AdminPage() {
     }
   }
 
+  const fetchMagazines = async (page: number = 1, reset: boolean = false) => {
+    try {
+      if (reset) {
+        setIsLoading(true)
+      } else {
+        setIsLoadingMoreMagazines(true)
+      }
+
+      const url = new URL('/api/admin/magazines', window.location.origin)
+      url.searchParams.set('status', statusFilter)
+      url.searchParams.set('page', page.toString())
+      url.searchParams.set('limit', '20')
+
+      const response = await fetch(url.toString())
+      const data = await response.json()
+      
+      if (reset) {
+        setMagazines(data.data || [])
+      } else {
+        setMagazines(prev => [...prev, ...(data.data || [])])
+      }
+      
+      setHasMoreMagazines(data.pagination?.totalPages > page)
+    } catch (error) {
+      console.error('매거진 로딩 오류:', error)
+    } finally {
+      setIsLoading(false)
+      setIsLoadingMoreMagazines(false)
+    }
+  }
+
+  const loadMoreMagazines = () => {
+    const nextPage = magazinePage + 1
+    setMagazinePage(nextPage)
+    fetchMagazines(nextPage, false)
+  }
+
   const handleMagazineSave = async (data: Partial<Magazine>) => {
     try {
       if (editingMagazine) {
@@ -88,7 +130,7 @@ export default function AdminPage() {
         if (response.ok) {
           setShowMagazineForm(false)
           setEditingMagazine(null)
-          fetchData()
+          fetchMagazines(1, true)
         }
       } else {
         // 생성
@@ -99,7 +141,7 @@ export default function AdminPage() {
         })
         if (response.ok) {
           setShowMagazineForm(false)
-          fetchData()
+          fetchMagazines(1, true)
         }
       }
     } catch (error) {
@@ -146,7 +188,11 @@ export default function AdminPage() {
         method: 'DELETE'
       })
       if (response.ok) {
-        fetchData()
+        if (type === 'magazine') {
+          fetchMagazines(1, true)
+        } else {
+          fetchData()
+        }
       }
     } catch (error) {
       console.error('삭제 오류:', error)
@@ -349,6 +395,9 @@ export default function AdminPage() {
                 isLoading={isLoading}
                 onEdit={(magazine) => handleEdit('magazine', magazine)}
                 onDelete={(id) => handleDelete('magazine', id)}
+                hasMore={hasMoreMagazines}
+                isLoadingMore={isLoadingMoreMagazines}
+                onLoadMore={loadMoreMagazines}
               />
             )}
             {activeTab === 'categories' && (

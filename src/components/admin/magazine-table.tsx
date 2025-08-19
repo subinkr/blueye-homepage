@@ -9,9 +9,12 @@ interface MagazineTableProps {
   isLoading: boolean
   onEdit: (magazine: Magazine) => void
   onDelete: (id: string) => void
+  hasMore?: boolean
+  isLoadingMore?: boolean
+  onLoadMore?: () => void
 }
 
-export function MagazineTable({ magazines, isLoading, onEdit, onDelete }: MagazineTableProps) {
+export function MagazineTable({ magazines, isLoading, onEdit, onDelete, hasMore, isLoadingMore, onLoadMore }: MagazineTableProps) {
   const getStatusBadge = (status: string) => {
     const isPublished = status === 'published'
     return (
@@ -141,6 +144,26 @@ export function MagazineTable({ magazines, isLoading, onEdit, onDelete }: Magazi
               ))}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {/* 더 불러오기 버튼 */}
+      {hasMore && magazines.length > 0 && (
+        <div className="p-6 text-center border-t border-white/10">
+          <button
+            onClick={onLoadMore}
+            disabled={isLoadingMore}
+            className="px-6 py-3 rounded-lg bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isLoadingMore ? (
+              <div className="flex items-center gap-2">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                로딩 중...
+              </div>
+            ) : (
+              '더 불러오기'
+            )}
+          </button>
         </div>
       )}
     </motion.div>

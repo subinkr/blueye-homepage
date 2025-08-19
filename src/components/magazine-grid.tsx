@@ -46,7 +46,7 @@ export function MagazineGrid() {
       url.searchParams.set('locale', locale)
       url.searchParams.set('status', 'published')
       url.searchParams.set('page', page.toString())
-      url.searchParams.set('limit', '8')
+      url.searchParams.set('limit', '10')
       
       if (selectedCategory) {
         url.searchParams.set('categoryId', selectedCategory)
@@ -148,7 +148,7 @@ export function MagazineGrid() {
   }
 
   return (
-    <section className="pt-0 pb-20 px-4 sm:px-6 lg:px-8 relative">
+    <section className="pt-0 pb-20 relative">
       <div className="max-w-7xl mx-auto">
         {/* Search */}
         <motion.div
@@ -221,21 +221,21 @@ export function MagazineGrid() {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6"
               >
                 {filteredMagazines.map((magazine) => (
                   <motion.div
                     key={magazine.id}
                     variants={itemVariants}
                     whileHover={{ y: -10, scale: 1.02 }}
-                    className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-purple-500/50 transition-all duration-300"
+                    className="group relative bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden hover:border-purple-500/50 transition-all duration-300"
                   >
-                    <div className="aspect-[3/4] relative overflow-hidden group">
+                    <div className="relative overflow-hidden group">
                       {magazine.cover_image ? (
                         <img
                           src={magazine.cover_image}
                           alt={magazine.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-auto object-contain"
                         />
                       ) : (
                         <div className="h-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 relative">
@@ -256,11 +256,11 @@ export function MagazineGrid() {
                         </div>
                       )}
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 md:group-hover:opacity-100 md:opacity-0 opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 sm:group-hover:opacity-100 sm:opacity-0 opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                           <h4 className="text-sm font-semibold mb-2 line-clamp-2">{magazine.title}</h4>
                           <div
-                            className="text-xs text-gray-200 whitespace-pre-line max-h-32 overflow-y-auto"
+                            className="text-xs text-gray-200 whitespace-pre-line max-h-32 overflow-y-auto hidden sm:block"
                             dangerouslySetInnerHTML={{ __html: magazine.excerpt.replace(/\n/g, '<br>') }}
                           />
                         </div>
