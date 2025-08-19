@@ -30,9 +30,11 @@ export function MagazineGrid() {
   }, [locale])
 
   useEffect(() => {
-    setCurrentPage(1)
-    fetchMagazines(1, true)
-  }, [locale, selectedCategory, searchTerm])
+    if (selectedCategory) {
+      setCurrentPage(1)
+      fetchMagazines(1, true)
+    }
+  }, [selectedCategory, searchTerm])
 
   const fetchMagazines = async (page: number = 1, reset: boolean = false) => {
     try {
