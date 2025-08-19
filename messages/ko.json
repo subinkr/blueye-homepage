@@ -63,7 +63,7 @@
     "assetAllocation": {
       "title": "자산 분배",
       "description": "효율적인 글로벌 자산 분배 및 세무 최적화"
-    },
+    },  
     "globalExperience": "글로벌 시장 경험",
     "satisfiedCustomers": "만족한 고객",
     "totalTransactionVolume": "총 거래 규모"
@@ -329,6 +329,9 @@
     "title": "라이프스타일 월드컵",
     "subtitle": "당신에게 가장 적합한 라이프스타일을 찾아보세요",
     "round": "라운드",
+    "qualifying": "예선",
+    "semifinal": "준결승",
+    "final": "결승",
     "completed": "완료",
     "congratulations": "축하합니다! 🎉",
     "foundLifestyle": "당신의 이상적인 라이프스타일을 찾았습니다",

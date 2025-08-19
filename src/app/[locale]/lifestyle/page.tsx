@@ -334,6 +334,14 @@ export default function LifestyleQuizPage() {
       return normalizedCountries
     }
 
+  // 라운드를 단계별 텍스트로 변환
+  const getRoundText = (round: number) => {
+    if (round === 1) return t('qualifying')
+    if (round === 2) return t('semifinal')
+    if (round === 3) return t('final')
+    return t('round')
+  }
+
   // 홈으로 돌아가기
   const goHome = () => {
     router.push(`/${locale}`)
@@ -558,13 +566,13 @@ export default function LifestyleQuizPage() {
               transition={{ duration: 0.5 }}
               className="relative"
             >
-              <motion.div
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg"
-              >
-                {t('round')} {currentRound}
-              </motion.div>
+                             <motion.div
+                 animate={{ scale: [1, 1.05, 1] }}
+                 transition={{ duration: 2, repeat: Infinity }}
+                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full font-bold text-sm shadow-lg"
+               >
+                 {getRoundText(currentRound)}
+               </motion.div>
               {/* 라운드 변경 시 스파클 효과 */}
               <motion.div
                 initial={{ scale: 0, opacity: 1 }}
