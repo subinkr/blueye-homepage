@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
 
     let query = supabase
       .from('daily_briefs')
-      .select('*')
+      .select('*', { count: 'exact' })
       .eq('locale', locale)
       .order('published_date', { ascending: false })
 
@@ -27,7 +27,6 @@ export async function GET(request: NextRequest) {
 
     const { data, error, count } = await query
       .range(offset, offset + limit - 1)
-      .select('*', { count: 'exact' })
 
     if (error) {
       console.error('데일리 브리프 조회 오류:', error)

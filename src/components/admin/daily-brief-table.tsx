@@ -126,7 +126,7 @@ export function DailyBriefTable({
                     <div className="w-16 h-16 rounded-lg overflow-hidden">
                       <img
                         src={brief.image_url}
-                        alt={brief.title}
+                        alt={`데일리 브리프 - ${formatDate(brief.published_date)}`}
                         className="w-full h-full object-cover"
                       />
                     </div>

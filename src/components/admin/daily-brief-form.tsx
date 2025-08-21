@@ -111,10 +111,10 @@ export function DailyBriefForm({ dailyBrief, onSave, onCancel, isOpen }: DailyBr
                 이미지 *
               </label>
               <ImageUpload
-                currentImageUrl={imageUrl}
+                currentImage={imageUrl}
                 onImageUpload={handleImageUpload}
-                bucketName="images"
-                folderName="daily-briefs"
+                onImageRemove={() => setImageUrl('')}
+                folder="daily-briefs"
               />
             </div>
 
