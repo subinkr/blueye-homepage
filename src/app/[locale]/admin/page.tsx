@@ -4,9 +4,11 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MagazineForm } from '@/components/admin/magazine-form'
 import { NoticeForm } from '@/components/admin/notice-form'
+import { DailyBriefForm } from '@/components/admin/daily-brief-form'
 import { CategoryManager } from '@/components/admin/category-manager'
 import { MagazineTable } from '@/components/admin/magazine-table'
 import { NoticeTable } from '@/components/admin/notice-table'
+import { DailyBriefTable } from '@/components/admin/daily-brief-table'
 import { Magazine, Notice, Category } from '@/lib/database'
 import { Button } from '@/components/ui/button'
 import { 
@@ -14,22 +16,26 @@ import {
   Bell, 
   Plus, 
   Tag,
-  LogOut
+  LogOut,
+  Newspaper
 } from 'lucide-react'
 import { AuthModal } from '@/components/admin/auth-modal'
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [showAuthModal, setShowAuthModal] = useState(false)
-  const [activeTab, setActiveTab] = useState<'magazines' | 'notices' | 'categories'>('notices')
+  const [activeTab, setActiveTab] = useState<'magazines' | 'notices' | 'news' | 'categories'>('notices')
   const [magazines, setMagazines] = useState<Magazine[]>([])
   const [notices, setNotices] = useState<Notice[]>([])
+  const [dailyBriefs, setDailyBriefs] = useState<any[]>([])
   const [categories, setCategories] = useState<Category[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [showMagazineForm, setShowMagazineForm] = useState(false)
   const [showNoticeForm, setShowNoticeForm] = useState(false)
+  const [showDailyBriefForm, setShowDailyBriefForm] = useState(false)
   const [editingMagazine, setEditingMagazine] = useState<Magazine | null>(null)
   const [editingNotice, setEditingNotice] = useState<Notice | null>(null)
+  const [editingDailyBrief, setEditingDailyBrief] = useState<any>(null)
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all')
   const [magazinePage, setMagazinePage] = useState(1)
   const [hasMoreMagazines, setHasMoreMagazines] = useState(true)
@@ -70,6 +76,11 @@ export default function AdminPage() {
       const noticeResponse = await fetch(`/api/notices?status=${statusFilter}`)
       const noticeData = await noticeResponse.json()
       setNotices(noticeData.data || [])
+
+      // 데일리 브리프 데이터 가져오기
+      const newsResponse = await fetch(`/api/news?status=${statusFilter}`)
+      const newsData = await newsResponse.json()
+      setDailyBriefs(newsData.data || [])
 
       // 카테고리 데이터 가져오기
       const categoryResponse = await fetch('/api/categories')
@@ -182,11 +193,42 @@ export default function AdminPage() {
     }
   }
 
-  const handleDelete = async (type: 'magazine' | 'notice' | 'category', id: string) => {
+  const handleDailyBriefSave = async (data: any) => {
+    try {
+      if (editingDailyBrief) {
+        // 수정
+        const response = await fetch(`/api/news/${editingDailyBrief.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        if (response.ok) {
+          setShowDailyBriefForm(false)
+          setEditingDailyBrief(null)
+          fetchData()
+        }
+      } else {
+        // 생성
+        const response = await fetch('/api/news', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        })
+        if (response.ok) {
+          setShowDailyBriefForm(false)
+          fetchData()
+        }
+      }
+    } catch (error) {
+      console.error('데일리 브리프 저장 오류:', error)
+    }
+  }
+
+  const handleDelete = async (type: 'magazine' | 'notice' | 'news' | 'category', id: string) => {
     if (!confirm('정말 삭제하시겠습니까?')) return
 
     try {
-      const response = await fetch(`/api/${type}s/${id}`, {
+      const response = await fetch(`/api/${type === 'news' ? 'news' : type + 's'}/${id}`, {
         method: 'DELETE'
       })
       if (response.ok) {
@@ -201,13 +243,16 @@ export default function AdminPage() {
     }
   }
 
-  const handleEdit = (type: 'magazine' | 'notice', item: Magazine | Notice) => {
+  const handleEdit = (type: 'magazine' | 'notice' | 'news', item: Magazine | Notice | any) => {
     if (type === 'magazine') {
       setEditingMagazine(item as Magazine)
       setShowMagazineForm(true)
     } else if (type === 'notice') {
       setEditingNotice(item as Notice)
       setShowNoticeForm(true)
+    } else if (type === 'news') {
+      setEditingDailyBrief(item)
+      setShowDailyBriefForm(true)
     }
   }
 
@@ -261,7 +306,7 @@ export default function AdminPage() {
               관리자 대시보드
             </h1>
             <p className="text-xl text-gray-300">
-              콘텐츠를 관리하고 새로운 정보를 추가하세요
+              데일리 브리프, 공지사항, 매거진을 관리하고 새로운 정보를 추가하세요
             </p>
           </motion.div>
 
@@ -270,7 +315,7 @@ export default function AdminPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+            className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8"
           >
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
               <div className="flex items-center">
@@ -278,6 +323,16 @@ export default function AdminPage() {
                 <div className="ml-4">
                   <p className="text-sm font-medium text-gray-300">총 공지사항</p>
                   <p className="text-2xl font-bold text-white">{notices.length}</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+              <div className="flex items-center">
+                <Newspaper className="w-8 h-8 text-orange-400" />
+                <div className="ml-4">
+                  <p className="text-sm font-medium text-gray-300">총 데일리 브리프</p>
+                  <p className="text-2xl font-bold text-white">{dailyBriefs.length}</p>
+                  <p className="text-xs text-gray-400">시장동향 + 회사소식</p>
                 </div>
               </div>
             </div>
@@ -318,6 +373,17 @@ export default function AdminPage() {
             >
               <Bell className="w-4 h-4 inline mr-2" />
               공지사항
+            </button>
+            <button
+              onClick={() => setActiveTab('news')}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
+                activeTab === 'news'
+                  ? 'bg-white text-gray-900 shadow-sm'
+                  : 'text-gray-300 hover:text-white'
+              }`}
+            >
+              <Newspaper className="w-4 h-4 inline mr-2" />
+              데일리 브리프
             </button>
             <button
               onClick={() => setActiveTab('magazines')}
@@ -371,12 +437,15 @@ export default function AdminPage() {
                   } else if (activeTab === 'magazines') {
                     setEditingMagazine(null)
                     setShowMagazineForm(true)
+                  } else if (activeTab === 'news') {
+                    setEditingDailyBrief(null)
+                    setShowDailyBriefForm(true)
                   }
                 }}
                 className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
               >
                 <Plus className="w-4 h-4 mr-2" />
-                새 {activeTab === 'notices' ? '공지사항' : '매거진'} 생성
+                새 {activeTab === 'notices' ? '공지사항' : activeTab === 'magazines' ? '매거진' : '이미지'} 생성
               </Button>
             </motion.div>
           )}
@@ -389,6 +458,14 @@ export default function AdminPage() {
                 isLoading={isLoading}
                 onEdit={(notice) => handleEdit('notice', notice)}
                 onDelete={(id) => handleDelete('notice', id)}
+              />
+            )}
+            {activeTab === 'news' && (
+              <DailyBriefTable
+                dailyBriefs={dailyBriefs}
+                isLoading={isLoading}
+                onEdit={(dailyBrief) => handleEdit('news', dailyBrief)}
+                onDelete={(id) => handleDelete('news', id)}
               />
             )}
             {activeTab === 'magazines' && (
@@ -427,6 +504,16 @@ export default function AdminPage() {
               setEditingNotice(null)
             }}
             isOpen={showNoticeForm}
+          />
+
+          <DailyBriefForm
+            dailyBrief={editingDailyBrief || undefined}
+            onSave={handleDailyBriefSave}
+            onCancel={() => {
+              setShowDailyBriefForm(false)
+              setEditingDailyBrief(null)
+            }}
+            isOpen={showDailyBriefForm}
           />
         </div>
       )}

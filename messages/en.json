@@ -7,7 +7,8 @@
     "contact": "Contact",
     "language": "Language",
     "magazine": "Magazine",
-    "notices": "Notices"
+    "notices": "Notices",
+    "news": "News"
   },
   "hero": {
     "title": "Global Premium Life Solutions",
@@ -268,6 +269,16 @@
     "totalNotices": "Total Notices",
     "realTimeUpdates": "Real-time Updates",
     "reliableInformation": "Reliable Information"
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Discover daily market trends and company updates with Daily Brief",
+    "description": "Financial/real estate market trends, government policy guides, company visitor photos and more - fresh daily updates",
+    "dailyBrief": "Daily Brief",
+    "latestNews": "Latest News",
+    "stayUpdated": "Stay updated with daily market information and company news",
+    "noNewsFound": "No news found",
+    "tryAdjusting": "Try adjusting your search or filter criteria"
   },
   "lifestyleVision": {
     "title": "Your Dream Lifestyle",

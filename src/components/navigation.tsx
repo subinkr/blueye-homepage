@@ -64,6 +64,13 @@ export function Navigation() {
             </Link>
 
             <Link
+              href={`/${locale}/news`}
+              className="text-white hover:text-blue-200 transition-colors font-medium"
+            >
+              {t('news')}
+            </Link>
+
+            <Link
               href={`/${locale}/magazine`}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >
@@ -195,6 +202,14 @@ export function Navigation() {
                   className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
                 >
                   {t('notices')}
+                </Link>
+
+                <Link
+                  href={`/${locale}/news`}
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  {t('news')}
                 </Link>
 
                 <Link

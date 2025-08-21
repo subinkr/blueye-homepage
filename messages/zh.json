@@ -7,7 +7,8 @@
     "contact": "联系我们",
     "language": "语言",
     "magazine": "杂志",
-    "notices": "公告"
+    "notices": "公告",
+    "news": "新闻"
   },
   "hero": {
     "title": "全球高端生活解决方案",
@@ -268,6 +269,16 @@
     "totalNotices": "总公告数",
     "realTimeUpdates": "实时更新",
     "reliableInformation": "可靠信息"
+  },
+  "news": {
+    "title": "新闻",
+    "subtitle": "通过每日简报发现每日市场趋势和公司动态",
+    "description": "金融/房地产市场趋势、政府政策指南、公司访客照片等每日更新的生动新闻",
+    "dailyBrief": "每日简报",
+    "latestNews": "最新新闻",
+    "stayUpdated": "通过每日市场信息和公司新闻保持更新",
+    "noNewsFound": "未找到新闻",
+    "tryAdjusting": "尝试调整搜索或筛选条件"
   },
   "lifestyleVision": {
     "title": "您的梦想生活方式",
