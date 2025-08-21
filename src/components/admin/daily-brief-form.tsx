@@ -91,7 +91,7 @@ export function DailyBriefForm({ dailyBrief, onSave, onCancel, isOpen }: DailyBr
               {dailyBrief ? '데일리 브리프 수정' : '새 데일리 브리프 생성'}
             </h2>
             <p className="text-sm text-gray-500 mt-1">
-              금융/부동산 시장 동향, 정부 정책, 회사 방문 손님 사진 등을 포함한 일일 브리프
+              금융/부동산 시장 동향, 정부 정책 등을 포함한 일일 브리프
             </p>
             <button
               onClick={onCancel}
