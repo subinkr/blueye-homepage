@@ -56,7 +56,7 @@ export function NewsList() {
   }
 
   return (
-    <section className="py-20 px-4">
+    <section className="pt-0 pb-20 relative">
       <div className="max-w-7xl mx-auto">
         {/* Daily Brief Grid */}
         {dailyBriefs.length === 0 ? (
