@@ -30,40 +30,40 @@ function SevenSegmentDigit({ digit }: { digit: string }) {
   const segmentStates = segments[digit as keyof typeof segments] || [0, 0, 0, 0, 0, 0, 0]
   
   return (
-    <div className="relative inline-block w-8 h-12 sm:w-10 sm:h-14 md:w-12 md:h-18 lg:w-14 lg:h-20 mx-1 sm:mx-2">
+    <div className="relative inline-block w-6 h-9 xs:w-7 xs:h-10 sm:w-8 sm:h-12 md:w-10 md:h-14 lg:w-12 lg:h-18 xl:w-14 xl:h-20 mx-0.5 xs:mx-1 sm:mx-1.5 md:mx-2">
       {/* 세그먼트 A (상단 가로) */}
-      <div className={`absolute top-0 left-1 right-1 h-1 sm:h-1.5 md:h-2 bg-white rounded-sm transition-all duration-200 ${
-        segmentStates[0] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      <div className={`absolute top-0 left-0.5 xs:left-1 right-0.5 xs:right-1 h-0.5 xs:h-1 sm:h-1 md:h-1.5 lg:h-2 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[0] ? 'opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.9)] xs:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] lg:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
       }`} />
       
       {/* 세그먼트 B (우상단 세로) */}
-      <div className={`absolute top-1 sm:top-1.5 md:top-2 right-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
-        segmentStates[1] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      <div className={`absolute top-0.5 xs:top-1 sm:top-1 md:top-1.5 lg:top-2 right-0 w-0.5 xs:w-1 sm:w-1 md:w-1.5 lg:w-2 h-3.5 xs:h-4 sm:h-5 md:h-6 lg:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[1] ? 'opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.9)] xs:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] lg:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
       }`} />
       
       {/* 세그먼트 C (우하단 세로) */}
-      <div className={`absolute bottom-1 sm:bottom-1.5 md:bottom-2 right-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
-        segmentStates[2] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      <div className={`absolute bottom-0.5 xs:bottom-1 sm:bottom-1 md:bottom-1.5 lg:bottom-2 right-0 w-0.5 xs:w-1 sm:w-1 md:w-1.5 lg:w-2 h-3.5 xs:h-4 sm:h-5 md:h-6 lg:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[2] ? 'opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.9)] xs:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] lg:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
       }`} />
       
       {/* 세그먼트 D (하단 가로) */}
-      <div className={`absolute bottom-0 left-1 right-1 h-1 sm:h-1.5 md:h-2 bg-white rounded-sm transition-all duration-200 ${
-        segmentStates[3] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      <div className={`absolute bottom-0 left-0.5 xs:left-1 right-0.5 xs:right-1 h-0.5 xs:h-1 sm:h-1 md:h-1.5 lg:h-2 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[3] ? 'opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.9)] xs:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] lg:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
       }`} />
       
       {/* 세그먼트 E (좌하단 세로) */}
-      <div className={`absolute bottom-1 sm:bottom-1.5 md:bottom-2 left-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
-        segmentStates[4] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      <div className={`absolute bottom-0.5 xs:bottom-1 sm:bottom-1 md:bottom-1.5 lg:bottom-2 left-0 w-0.5 xs:w-1 sm:w-1 md:w-1.5 lg:w-2 h-3.5 xs:h-4 sm:h-5 md:h-6 lg:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[4] ? 'opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.9)] xs:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] lg:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
       }`} />
       
       {/* 세그먼트 F (좌상단 세로) */}
-      <div className={`absolute top-1 sm:top-1.5 md:top-2 left-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
-        segmentStates[5] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      <div className={`absolute top-0.5 xs:top-1 sm:top-1 md:top-1.5 lg:top-2 left-0 w-0.5 xs:w-1 sm:w-1 md:w-1.5 lg:w-2 h-3.5 xs:h-4 sm:h-5 md:h-6 lg:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[5] ? 'opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.9)] xs:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] lg:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
       }`} />
       
       {/* 세그먼트 G (중앙 가로) */}
-      <div className={`absolute top-1/2 left-1 right-1 h-1 sm:h-1.5 md:h-2 bg-white rounded-sm transition-all duration-200 transform -translate-y-1/2 ${
-        segmentStates[6] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      <div className={`absolute top-1/2 left-0.5 xs:left-1 right-0.5 xs:right-1 h-0.5 xs:h-1 sm:h-1 md:h-1.5 lg:h-2 bg-white rounded-sm transition-all duration-200 transform -translate-y-1/2 ${
+        segmentStates[6] ? 'opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.9)] xs:drop-shadow-[0_0_6px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] lg:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
       }`} />
     </div>
   )
@@ -618,41 +618,41 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto pt-4 sm:pt-6 px-4"
+                className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto pt-4 sm:pt-6 px-4"
               >
-                                  <div className="text-center">
-                    <motion.div 
-                      className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.0, duration: 0.8 }}
-                    >
-                      <CountUp end={23} duration={6.9} delay={1.0} />
-                    </motion.div>
-                    <div className="text-xs sm:text-sm md:text-base text-white/80">{t('experienceYears')}</div>
-                  </div>
-                  <div className="text-center">
-                    <motion.div 
-                      className="text-lg sm:text-xl md:text-2xl lg:text-2xl lg:text-3xl font-bold mb-1"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.2, duration: 0.8 }}
-                    >
-                      <CountUp end={6} duration={3} delay={1.2} />
-                    </motion.div>
-                    <div className="text-xs sm:text-sm md:text-base text-white/80">{t('countries')}</div>
-                  </div>
-                  <div className="text-center sm:col-span-2 md:col-span-1">
-                    <motion.div 
-                      className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.4, duration: 0.8 }}
-                    >
-                      <CountUp end={999} duration={99.9} delay={1.4} />
-                    </motion.div>
-                    <div className="text-xs sm:text-base text-white/80">{t('managedProperties')}</div>
-                  </div>
+                <div className="text-center">
+                  <motion.div 
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-1"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.0, duration: 0.8 }}
+                  >
+                    <CountUp end={23} duration={6.9} delay={1.0} />
+                  </motion.div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('experienceYears')}</div>
+                </div>
+                <div className="text-center">
+                  <motion.div 
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-1"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.2, duration: 0.8 }}
+                  >
+                    <CountUp end={6} duration={3} delay={1.2} />
+                  </motion.div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('countries')}</div>
+                </div>
+                <div className="text-center col-span-2 lg:col-span-1">
+                  <motion.div 
+                    className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-1"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4, duration: 0.8 }}
+                  >
+                    <CountUp end={999} duration={99.9} delay={1.4} />
+                  </motion.div>
+                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('managedProperties')}</div>
+                </div>
               </motion.div>
 
               {/* CTA Buttons */}
