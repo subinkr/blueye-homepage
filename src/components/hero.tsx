@@ -11,6 +11,117 @@ import { useRouter } from 'next/navigation'
 import { CTA } from './cta'
 import { Footer } from './footer'
 
+// 7세그먼트 디스플레이 컴포넌트
+function SevenSegmentDigit({ digit }: { digit: string }) {
+  // 표준 7 세그먼트 디스플레이 순서: A, B, C, D, E, F, G
+  const segments = {
+    '0': [1, 1, 1, 1, 1, 1, 0], // A, B, C, D, E, F 켜짐, G 꺼짐
+    '1': [0, 1, 1, 0, 0, 0, 0], // B, C 켜짐
+    '2': [1, 1, 0, 1, 1, 0, 1], // A, B, D, E, G 켜짐
+    '3': [1, 1, 1, 1, 0, 0, 1], // A, B, C, D, G 켜짐
+    '4': [0, 1, 1, 0, 0, 1, 1], // B, C, F, G 켜짐
+    '5': [1, 0, 1, 1, 0, 1, 1], // A, C, D, F, G 켜짐
+    '6': [1, 0, 1, 1, 1, 1, 1], // A, C, D, E, F, G 켜짐
+    '7': [1, 1, 1, 0, 0, 0, 0], // A, B, C 켜짐
+    '8': [1, 1, 1, 1, 1, 1, 1], // 모든 세그먼트 켜짐
+    '9': [1, 1, 1, 1, 0, 1, 1], // A, B, C, D, F, G 켜짐
+  }
+  
+  const segmentStates = segments[digit as keyof typeof segments] || [0, 0, 0, 0, 0, 0, 0]
+  
+  return (
+    <div className="relative inline-block w-8 h-12 sm:w-10 sm:h-14 md:w-12 md:h-18 lg:w-14 lg:h-20 mx-1 sm:mx-2">
+      {/* 세그먼트 A (상단 가로) */}
+      <div className={`absolute top-0 left-1 right-1 h-1 sm:h-1.5 md:h-2 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[0] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      }`} />
+      
+      {/* 세그먼트 B (우상단 세로) */}
+      <div className={`absolute top-1 sm:top-1.5 md:top-2 right-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[1] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      }`} />
+      
+      {/* 세그먼트 C (우하단 세로) */}
+      <div className={`absolute bottom-1 sm:bottom-1.5 md:bottom-2 right-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[2] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      }`} />
+      
+      {/* 세그먼트 D (하단 가로) */}
+      <div className={`absolute bottom-0 left-1 right-1 h-1 sm:h-1.5 md:h-2 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[3] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      }`} />
+      
+      {/* 세그먼트 E (좌하단 세로) */}
+      <div className={`absolute bottom-1 sm:bottom-1.5 md:bottom-2 left-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[4] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      }`} />
+      
+      {/* 세그먼트 F (좌상단 세로) */}
+      <div className={`absolute top-1 sm:top-1.5 md:top-2 left-0 w-1 sm:w-1.5 md:w-2 h-5 sm:h-6 md:h-7 bg-white rounded-sm transition-all duration-200 ${
+        segmentStates[5] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      }`} />
+      
+      {/* 세그먼트 G (중앙 가로) */}
+      <div className={`absolute top-1/2 left-1 right-1 h-1 sm:h-1.5 md:h-2 bg-white rounded-sm transition-all duration-200 transform -translate-y-1/2 ${
+        segmentStates[6] ? 'opacity-100 drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] sm:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] md:drop-shadow-[0_0_12px_rgba(255,255,255,0.9)]' : 'opacity-15'
+      }`} />
+    </div>
+  )
+}
+
+// CountUp 컴포넌트
+function CountUp({ end, duration = 2, delay = 0, suffix = '', prefix = '' }: { 
+  end: number; 
+  duration?: number; 
+  delay?: number; 
+  suffix?: string; 
+  prefix?: string; 
+}) {
+  const [count, setCount] = useState(0)
+  const [displayCount, setDisplayCount] = useState(0)
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      let startTime: number
+      let animationFrame: number
+      
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime
+        const progress = Math.min((currentTime - startTime) / (duration * 1000), 1)
+        
+        const currentCount = Math.floor(progress * end)
+        setCount(currentCount)
+        setDisplayCount(currentCount)
+        
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(animate)
+        }
+      }
+      
+      animationFrame = requestAnimationFrame(animate)
+      
+      return () => {
+        if (animationFrame) {
+          cancelAnimationFrame(animationFrame)
+        }
+      }
+    }, delay * 1000)
+    
+    return () => clearTimeout(timer)
+  }, [end, duration, delay])
+  
+  const paddedNumber = displayCount.toString().padStart(3, '0')
+  
+  return (
+    <span className="inline-flex items-center justify-center">
+      {paddedNumber.split('').map((digit, index) => (
+        <SevenSegmentDigit key={index} digit={digit} />
+      ))}
+      {suffix}
+    </span>
+  )
+}
+
 export function Hero() {
   const t = useTranslations('hero')
   const tCountries = useTranslations('countries')
@@ -507,26 +618,41 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
-                className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto pt-4 sm:pt-6 px-4"
+                className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-4xl mx-auto pt-4 sm:pt-6 px-4"
               >
-                <div className="text-center">
-                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1 drop-shadow-lg">
-                    23
+                                  <div className="text-center">
+                    <motion.div 
+                      className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.0, duration: 0.8 }}
+                    >
+                      <CountUp end={23} duration={6.9} delay={1.0} />
+                    </motion.div>
+                    <div className="text-xs sm:text-sm md:text-base text-white/80">{t('experienceYears')}</div>
                   </div>
-                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('experienceYears')}</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1 drop-shadow-lg">
-                    6
+                  <div className="text-center">
+                    <motion.div 
+                      className="text-lg sm:text-xl md:text-2xl lg:text-2xl lg:text-3xl font-bold mb-1"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.2, duration: 0.8 }}
+                    >
+                      <CountUp end={6} duration={3} delay={1.2} />
+                    </motion.div>
+                    <div className="text-xs sm:text-sm md:text-base text-white/80">{t('countries')}</div>
                   </div>
-                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('countries')}</div>
-                </div>
-                <div className="text-center col-span-2 md:col-span-1">
-                  <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-1 drop-shadow-lg">
-                    30,000+
+                  <div className="text-center sm:col-span-2 md:col-span-1">
+                    <motion.div 
+                      className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.4, duration: 0.8 }}
+                    >
+                      <CountUp end={999} duration={99.9} delay={1.4} />
+                    </motion.div>
+                    <div className="text-xs sm:text-base text-white/80">{t('managedProperties')}</div>
                   </div>
-                  <div className="text-xs sm:text-sm md:text-base text-white/80">{t('managedProperties')}</div>
-                </div>
               </motion.div>
 
               {/* CTA Buttons */}

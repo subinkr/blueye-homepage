@@ -1,8 +1,8 @@
 {
   "navigation": {
     "home": "Home",
-    "services": "Services",
-    "properties": "Properties",
+
+    "properties": "About",
     "about": "About Us",
     "contact": "Contact",
     "language": "Language",
@@ -15,67 +15,21 @@
     "subtitle": "From overseas real estate investment to local lifestyle support, experience global lifestyle with Blueye",
     "cta": "Get Free Consultation",
     "scroll": "Next Section",
-    "description": "Presenting new standards for global real estate through decades of expertise and worldwide network.",
+    "description": "Designing customers' lives together through decades of expertise and worldwide network.",
     "experienceYears": "Years of Experience",
     "countries": "Countries",
-    "managedProperties": "Managed Properties",
+    "managedProperties": "Managed Clients",
     "learnMore": "Contact Us",
     "exploreLifestyle": "Explore Lifestyle"
   },
-  "services": {
-    "title": "Services",
-    "subtitle": "Comprehensive solutions for global lifestyle",
-    "learnMore": "Learn More",
-    "scroll": "Next Section",
-    "detailTitle": "Service Overview",
-    "detailSubtitle": "Check detailed information and contact methods for each service",
-    "realEstate": {
-      "title": "Overseas Real Estate Investment",
-      "description": "Premium real estate investment opportunities in Korea, China, and Vietnam"
-    },
-    "management": {
-      "title": "Property Management",
-      "description": "Professional rental management and asset management services"
-    },
-    "lifestyle": {
-      "title": "Local Lifestyle Support",
-      "description": "Comprehensive local lifestyle support including visas, education, and healthcare"
-    },
-    "consulting": {
-      "title": "Investment Consulting",
-      "description": "Personalized overseas investment strategies and asset allocation planning"
-    }
-  },
-  "targetAudience": {
-    "title": "Target Audience",
-    "subtitle": "Customized solutions for customers with diverse lifestyles and goals",
-    "retirement": {
-      "title": "Retirement Immigration",
-      "description": "Support for safe and prosperous retirement living abroad"
-    },
-    "investment": {
-      "title": "Overseas Investment",
-      "description": "Stable investment portfolio through global asset diversification"
-    },
-    "monthlyStay": {
-      "title": "Monthly Living",
-      "description": "New lifestyle experiences through seasonal local living"
-    },
-    "assetAllocation": {
-      "title": "Asset Allocation",
-      "description": "Efficient global asset allocation and tax optimization"
-    },
-    "globalExperience": "Global Market Experience",
-    "satisfiedCustomers": "Satisfied Customers",
-    "totalTransactionVolume": "Total Transaction Volume"
-  },
+
   "cta": {
     "title": "Start Your Global Lifestyle",
     "subtitle": "Consult with our experts to receive personalized solutions",
     "button": "Request Free Consultation",
     "inquiry": "Inquiry",
-    "consultation": "Consultation",
-    "description": "If you have any questions about overseas real estate investment, please feel free to contact us. Our experts will provide friendly consultation.",
+    "consultation": "Free Consultation",
+    "description": "Put payment aside for now and start comfortably with free consultation.",
     "contactInfo": "Contact Information",
     "phone": "Phone",
     "kakao": "KakaoTalk",

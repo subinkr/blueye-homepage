@@ -56,28 +56,6 @@ export function Navigation() {
               {t('home')}
             </Link>
 
-            <Link
-              href={`/${locale}/notices`}
-              className="text-white hover:text-blue-200 transition-colors font-medium"
-            >
-              {t('notices')}
-            </Link>
-
-            <Link
-              href={`/${locale}/news`}
-              className="text-white hover:text-blue-200 transition-colors font-medium"
-            >
-              {t('news')}
-            </Link>
-
-            <Link
-              href={`/${locale}/magazine`}
-              className="text-white hover:text-blue-200 transition-colors font-medium"
-            >
-              {t('magazine')}
-            </Link>
-
-            
             {/* Countries Dropdown */}
             <div className="relative">
               <button
@@ -118,7 +96,27 @@ export function Navigation() {
                 )}
               </AnimatePresence>
             </div>
-            
+
+            <Link
+              href={`/${locale}/notices`}
+              className="text-white hover:text-blue-200 transition-colors font-medium"
+            >
+              {t('notices')}
+            </Link>
+
+            <Link
+              href={`/${locale}/news`}
+              className="text-white hover:text-blue-200 transition-colors font-medium"
+            >
+              {t('news')}
+            </Link>
+
+            <Link
+              href={`/${locale}/magazine`}
+              className="text-white hover:text-blue-200 transition-colors font-medium"
+            >
+              {t('magazine')}
+            </Link>
 
             <Link
               href={`/${locale}#cta`}
@@ -196,31 +194,6 @@ export function Navigation() {
                   {t('home')}
                 </Link>
 
-                <Link
-                  href={`/${locale}/notices`}
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  {t('notices')}
-                </Link>
-
-                <Link
-                  href={`/${locale}/news`}
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  {t('news')}
-                </Link>
-
-                <Link
-                  href={`/${locale}/magazine`}
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
-                >
-                  {t('magazine')}
-                </Link>
-
-                
                 {/* Mobile Countries Dropdown */}
                 <button
                   onClick={() => setIsCountriesOpen(!isCountriesOpen)}
@@ -260,6 +233,30 @@ export function Navigation() {
                     </motion.div>
                   )}
                 </AnimatePresence>
+
+                <Link
+                  href={`/${locale}/notices`}
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  {t('notices')}
+                </Link>
+
+                <Link
+                  href={`/${locale}/news`}
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  {t('news')}
+                </Link>
+
+                <Link
+                  href={`/${locale}/magazine`}
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-left px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  {t('magazine')}
+                </Link>
 
                 <Link
                   href={`/${locale}#cta`}

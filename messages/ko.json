@@ -1,8 +1,8 @@
 {
   "navigation": {
     "home": "홈",
-    "services": "서비스",
-    "properties": "부동산",
+
+    "properties": "소개",
     "about": "회사소개",
     "contact": "문의하기",
     "language": "언어",
@@ -12,70 +12,24 @@
   },
   "hero": {
     "title": "글로벌 프리미엄 라이프 솔루션",
-    "subtitle": "해외 부동산 투자부터 현지 생활 지원까지, Blueye와 함께하는 글로벌 라이프스타일",
+    "subtitle": "해외 생활 지원부터 현지 부동산 관리까지, Blueye와 함께하는 글로벌 라이프스타일",
     "cta": "무료 상담 받기",
     "scroll": "다음 섹션",
-    "description": "수십 년의 전문성과 전세계 네트워크를 통해 글로벌 부동산의 새로운 기준을 제시합니다.",
+    "description": "수십 년의 전문성과 전세계 네트워크를 통해 고객의 삶을 함께 설계합니다.",
     "experienceYears": "경험 연수",
     "countries": "진출 국가",
-    "managedProperties": "관리 부동산",
+    "managedProperties": "관리 고객",
     "learnMore": "문의하기",
     "exploreLifestyle": "라이프스타일 알아보기"
   },
-  "services": {
-    "title": "서비스",
-    "subtitle": "글로벌 라이프스타일을 위한 종합 솔루션",
-    "learnMore": "자세히 보기",
-    "scroll": "다음 섹션",
-    "detailTitle": "서비스 개요",
-    "detailSubtitle": "각 서비스에 대한 자세한 정보와 문의 방법을 확인하세요",
-    "realEstate": {
-      "title": "해외 부동산 투자",
-      "description": "한국, 중국, 베트남의 프리미엄 부동산 투자 기회"
-    },
-    "management": {
-      "title": "부동산 관리",
-      "description": "전문적인 임대 관리 및 자산 관리 서비스"
-    },
-    "lifestyle": {
-      "title": "현지 생활 지원",
-      "description": "비자, 교육, 의료 등 종합적인 현지 생활 지원"
-    },
-    "consulting": {
-      "title": "투자 컨설팅",
-      "description": "개인 맞춤형 해외 투자 전략 및 자산 분배 계획"
-    }
-  },
-  "targetAudience": {
-    "title": "타겟 고객",
-    "subtitle": "다양한 라이프스타일과 목표를 가진 고객들을 위한 맞춤형 솔루션",
-    "retirement": {
-      "title": "은퇴 이민",
-      "description": "안전하고 풍요로운 은퇴 생활을 위한 해외 이민 지원"
-    },
-    "investment": {
-      "title": "해외 투자",
-      "description": "글로벌 자산 분산을 통한 안정적인 투자 포트폴리오"
-    },
-    "monthlyStay": {
-      "title": "한달살기",
-      "description": "계절별 현지 생활을 통한 새로운 라이프스타일 경험"
-    },
-    "assetAllocation": {
-      "title": "자산 분배",
-      "description": "효율적인 글로벌 자산 분배 및 세무 최적화"
-    },  
-    "globalExperience": "글로벌 시장 경험",
-    "satisfiedCustomers": "만족한 고객",
-    "totalTransactionVolume": "총 거래 규모"
-  },
+
   "cta": {
     "title": "글로벌 라이프스타일을 시작하세요",
     "subtitle": "전문 컨설턴트와 상담하여 맞춤형 솔루션을 받아보세요",
     "button": "무료 상담 신청",
     "inquiry": "문의하기",
-    "consultation": "상담 문의",
-    "description": "해외 부동산 투자에 관한 궁금한 점이 있으시면 언제든지 문의해 주세요. 전문가가 친절하게 상담해 드립니다.",
+    "consultation": "무료 상담",
+    "description": "결제는 잠시 미루고 무료 상담부터 편하게 시작하세요.",
     "contactInfo": "연락처 정보",
     "phone": "전화번호",
     "kakao": "카카오톡",

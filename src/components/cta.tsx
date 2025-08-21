@@ -19,10 +19,10 @@ export function CTA() {
           className="text-center mb-8 md:mb-16"
         >
           <span className="inline-block px-4 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 text-xs font-medium tracking-widest uppercase mb-3">
-            {t('inquiry')}
+            {t('consultation')}
           </span>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('consultation')}
+            {t('inquiry')}
           </h2>
           <div className="w-24 h-1 bg-yellow-400 mx-auto mb-4 md:mb-6"></div>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-sm md:text-base">

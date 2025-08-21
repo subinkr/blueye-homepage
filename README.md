@@ -117,8 +117,7 @@ src/
 │   │   └── notice-form.tsx
 │   ├── navigation.tsx      # 네비게이션
 │   ├── hero.tsx           # 히어로 섹션
-│   ├── services.tsx       # 서비스 섹션
-│   ├── target-audience.tsx # 타겟 고객 섹션
+
 │   ├── cta.tsx            # CTA 섹션
 │   ├── magazine-grid.tsx   # 매거진 그리드
 │   ├── notice-list.tsx    # 공지사항 리스트

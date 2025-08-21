@@ -1,8 +1,8 @@
 {
   "navigation": {
     "home": "首页",
-    "services": "服务",
-    "properties": "房产",
+
+    "properties": "介绍",
     "about": "关于我们",
     "contact": "联系我们",
     "language": "语言",
@@ -15,67 +15,21 @@
     "subtitle": "从海外房地产投资到当地生活支持，与Blueye一起体验全球生活方式",
     "cta": "免费咨询",
     "scroll": "下一节",
-    "description": "通过数十年的专业知识和全球网络，为全球房地产树立新标准。",
+    "description": "通过数十年的专业知识和全球网络，与客户一起设计生活。",
     "experienceYears": "经验年数",
     "countries": "进驻国家",
-    "managedProperties": "管理房产",
+    "managedProperties": "管理客户",
     "learnMore": "联系我们",
     "exploreLifestyle": "探索生活方式"
   },
-  "services": {
-    "title": "服务",
-    "subtitle": "全球生活方式的综合解决方案",
-    "learnMore": "了解更多",
-    "scroll": "下一节",
-    "detailTitle": "服务概览",
-    "detailSubtitle": "查看每个服务的详细信息和联系方式",
-    "realEstate": {
-      "title": "海外房地产投资",
-      "description": "韩国、中国、越南的优质房地产投资机会"
-    },
-    "management": {
-      "title": "物业管理",
-      "description": "专业的租赁管理和资产管理服务"
-    },
-    "lifestyle": {
-      "title": "当地生活支持",
-      "description": "包括签证、教育、医疗在内的综合当地生活支持"
-    },
-    "consulting": {
-      "title": "投资咨询",
-      "description": "个性化的海外投资策略和资产配置规划"
-    }
-  },
-  "targetAudience": {
-    "title": "目标客户",
-    "subtitle": "为具有不同生活方式和目标的客户提供定制解决方案",
-    "retirement": {
-      "title": "退休移民",
-      "description": "支持安全繁荣的海外退休生活"
-    },
-    "investment": {
-      "title": "海外投资",
-      "description": "通过全球资产多元化实现稳定的投资组合"
-    },
-    "monthlyStay": {
-      "title": "月度居住",
-      "description": "通过季节性当地生活体验新的生活方式"
-    },
-    "assetAllocation": {
-      "title": "资产配置",
-      "description": "高效的全球资产配置和税务优化"
-    },
-    "globalExperience": "全球市场经验",
-    "satisfiedCustomers": "满意客户",
-    "totalTransactionVolume": "总交易规模"
-  },
+
   "cta": {
     "title": "开启您的全球生活方式",
     "subtitle": "与我们的专家咨询，获得个性化解决方案",
     "button": "申请免费咨询",
     "inquiry": "咨询",
-    "consultation": "咨询",
-    "description": "如果您对海外房地产投资有任何疑问，请随时联系我们。我们的专家将提供友好的咨询服务。",
+    "consultation": "免费咨询",
+    "description": "暂时把付款放在一边，从免费咨询开始轻松起步。",
     "contactInfo": "联系信息",
     "phone": "电话",
     "kakao": "KakaoTalk",
