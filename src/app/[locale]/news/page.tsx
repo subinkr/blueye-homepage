@@ -72,14 +72,34 @@ export default function NewsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-emerald-900 relative">
+      {/* Global Background Animation */}
+      <div className="fixed inset-0 pointer-events-none">
+        <motion.div
+          animate={{
+            background: [
+              "radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 40% 80%, rgba(5, 150, 105, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%)"
+            ]
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute inset-0"
+        />
+      </div>
+
       <Navigation />
       
       {/* 헤더 */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center pt-32 pb-16 px-4"
+        className="text-center pt-32 pb-16 px-4 relative z-10"
       >
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
           {t('title')}
@@ -93,21 +113,26 @@ export default function NewsPage() {
       </motion.div>
 
       {/* 데일리 브리프 그리드 */}
-      <div className="container mx-auto px-4 pb-16">
+      <div className="container mx-auto px-4 pb-16 relative z-10">
         {dailyBriefs.length === 0 ? (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-16"
+            className="text-center py-20"
           >
-            <p className="text-gray-400 text-lg">{t('noNewsFound')}</p>
-            <p className="text-gray-500 mt-2">{t('tryAdjusting')}</p>
+            <div className="w-16 h-16 text-gray-400 mx-auto mb-4">
+              <svg className="w-full h-full" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4m7 0v4a2 2 0 01-2 2h-2m-4-3H9M7 16h6M7 8h6v4m7 0v4a2 2 0 01-2 2h-2" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-semibold text-gray-300 mb-2">{t('noNewsFound')}</h3>
+            <p className="text-gray-400">{t('tryAdjusting')}</p>
           </motion.div>
         ) : (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6"
           >
             {dailyBriefs.map((brief, index) => (
               <motion.div
@@ -115,17 +140,31 @@ export default function NewsPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 cursor-pointer group"
+                whileHover={{ y: -10, scale: 1.02 }}
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden hover:border-emerald-500/50 transition-all duration-300 cursor-pointer"
                 onClick={() => handleImageClick(brief)}
               >
-                <div className="overflow-hidden">
+                <div className="relative overflow-hidden group">
                   <img
                     src={brief.image_url}
-                    alt="데일리 브리프"
-                    className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                    alt={`데일리 브리프 - ${formatDate(brief.published_date)}`}
+                    className="w-full h-auto object-contain"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 sm:group-hover:opacity-100 sm:opacity-0 opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <div className="text-xs text-gray-200">
+                        {formatDate(brief.published_date)}
+                      </div>
+                    </div>
+                  </div>
+
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-gradient-to-t from-emerald-500/10 to-transparent pointer-events-none"
                   />
                 </div>
-
               </motion.div>
             ))}
           </motion.div>
