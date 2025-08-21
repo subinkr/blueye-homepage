@@ -82,29 +82,18 @@ function CountUp({ end, duration = 2, delay = 0, suffix = '', prefix = '' }: {
   
   useEffect(() => {
     const timer = setTimeout(() => {
-      let startTime: number
-      let animationFrame: number
-      
-      const animate = (currentTime: number) => {
-        if (!startTime) startTime = currentTime
-        const progress = Math.min((currentTime - startTime) / (duration * 1000), 1)
-        
-        const currentCount = Math.floor(progress * end)
-        setCount(currentCount)
-        setDisplayCount(currentCount)
-        
-        if (progress < 1) {
-          animationFrame = requestAnimationFrame(animate)
+      let currentCount = 0
+      const interval = setInterval(() => {
+        currentCount++
+        if (currentCount <= end) {
+          setCount(currentCount)
+          setDisplayCount(currentCount)
+        } else {
+          clearInterval(interval)
         }
-      }
+      }, duration * 1000)
       
-      animationFrame = requestAnimationFrame(animate)
-      
-      return () => {
-        if (animationFrame) {
-          cancelAnimationFrame(animationFrame)
-        }
-      }
+      return () => clearInterval(interval)
     }, delay * 1000)
     
     return () => clearTimeout(timer)
@@ -627,7 +616,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.0, duration: 0.8 }}
                   >
-                    <CountUp end={23} duration={6.9} delay={1.0} />
+                    <CountUp end={23} duration={0.5} delay={1.0} />
                   </motion.div>
                   <div className="text-xs sm:text-sm md:text-base text-white/80">{t('experienceYears')}</div>
                 </div>
@@ -638,7 +627,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
                   >
-                    <CountUp end={6} duration={3} delay={1.2} />
+                    <CountUp end={6} duration={0.9} delay={1.2} />
                   </motion.div>
                   <div className="text-xs sm:text-sm md:text-base text-white/80">{t('countries')}</div>
                 </div>
@@ -649,7 +638,7 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.4, duration: 0.8 }}
                   >
-                    <CountUp end={999} duration={99.9} delay={1.4} />
+                    <CountUp end={999} duration={0.1} delay={1.4} />
                   </motion.div>
                   <div className="text-xs sm:text-sm md:text-base text-white/80">{t('managedProperties')}</div>
                 </div>
