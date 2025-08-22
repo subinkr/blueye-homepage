@@ -291,7 +291,7 @@ export default function LifestyleQuizPage() {
 
   // 제공하는 서비스 페이지로 이동
   const goToServices = () => {
-    router.push(`/${locale}/services#overview`)
+    router.push(`/${locale}/services#pricing`)
   }
 
       // 선택 기록을 기반으로 국가 점수 계산

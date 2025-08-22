@@ -172,7 +172,7 @@ export function MagazineForm({ magazine, categories, onSave, onCancel, isOpen }:
               value={formData.content}
               onChange={(e) => handleChange('content', e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
-              placeholder="https://example.com/magazine"
+              placeholder="https://example.com/magazines"
               required
             />
             <p className="text-sm text-gray-500 mt-1">
