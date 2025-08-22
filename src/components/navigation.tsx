@@ -119,6 +119,13 @@ export function Navigation() {
             </Link>
 
             <Link
+              href={`/${locale}/services`}
+              className="text-white hover:text-blue-200 transition-colors font-medium"
+            >
+              {t('services')}
+            </Link>
+
+            <Link
               href={`/${locale}#cta`}
               className="text-white hover:text-blue-200 transition-colors font-medium"
             >

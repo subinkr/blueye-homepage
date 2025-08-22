@@ -49,8 +49,8 @@ export function NewsList() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-emerald-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400"></div>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400"></div>
       </div>
     )
   }
@@ -86,7 +86,7 @@ export function NewsList() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden hover:border-emerald-500/50 transition-all duration-300 cursor-pointer"
+                className="group relative bg-white/5 backdrop-blur-sm border border-white/10 overflow-hidden hover:border-blue-500/50 transition-all duration-300 cursor-pointer"
                 onClick={() => handleImageClick(brief)}
               >
                 <div className="relative overflow-hidden group">
@@ -107,7 +107,7 @@ export function NewsList() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-t from-emerald-500/10 to-transparent pointer-events-none"
+                    className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"
                   />
                 </div>
               </motion.div>

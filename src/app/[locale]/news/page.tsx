@@ -21,16 +21,16 @@ export default function NewsPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-900 via-teal-900 to-emerald-900 relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative">
       {/* Global Background Animation */}
       <div className="fixed inset-0 pointer-events-none">
         <motion.div
           animate={{
             background: [
-              "radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%)",
-              "radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.2) 0%, transparent 50%)",
-              "radial-gradient(circle at 40% 80%, rgba(5, 150, 105, 0.2) 0%, transparent 50%)",
-              "radial-gradient(circle at 20% 50%, rgba(16, 185, 129, 0.2) 0%, transparent 50%)"
+              "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 40% 80%, rgba(30, 58, 138, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)"
             ]
           }}
           transition={{
@@ -49,7 +49,7 @@ export default function NewsPage() {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-emerald-900 via-teal-900 to-emerald-900"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900"
           >
             <motion.div
               animate={{ 
@@ -61,7 +61,7 @@ export default function NewsPage() {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="w-16 h-16 border-4 border-emerald-400 border-t-transparent rounded-full"
+              className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full"
             />
           </motion.div>
         ) : (

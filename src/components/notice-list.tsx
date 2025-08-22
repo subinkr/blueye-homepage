@@ -92,7 +92,7 @@ export function NoticeList() {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-          className="w-12 h-12 border-4 border-blue-400 border-t-transparent rounded-full"
+          className="w-12 h-12 border-4 border-teal-400 border-t-transparent rounded-full"
         />
       </div>
     )
@@ -119,7 +119,7 @@ export function NoticeList() {
                 placeholder={t('searchNotices')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
               />
             </div>
 
@@ -154,7 +154,7 @@ export function NoticeList() {
                   key={notice.id}
                   variants={itemVariants}
                   whileHover={{ y: -5, scale: 1.01 }}
-                  className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-blue-500/50 transition-all duration-300 cursor-pointer"
+                  className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-teal-500/50 transition-all duration-300 cursor-pointer"
                   onClick={() => {
                     setSelectedNotice(notice)
                     setShowDetailModal(true)
@@ -177,7 +177,7 @@ export function NoticeList() {
                       </div>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-teal-300 transition-colors">
                       {notice.title}
                     </h3>
                     <div 
@@ -190,7 +190,7 @@ export function NoticeList() {
                   <motion.div
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"
+                    className="absolute inset-0 bg-gradient-to-t from-teal-500/10 to-transparent pointer-events-none"
                   />
                 </motion.div>
               ))}

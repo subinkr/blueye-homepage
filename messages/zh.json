@@ -2,13 +2,14 @@
   "navigation": {
     "home": "首页",
 
-    "properties": "介绍",
+    "properties": "国家介绍",
     "about": "关于我们",
     "contact": "联系我们",
     "language": "语言",
     "magazine": "杂志",
     "notices": "公告",
-    "news": "新闻"
+    "news": "新闻",
+    "services": "我们提供的服务"
   },
   "hero": {
     "title": "全球高端生活解决方案",
@@ -37,6 +38,137 @@
     "email": "电子邮件",
     "address": "公司地址",
     "addressDetail": "首尔永登浦区国会大路62街5号5楼502室（汝矣岛洞，新泰真大厦）"
+  },
+  "pricingPlans": {
+    "badge": "服务步骤",
+    "title": "分步骤定制服务",
+    "subtitle": "体验为您的全球生活方式提供的系统性分步骤服务",
+    "popular": "热门",
+    "bottomCta": {
+      "title": "不知道从哪一步开始？",
+      "description": "与我们的专家顾问咨询，找到最适合您的服务",
+      "button": "获得免费咨询",
+      "learnMore": "了解更多"
+    },
+    "step1": {
+      "title": "第1步：生活设计",
+      "subtitle": "生活方向设计",
+      "price": "20~30万韩元",
+      "description": "生活诊断和定制设计",
+      "feature1": "生活诊断和生活方向整理（使命、休息、家庭中心等）",
+      "feature2": "为客户提供定制化'下一季设计地图'",
+      "feature3": "与专家顾问进行1:1定制咨询"
+    },
+    "step2": {
+      "title": "第2步：城市策划",
+      "subtitle": "城市策划提案",
+      "price": "30~50万韩元",
+      "description": "城市特定分析和提案",
+      "feature1": "包括签证、医疗、社区、生活费用等的城市特定生活分析",
+              "feature2": "为客户提供适合的2-3个城市提案",
+      "feature3": "详细的城市信息和比较分析"
+    },
+    "step3": {
+      "title": "第3步：旅程陪伴",
+      "subtitle": "当地游览和陪伴",
+      "price": "100~150万韩元",
+      "description": "实际访问游览和当地陪伴",
+      "feature1": "实际访问游览（1:1）、当地社区/使命站点探索",
+      "feature2": "教练陪伴和生活方向审查",
+      "feature3": "当地生活适应支持和后续管理"
+    }
+  },
+  "services": {
+    "hero": {
+      "badge": "价格政策",
+      "title": "我们提供的服务",
+      "subtitle": "为您的全球生活方式提供的系统性3步服务",
+      "scrollHint": "向下滚动"
+    },
+    "overview": {
+      "title": "服务概览",
+      "description": "每个服务都有明确目标和交付成果的系统性服务"
+    },
+    "detailed": {
+      "title": "详细服务内容",
+      "description": "详细了解每个服务的具体内容和特点"
+    },
+    "popular": "热门",
+                "step1": {
+        "title": "生活设计",
+        "subtitle": "生活方向设计",
+        "price": "$249 ~",
+        "description": "个性化生活诊断和设计",
+        "feature1": {
+          "title": "生活诊断",
+          "description": "个人倾向、家庭结构、生活方式、目标方向分析"
+        },
+        "feature2": {
+          "title": "生活季节分类",
+          "description": "功能 vs 存在、休息 vs 活动、个人 vs 社区"
+        },
+        "feature3": {
+          "title": "提案成果",
+          "description": "定制化生活设计报告"
+        }
+      },
+                "step2": {
+        "title": "城市策划",
+        "subtitle": "全球城市分析",
+        "price": "$399 ~",
+        "description": "城市特定分析和比较",
+        "feature1": {
+          "title": "城市分析",
+          "description": "签证、医疗、生活费用、文化、教育、安全性等"
+        },
+        "feature2": {
+          "title": "城市比较",
+          "description": "为客户适合的2-3个全球城市分析"
+        },
+        "feature3": {
+          "title": "成果物",
+          "description": "全球城市分析"
+        }
+      },
+                "step3": {
+        "title": "旅程陪伴",
+        "subtitle": "当地游览和陪伴",
+        "price": "$1199 ~",
+        "description": "当地游览和专家陪伴",
+        "feature1": {
+          "title": "游览陪伴",
+          "description": "1:1当地访问、学校/居住区/社区/商业中心等游览"
+        },
+        "feature2": {
+          "title": "专家陪伴",
+          "description": "与当地专家一起的定制游览和咨询"
+        },
+        "feature3": {
+          "title": "连接地图",
+          "description": "当地专家、居民、当地房地产、商业网络连接"
+        }
+      },
+    "additionalInfo": {
+      "title": "为什么选择Blueye？",
+      "subtitle": "基于数十年经验和专业知识的优质服务",
+      "timeline": {
+        "title": "系统化流程",
+        "description": "每个步骤都有明确的时间表和交付成果，确保系统化进展"
+      },
+      "expertise": {
+        "title": "专业性与经验",
+        "description": "通过全球网络和与当地专家的合作，提供最佳服务"
+      },
+      "guarantee": {
+        "title": "质量保证",
+        "description": "通过持续支持和质量管理，为顾客满意度提供安全可靠的服务"
+      }
+    },
+    "bottomCta": {
+      "title": "不知道从哪个服务开始？",
+      "description": "与我们的专家顾问咨询，找到最适合您的服务",
+      "button": "获得免费咨询"
+    }
   },
   "footer": {
     "description": "全球高端生活解决方案",
@@ -305,6 +437,7 @@
     "consultationRequest": "申请咨询",
     "quizAgain": "重新开始",
     "backToHome": "返回首页",
+    "goToServices": "了解更多",
     "categories": {
       "retirement": {
         "title": "自由退休",

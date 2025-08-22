@@ -2,13 +2,14 @@
   "navigation": {
     "home": "Home",
 
-    "properties": "About",
+    "properties": "Country Introduction",
     "about": "About Us",
     "contact": "Contact",
     "language": "Language",
     "magazine": "Magazine",
     "notices": "Notices",
-    "news": "News"
+    "news": "News",
+    "services": "Services We Provide"
   },
   "hero": {
     "title": "Global Premium Life Solutions",
@@ -37,6 +38,137 @@
     "email": "Email",
     "address": "Company Address",
     "addressDetail": "5th Floor, Room 502, 5 Gukhoe-daero 62-gil, Yeongdeungpo-gu, Seoul (Yeouido-dong, Shintaejin Building)"
+  },
+  "pricingPlans": {
+    "badge": "Service Steps",
+    "title": "Step-by-Step Customized Services",
+    "subtitle": "Experience systematic step-by-step services for your global lifestyle",
+    "popular": "Popular",
+    "bottomCta": {
+      "title": "Wondering which step to start with?",
+      "description": "Consult with our expert consultants to find the service that best suits you",
+      "button": "Get Free Consultation",
+      "learnMore": "Learn More"
+    },
+    "step1": {
+      "title": "Step 1: Life Design",
+      "subtitle": "Life Direction Design",
+      "price": "200K~300K KRW",
+      "description": "Life diagnosis and customized design",
+      "feature1": "Life diagnosis and life direction organization (mission, rest, family-centered, etc.)",
+      "feature2": "Customized 'Next Season Design Map' for customers",
+      "feature3": "1:1 customized consultation with expert consultants"
+    },
+    "step2": {
+      "title": "Step 2: City Curation",
+      "subtitle": "City Curation Proposal",
+      "price": "300K~500K KRW",
+      "description": "City-specific analysis and proposals",
+      "feature1": "City-specific life analysis including visas, healthcare, community, and living costs",
+              "feature2": "Proposal for 2-3 cities suitable for customers",
+      "feature3": "Detailed city information and comparative analysis"
+    },
+    "step3": {
+      "title": "Step 3: Journey Companion",
+      "subtitle": "Local Tour and Companionship",
+      "price": "1M~1.5M KRW",
+      "description": "Actual visit tours and local companionship",
+      "feature1": "Actual visit tours (1:1), local community/mission site exploration",
+      "feature2": "Coach companionship and life direction review",
+      "feature3": "Local life adaptation support and follow-up management"
+    }
+  },
+  "services": {
+    "hero": {
+      "badge": "Pricing Policy",
+      "title": "Services We Provide",
+      "subtitle": "Systematic 3-step service for your global lifestyle",
+      "scrollHint": "Scroll down"
+    },
+    "overview": {
+      "title": "Service Overview",
+      "description": "Systematic service with clear goals and deliverables for each service"
+    },
+    "detailed": {
+      "title": "Detailed Service Content",
+      "description": "Explore the specific content and features of each service in detail"
+    },
+    "popular": "Popular",
+                "step1": {
+        "title": "Life Design",
+        "subtitle": "Life Direction Design",
+        "price": "$249 ~",
+        "description": "Personalized life diagnosis and design",
+        "feature1": {
+          "title": "Life Diagnosis",
+          "description": "Analysis of personal tendencies, family structure, lifestyle, and goal direction"
+        },
+        "feature2": {
+          "title": "Life Season Classification",
+          "description": "Function vs Being, Rest vs Activity, Individual vs Community"
+        },
+        "feature3": {
+          "title": "Proposal Deliverables",
+          "description": "Customized Life Design Report"
+        }
+      },
+                "step2": {
+        "title": "City Curation",
+        "subtitle": "Global City Analysis",
+        "price": "$399 ~",
+        "description": "City-specific analysis and comparison",
+        "feature1": {
+          "title": "City Analysis",
+          "description": "Visas, healthcare, living costs, culture, education, safety, etc."
+        },
+        "feature2": {
+          "title": "City Comparison",
+          "description": "Comparative analysis of 2-3 global cities suitable for customers"
+        },
+        "feature3": {
+          "title": "Deliverables",
+          "description": "Global city analysis"
+        }
+      },
+                "step3": {
+        "title": "Journey Companion",
+        "subtitle": "Local Tour and Companionship",
+        "price": "$1199 ~",
+        "description": "Local tours and expert companionship",
+        "feature1": {
+          "title": "Tour Companionship",
+          "description": "1:1 local visits, tours of schools/residential areas/communities/business centers"
+        },
+        "feature2": {
+          "title": "Expert Companionship",
+          "description": "Customized tours and consultation with local experts"
+        },
+        "feature3": {
+          "title": "Connection Map",
+          "description": "Local experts, residents, local real estate, business network connections"
+        }
+      },
+    "additionalInfo": {
+      "title": "Why Choose Blueye?",
+      "subtitle": "Premium services based on decades of experience and expertise",
+      "timeline": {
+        "title": "Systematic Process",
+        "description": "Clear timelines and deliverables for each step ensure systematic progress"
+      },
+      "expertise": {
+        "title": "Expertise & Experience",
+        "description": "Deliver the best service through global networks and collaboration with local experts"
+      },
+      "guarantee": {
+        "title": "Quality Assurance",
+        "description": "Provide safe and reliable services through continuous support and quality management for customer satisfaction"
+      }
+    },
+    "bottomCta": {
+      "title": "Wondering which service to start with?",
+      "description": "Consult with our expert consultants to find the service that best suits you",
+      "button": "Get Free Consultation"
+    }
   },
   "footer": {
     "description": "Global Premium Life Solutions",
@@ -305,6 +437,7 @@
     "consultationRequest": "Request Consultation",
     "quizAgain": "Try Again",
     "backToHome": "Back to Home",
+    "goToServices": "Learn More",
     "categories": {
       "retirement": {
         "title": "Free Retirement",

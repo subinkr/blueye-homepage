@@ -2,13 +2,106 @@
   "navigation": {
     "home": "홈",
 
-    "properties": "소개",
+    "properties": "국가별 소개",
     "about": "회사소개",
     "contact": "문의하기",
     "language": "언어",
     "magazine": "매거진",
     "notices": "공지사항",
-    "news": "소식"
+    "news": "소식",
+    "services": "제공하는 서비스"
+  },
+  "services": {
+    "hero": {
+      "badge": "가격 정책",
+      "title": "제공하는 서비스",
+      "subtitle": "당신의 글로벌 라이프스타일을 위한 체계적인 3단계 서비스",
+      "scrollHint": "스크롤하세요"
+    },
+    "overview": {
+      "title": "서비스 개요",
+      "description": "각 서비스별로 명확한 목표와 결과물을 제공하는 체계적인 서비스"
+    },
+    "detailed": {
+      "title": "상세 서비스 내용",
+      "description": "각 서비스별 구체적인 서비스 내용과 특징을 자세히 살펴보세요"
+    },
+    "popular": "인기",
+    "step1": {
+      "title": "Life Design",
+      "subtitle": "삶의 방향 설계",
+      "price": "$249 ~",
+      "description": "개인 맞춤형 인생 진단 및 설계",
+      "feature1": {
+        "title": "라이프 진단",
+        "description": "개인 성향, 가족 구조, 라이프스타일, 목표 방향성 분석"
+      },
+      "feature2": {
+        "title": "삶의 시즌 구분",
+        "description": "기능 vs 존재, 휴식 vs 활동, 개인 vs 공동체"
+      },
+      "feature3": {
+        "title": "제안 결과물",
+        "description": "맞춤형 라이프 디자인 리포트 제공"
+      }
+    },
+    "step2": {
+      "title": "City Curation",
+      "subtitle": "전세계 도시 분석",
+      "price": "$399 ~",
+      "description": "도시별 맞춤형 분석 및 비교",
+      "feature1": {
+        "title": "도시 분석",
+        "description": "비자, 의료, 생활비, 문화, 교육, 안전성 등"
+      },
+      "feature2": {
+        "title": "도시 비교",
+        "description": "고객에게 맞는 글로벌 도시 2~3곳 비교 분석"
+      },
+              "feature3": {
+          "title": "결과물",
+          "description": "전세계 도시 분석서"
+        }
+    },
+    "step3": {
+      "title": "Journey Companion",
+      "subtitle": "현지 투어 및 동행",
+      "price": "$1199 ~",
+      "description": "현지 투어 및 전문가 동행",
+      "feature1": {
+        "title": "투어 동행",
+        "description": "1:1 현지 방문, 학교/주거지/커뮤니티/비즈니스 센터 등 투어"
+      },
+      "feature2": {
+        "title": "전문가 동행",
+        "description": "현지 전문가와 함께하는 맞춤형 투어 및 상담"
+      },
+      "feature3": {
+        "title": "연결 맵",
+        "description": "지역 전문가, 거주자, 현지 부동산, 비즈니스 네트워크 연결"
+      }
+    },
+    "additionalInfo": {
+      "title": "왜 Blueye를 선택해야 할까요?",
+      "subtitle": "수십 년의 경험과 전문성을 바탕으로 제공하는 프리미엄 서비스",
+      "timeline": {
+        "title": "체계적인 진행",
+        "description": "각 서비스별로 명확한 일정과 결과물을 제공하여 체계적으로 진행됩니다"
+      },
+      "expertise": {
+        "title": "전문성과 경험",
+        "description": "글로벌 네트워크와 현지 전문가들과의 협력을 통해 최고의 서비스를 제공합니다"
+      },
+      "guarantee": {
+        "title": "품질 보장",
+        "description": "고객 만족을 위한 지속적인 지원과 품질 관리로 안전하고 신뢰할 수 있는 서비스를 제공합니다"
+      }
+    },
+    "bottomCta": {
+      "title": "어떤 서비스부터 시작할지 궁금하신가요?",
+      "description": "전문 컨설턴트와 상담하여 당신에게 가장 적합한 서비스를 찾아보세요",
+      "button": "무료 상담 받기"
+    }
   },
   "hero": {
     "title": "글로벌 프리미엄 라이프 솔루션",
@@ -305,6 +398,7 @@
     "consultationRequest": "상담 신청하기",
     "quizAgain": "다시하기",
     "backToHome": "홈으로 돌아가기",
+    "goToServices": "자세히 알아보기",
     "categories": {
       "retirement": {
         "title": "자유로운 은퇴",

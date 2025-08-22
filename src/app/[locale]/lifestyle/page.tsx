@@ -13,6 +13,7 @@ import {
   Activity, 
   Users,
   ArrowLeft,
+  ArrowRight,
   Trophy,
   Star,
   Phone,
@@ -20,7 +21,8 @@ import {
   MessageCircle,
   TrendingUp,
   Crown,
-  CheckCircle
+  CheckCircle,
+  Sparkles
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 
@@ -287,6 +289,11 @@ export default function LifestyleQuizPage() {
     }
   }
 
+  // 제공하는 서비스 페이지로 이동
+  const goToServices = () => {
+    router.push(`/${locale}/services#overview`)
+  }
+
       // 선택 기록을 기반으로 국가 점수 계산
     const calculateCountryScores = (lifestyleType: string) => {
       const baseRecommendations = recommendedCountries[lifestyleType as keyof typeof recommendedCountries] || []
@@ -535,22 +542,7 @@ export default function LifestyleQuizPage() {
               </div>
             </motion.div>
 
-            {/* 상담 신청하기 버튼 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="text-center mb-6 sm:mb-8"
-            >
-              <Button 
-                onClick={() => window.open('https://pf.kakao.com/_qpRxjxb/chat', '_blank')}
-                size="lg" 
-                className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-sm sm:text-base md:text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[180px]"
-              >
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 mr-2 flex-shrink-0" />
-                <span className="whitespace-nowrap">{t('consultationRequest')}</span>
-              </Button>
-            </motion.div>
+
 
             {/* 네비게이션 */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 justify-center">
@@ -573,11 +565,13 @@ export default function LifestyleQuizPage() {
                 {t('quizAgain')}
               </Button>
               <Button 
-                onClick={goHome}
+                onClick={goToServices}
                 size="lg" 
-                className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base rounded-2xl transition-all duration-300 hover:scale-105"
+                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-translate-y-1 border-0"
               >
-                {t('backToHome')}
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
+                {t('goToServices')}
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-3" />
               </Button>
             </div>
           </motion.div>
@@ -794,22 +788,25 @@ export default function LifestyleQuizPage() {
           </motion.div>
         )}
 
-        {/* Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-8 sm:mt-12 md:mt-16"
-        >
-          <Button 
-            onClick={goHome}
-            size="lg"
-            className="bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base rounded-2xl transition-all duration-300 hover:scale-105"
+        {/* Navigation - 월드컵 진행 중에는 숨김 */}
+        {isComplete && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-center mt-8 sm:mt-12 md:mt-16"
           >
-            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-            {t('backToHome')}
-          </Button>
-        </motion.div>
+            <Button 
+              onClick={goToServices}
+              size="lg"
+              className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 text-base sm:text-lg md:text-xl rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-translate-y-1 border-0"
+            >
+              <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
+              {t('goToServices')}
+              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ml-3" />
+            </Button>
+          </motion.div>
+        )}
       </div>
     </div>
   )

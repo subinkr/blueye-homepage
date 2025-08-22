@@ -48,7 +48,7 @@ export function NoticeHero() {
             ease: "easeInOut",
             delay: i * 0.3
           }}
-          className="absolute w-3 h-3 bg-blue-400 rounded-full opacity-60"
+          className="absolute w-3 h-3 bg-teal-400 rounded-full opacity-60"
           style={{
             left: `${15 + i * 12}%`,
             top: `${25 + i * 8}%`
@@ -73,7 +73,7 @@ export function NoticeHero() {
                 repeat: Infinity, 
                 ease: "easeInOut" 
               }}
-              className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6 relative"
+              className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full mb-6 relative"
             >
               <Bell className="w-12 h-12 text-white" />
               <motion.div
@@ -86,7 +86,7 @@ export function NoticeHero() {
                   repeat: Infinity, 
                   ease: "easeInOut" 
                 }}
-                className="absolute inset-0 bg-blue-400 rounded-full"
+                className="absolute inset-0 bg-teal-400 rounded-full"
               />
             </motion.div>
           </motion.div>
@@ -95,7 +95,7 @@ export function NoticeHero() {
             variants={itemVariants}
             className="text-5xl md:text-7xl font-bold text-white mb-6"
           >
-            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-teal-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               {t('title')}
             </span>
           </motion.h1>
@@ -120,11 +120,11 @@ export function NoticeHero() {
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
-        <div className="w-6 h-10 border-2 border-blue-400 rounded-full flex justify-center">
+        <div className="w-6 h-10 border-2 border-teal-400 rounded-full flex justify-center">
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="w-1 h-3 bg-blue-400 rounded-full mt-2"
+            className="w-1 h-3 bg-teal-400 rounded-full mt-2"
           />
         </div>
       </motion.div>

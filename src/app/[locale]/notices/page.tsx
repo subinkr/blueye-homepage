@@ -21,16 +21,16 @@ export default function NoticesPage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-teal-900 to-cyan-900 relative">
       {/* Global Background Animation */}
       <div className="fixed inset-0 pointer-events-none">
         <motion.div
           animate={{
             background: [
-              "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)",
-              "radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 50%)",
-              "radial-gradient(circle at 40% 80%, rgba(245, 158, 11, 0.2) 0%, transparent 50%)",
-              "radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.2) 0%, transparent 50%)"
+              "radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 50%)",
+              "radial-gradient(circle at 20% 50%, rgba(20, 184, 166, 0.2) 0%, transparent 50%)"
             ]
           }}
           transition={{
@@ -49,7 +49,7 @@ export default function NoticesPage() {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-slate-900 via-teal-900 to-cyan-900"
           >
             <motion.div
               animate={{ 
@@ -61,7 +61,7 @@ export default function NoticesPage() {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="w-16 h-16 border-4 border-blue-400 border-t-transparent rounded-full"
+              className="w-16 h-16 border-4 border-teal-400 border-t-transparent rounded-full"
             />
           </motion.div>
         ) : (
