@@ -23,6 +23,45 @@ export default function ServicesIntegratedSection() {
     return () => clearTimeout(timer)
   }, [])
 
+  // 해시 확인 및 스크롤 처리
+  useEffect(() => {
+    if (!isLoading) {
+      const hash = window.location.hash
+      if (hash === '#pricing') {
+        setTimeout(() => {
+          const pricingSection = document.getElementById('pricing')
+          if (pricingSection) {
+            pricingSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            })
+          }
+        }, 500)
+      }
+    }
+  }, [isLoading])
+
+  // URL 해시 변경 감지
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash
+      if (hash === '#pricing') {
+        setTimeout(() => {
+          const pricingSection = document.getElementById('pricing')
+          if (pricingSection) {
+            pricingSection.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            })
+          }
+        }, 100)
+      }
+    }
+
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
   const services = [
     {
       id: 'life-design',
@@ -287,6 +326,12 @@ export default function ServicesIntegratedSection() {
             
             {/* 가격 정책 섹션 */}
             <section id="pricing" className="relative py-32">
+              {/* 투명한 앵커 포인트 추가 */}
+              <div id="pricing-anchor" className="absolute -top-20"></div>
+              
+              {/* 추가 앵커 포인트 */}
+              <div className="absolute -top-32 w-full h-1"></div>
+              
               <div className="container mx-auto px-4 lg:px-8">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
