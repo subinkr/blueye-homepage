@@ -102,11 +102,18 @@ function CountUp({ end, duration = 2, delay = 0, suffix = '', prefix = '' }: {
   const paddedNumber = displayCount.toString().padStart(3, '0')
   
   return (
-    <span className="inline-flex items-center justify-center">
+    <span className="relative inline-flex items-center justify-center">
       {paddedNumber.split('').map((digit, index) => (
         <SevenSegmentDigit key={index} digit={digit} />
       ))}
       {suffix}
+      
+      {/* 999에 도달했을 때 오른쪽에 하얀 + 표시 */}
+      {displayCount >= 999 && (
+        <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 text-white font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl drop-shadow-[0_0_4px_rgba(255,255,255,0.9)]">
+          +
+        </div>
+      )}
     </span>
   )
 }
