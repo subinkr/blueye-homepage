@@ -222,7 +222,8 @@
       "johorbahru": "Johor Bahru",
       "phnompenh": "Phnom Penh",
       "shanghai": "Shanghai",
-      "seoul": "Seoul"
+      "seoul": "Seoul",
+      "newyork": "New York"
     },
     "dubai": {
       "description": "As roads, artificial islands, and skyscrapers rose like blueprints over the desert plains, forming an axis of residential areas, hotels, and malls, the city transformed the promises written on maps into prosperity before our eyes.",
@@ -323,6 +324,23 @@
         "digitalInfra": {
           "title": "Digital Infrastructure",
           "description": "95% 5G network penetration, world's fastest internet speed, leading digital innovation."
+        }
+      }
+    },
+    "newyork": {
+      "description": "As Manhattan's skyline rose along the Hudson River, with Wall Street's financial exchanges and Broadway's culture intertwining, New York established itself as the center of the world's economy and culture.",
+      "features": {
+        "gdpSize": {
+          "title": "GDP Size",
+          "description": "GDP of $1.8 trillion in 2023, the world's largest economic city, accounting for 8% of the US economy."
+        },
+        "financialCenter": {
+          "title": "Financial Center",
+          "description": "New York Stock Exchange market cap of $30 trillion, possessing the world's largest financial market."
+        },
+        "globalCompanies": {
+          "title": "Global Companies",
+          "description": "65 Fortune 500 companies are headquartered here, serving as the world's largest business hub."
         }
       }
     }

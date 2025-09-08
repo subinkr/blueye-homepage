@@ -355,6 +355,9 @@ export default function ServicesIntegratedSection() {
                   <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
                     {t('overview.description')}
                   </p>
+                  <p className="text-lg text-gray-400 max-w-2xl mx-auto mt-4">
+                    각 서비스를 클릭하면 상세 내용으로 이동합니다
+                  </p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-32">
@@ -365,10 +368,25 @@ export default function ServicesIntegratedSection() {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: index * 0.2 }}
                       viewport={{ once: true }}
-                      className="text-center group cursor-pointer"
-                      onClick={() => setActiveStep(index)}
+                      className="text-center group cursor-pointer transition-all duration-300 hover:scale-105"
+                      onClick={() => {
+                        setActiveStep(index)
+                        // 해당 상세 서비스 내용으로 스크롤 이동
+                        setTimeout(() => {
+                          const detailedSection = document.getElementById(`detailed-${service.id}`)
+                          if (detailedSection) {
+                            const offset = 120 // 헤더 높이와 여백 고려
+                            const elementPosition = detailedSection.offsetTop - offset
+                            window.scrollTo({
+                              top: elementPosition,
+                              behavior: 'smooth'
+                            })
+                          }
+                        }, 100)
+                      }}
                     >
                       <motion.div
+                        id={`pricing-${service.id}`}
                         whileHover={{ scale: 1.02, y: -5 }}
                         whileTap={{ scale: 0.98 }}
                         className={`relative p-10 rounded-3xl border transition-all duration-500 ${
@@ -490,13 +508,16 @@ export default function ServicesIntegratedSection() {
                   {services.map((service, index) => (
                     <motion.div
                       key={service.id}
+                      id={`detailed-${service.id}`}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: index * 0.2 }}
                       viewport={{ once: true }}
                       className={`relative ${
                         index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                      } flex flex-col lg:flex-row items-center gap-20`}
+                      } flex flex-col lg:flex-row items-center gap-20 ${
+                        activeStep === index ? 'ring-2 ring-gray-400 ring-opacity-50 rounded-3xl p-8' : ''
+                      }`}
                     >
                       {/* Content */}
                       <div className="flex-1 lg:pr-12">

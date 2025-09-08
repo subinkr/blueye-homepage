@@ -4,6 +4,20 @@ export interface Country {
   lon: number
   color: string
   image: string
+  cameraPosition: {
+    x: number
+    y: number
+    z: number
+  }
+  cameraTarget: {
+    x: number
+    y: number
+    z: number
+  }
+  earthRotation: {
+    x: number // X축 회전각 (라디안)
+    y: number // Y축 회전각 (라디안)
+  }
   features: Array<{
     key: string
     title: string
@@ -20,7 +34,8 @@ export const getCountryName = (code: string, locale: string = 'ko'): string => {
       johorbahru: '조호바루',
       phnompenh: '프놈펜',
       shanghai: '상하이',
-      seoul: '서울'
+      seoul: '서울',
+      newyork: '뉴욕'
     },
     en: {
       dubai: 'Dubai',
@@ -28,7 +43,8 @@ export const getCountryName = (code: string, locale: string = 'ko'): string => {
       johorbahru: 'Johor Bahru',
       phnompenh: 'Phnom Penh',
       shanghai: 'Shanghai',
-      seoul: 'Seoul'
+      seoul: 'Seoul',
+      newyork: 'New York'
     },
     zh: {
       dubai: '迪拜',
@@ -36,7 +52,8 @@ export const getCountryName = (code: string, locale: string = 'ko'): string => {
       johorbahru: '新山',
       phnompenh: '金边',
       shanghai: '上海',
-      seoul: '首尔'
+      seoul: '首尔',
+      newyork: '纽约'
     }
   }
   
@@ -50,6 +67,9 @@ export const countries: Country[] = [
     lon: 55.3,
     color: '#ffd700',
     image: '/images/countries/dubai.jpg',
+    cameraPosition: { x: 2.8, y: 0.3, z: 2.5 },
+    cameraTarget: { x: 0.2, y: 0.1, z: 0.8 },
+    earthRotation: { x: -5 * Math.PI / 180, y: 30 * Math.PI / 180 },
     features: [
       {
         key: 'gdpGrowth',
@@ -74,6 +94,9 @@ export const countries: Country[] = [
     lon: 106.6,
     color: '#ff8c00',
     image: '/images/countries/vietnam.jpg',
+    cameraPosition: { x: -1.2, y: 0.4, z: 2.8 },
+    cameraTarget: { x: -0.3, y: 0.2, z: 0.9 },
+    earthRotation: { x: 10 * Math.PI / 180, y: -20 * Math.PI / 180 },
     features: [
       {
         key: 'gdpGrowth',
@@ -98,6 +121,9 @@ export const countries: Country[] = [
     lon: 103.7,
     color: '#ff69b4',
     image: '/images/countries/malaysia.jpg',
+    cameraPosition: { x: -0.5, y: 0.6, z: 2.2 },
+    cameraTarget: { x: -0.1, y: 0.3, z: 0.7 },
+    earthRotation: { x: 20 * Math.PI / 180, y: -15 * Math.PI / 180 },
     features: [
       {
         key: 'economicGrowth',
@@ -122,6 +148,9 @@ export const countries: Country[] = [
     lon: 104.9,
     color: '#32cd32',
     image: '/images/countries/cambodia.jpg',
+    cameraPosition: { x: -0.8, y: 0.5, z: 2.6 },
+    cameraTarget: { x: -0.2, y: 0.25, z: 0.85 },
+    earthRotation: { x: 10 * Math.PI / 180, y: -15 * Math.PI / 180 },
     features: [
       {
         key: 'gdpGrowth',
@@ -146,6 +175,9 @@ export const countries: Country[] = [
     lon: 121.5,
     color: '#ff4500',
     image: '/images/countries/china.jpg',
+    cameraPosition: { x: -1.5, y: 0.2, z: 2.0 },
+    cameraTarget: { x: -0.4, y: 0.1, z: 0.6 },
+    earthRotation: { x: -10 * Math.PI / 180, y: -30 * Math.PI / 180 },
     features: [
       {
         key: 'gdpSize',
@@ -170,6 +202,9 @@ export const countries: Country[] = [
     lon: 127.0,
     color: '#ff6b6b',
     image: '/images/countries/korea.jpg',
+    cameraPosition: { x: -1.8, y: 0.1, z: 1.8 },
+    cameraTarget: { x: -0.45, y: 0.05, z: 0.55 },
+    earthRotation: { x: -20 * Math.PI / 180, y: -32 * Math.PI / 180 },
     features: [
       {
         key: 'gdpSize',
@@ -185,6 +220,33 @@ export const countries: Country[] = [
         key: 'digitalInfra',
         title: '디지털 인프라',
         description: '5G 네트워크 보급률 95%, 초고속 인터넷 속도 세계 1위로 디지털 혁신의 선두주자입니다.'
+      }
+    ]
+  },
+  {
+    code: 'newyork',
+    lat: 40.7,
+    lon: -74.0,
+    color: '#4169e1',
+    image: '/images/countries/usa.jpg',
+    cameraPosition: { x: 2.2, y: 0.3, z: 1.5 },
+    cameraTarget: { x: 0.5, y: 0.15, z: 0.4 },
+    earthRotation: { x: -50 * Math.PI / 180, y: 160 * Math.PI / 180 },
+    features: [
+      {
+        key: 'gdpSize',
+        title: 'GDP 규모',
+        description: '2023년 GDP 1.8조 달러로 세계 최대 경제 도시이며, 미국 경제의 8%를 차지합니다.'
+      },
+      {
+        key: 'financialCenter',
+        title: '금융 중심지',
+        description: '뉴욕증권거래소 시가총액 30조 달러로 세계 최대 금융 시장을 보유하고 있습니다.'
+      },
+      {
+        key: 'globalCompanies',
+        title: '글로벌 기업',
+        description: '포춘 500대 기업 65개가 본사를 두고 있으며, 세계 최대 비즈니스 허브로 자리잡고 있습니다.'
       }
     ]
   },

@@ -222,7 +222,8 @@
       "johorbahru": "新山",
       "phnompenh": "金边",
       "shanghai": "上海",
-      "seoul": "首尔"
+      "seoul": "首尔",
+      "newyork": "纽约"
     },
     "dubai": {
       "description": "在沙漠平原上，道路、人工岛和摩天大楼如设计图般拔地而起，住宅区、酒店和购物中心形成一条轴线，城市将地图上写下的承诺转化为眼前的繁荣。",
@@ -323,6 +324,23 @@
         "digitalInfra": {
           "title": "数字基础设施",
           "description": "5G网络普及率95%，超高速互联网速度世界第1位，数字创新领先者。"
+        }
+      }
+    },
+    "newyork": {
+      "description": "随着曼哈顿天际线沿哈德逊河拔地而起，华尔街的金融交易所与百老汇的文化交织，纽约确立了其作为世界经济和文化中心的地位。",
+      "features": {
+        "gdpSize": {
+          "title": "GDP规模",
+          "description": "2023年GDP 1.8万亿美元，世界最大经济城市，占美国经济的8%。"
+        },
+        "financialCenter": {
+          "title": "金融中心",
+          "description": "纽约证券交易所市值30万亿美元，拥有世界最大金融市场。"
+        },
+        "globalCompanies": {
+          "title": "全球企业",
+          "description": "65家财富500强企业在此设立总部，作为世界最大商业枢纽。"
         }
       }
     }
