@@ -319,10 +319,10 @@ function CameraController({ scrollProgress, currentCountryIndex, isNavigating }:
   
   // 화면 크기에 따른 기본 카메라 거리 계산
   const getBaseDistance = useCallback(() => {
-    if (screenSize.width < 768) return 4.5
-    if (screenSize.width < 1024) return 4.0
-    if (screenSize.width < 1440) return 3.5
-    return 3.0
+    if (screenSize.width < 768) return 5
+    if (screenSize.width < 1024) return 4.5
+    if (screenSize.width < 1440) return 4
+    return 3.5
   }, [screenSize.width])
 
   // 카메라 위치와 타겟 계산 - 각 국가별 지정된 위치 사용
