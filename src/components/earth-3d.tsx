@@ -53,8 +53,8 @@ function Earth({
       } else {
         // 기본 상태에서만 천천히 자전
         meshRef.current.rotation.y += 0.002
-        // 기본 상태에서는 X축 회전을 -15도로 유지
-        const targetTilt = -15 * Math.PI / 180
+        // 기본 상태에서는 X축 회전을 0도로 유지 (똑바로 세움)
+        const targetTilt = 0 * Math.PI / 180
         meshRef.current.rotation.x += (targetTilt - meshRef.current.rotation.x) * 0.02
       }
     }
@@ -66,7 +66,7 @@ function Earth({
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
         scale={hovered ? 1.05 : 1}
-        rotation={[-15 * Math.PI / 180, 0, 0]} // 지구를 -15도 기울임
+        rotation={[0, 0, 0]} // 지구를 똑바로 세움
       >
         <sphereGeometry args={[1, 128, 128]} />
         <meshPhongMaterial
@@ -267,25 +267,20 @@ function Glow() {
   )
 }
 
-// 위도/경도를 3D 좌표로 변환하는 유틸리티 함수 (-15도 기울임 적용)
+// 위도/경도를 3D 좌표로 변환하는 유틸리티 함수 (기울임 없음)
 function latLonTo3D(lat: number, lon: number, radius: number = 1) {
   const phi = (90 - lat) * (Math.PI / 180)
   const theta = (lon + 180) * (Math.PI / 180)
   
-  // 기본 3D 좌표 계산
+  // 기본 3D 좌표 계산 (기울임 없음)
   const x = -(radius * Math.sin(phi) * Math.cos(theta))
   const y = radius * Math.cos(phi)
   const z = radius * Math.sin(phi) * Math.sin(theta)
   
-  // -15도 X축 회전 적용 (지구와 동일한 기울임)
-  const tiltAngle = -15 * Math.PI / 180
-  const cosTilt = Math.cos(tiltAngle)
-  const sinTilt = Math.sin(tiltAngle)
-  
   return {
     x: x,
-    y: y * cosTilt - z * sinTilt,
-    z: y * sinTilt + z * cosTilt
+    y: y,
+    z: z
   }
 }
 
