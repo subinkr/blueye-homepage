@@ -69,7 +69,7 @@ export const countries: Country[] = [
     image: '/images/countries/dubai.jpg',
     cameraPosition: { x: 2.8, y: 0.3, z: 2.5 },
     cameraTarget: { x: 0.2, y: 0.1, z: 0.8 },
-    earthRotation: { x: -5 * Math.PI / 180, y: 30 * Math.PI / 180 },
+    earthRotation: { x: -25 * Math.PI / 180, y: 33 * Math.PI / 180 },
     features: [
       {
         key: 'gdpGrowth',
@@ -96,7 +96,7 @@ export const countries: Country[] = [
     image: '/images/countries/vietnam.jpg',
     cameraPosition: { x: -1.2, y: 0.4, z: 2.8 },
     cameraTarget: { x: -0.3, y: 0.2, z: 0.9 },
-    earthRotation: { x: 10 * Math.PI / 180, y: -20 * Math.PI / 180 },
+    earthRotation: { x: -10 * Math.PI / 180, y: -18 * Math.PI / 180 },
     features: [
       {
         key: 'gdpGrowth',
@@ -123,7 +123,7 @@ export const countries: Country[] = [
     image: '/images/countries/malaysia.jpg',
     cameraPosition: { x: -0.5, y: 0.6, z: 2.2 },
     cameraTarget: { x: -0.1, y: 0.3, z: 0.7 },
-    earthRotation: { x: 20 * Math.PI / 180, y: -15 * Math.PI / 180 },
+    earthRotation: { x: 0 * Math.PI / 180, y: -15 * Math.PI / 180 },
     features: [
       {
         key: 'economicGrowth',
@@ -150,7 +150,7 @@ export const countries: Country[] = [
     image: '/images/countries/cambodia.jpg',
     cameraPosition: { x: -0.8, y: 0.5, z: 2.6 },
     cameraTarget: { x: -0.2, y: 0.25, z: 0.85 },
-    earthRotation: { x: 10 * Math.PI / 180, y: -15 * Math.PI / 180 },
+    earthRotation: { x: -10 * Math.PI / 180, y: -16 * Math.PI / 180 },
     features: [
       {
         key: 'gdpGrowth',
@@ -177,7 +177,7 @@ export const countries: Country[] = [
     image: '/images/countries/china.jpg',
     cameraPosition: { x: -1.5, y: 0.2, z: 2.0 },
     cameraTarget: { x: -0.4, y: 0.1, z: 0.6 },
-    earthRotation: { x: -10 * Math.PI / 180, y: -30 * Math.PI / 180 },
+    earthRotation: { x: -30 * Math.PI / 180, y: -32 * Math.PI / 180 },
     features: [
       {
         key: 'gdpSize',
@@ -204,7 +204,7 @@ export const countries: Country[] = [
     image: '/images/countries/korea.jpg',
     cameraPosition: { x: -1.8, y: 0.1, z: 1.8 },
     cameraTarget: { x: -0.45, y: 0.05, z: 0.55 },
-    earthRotation: { x: -20 * Math.PI / 180, y: -32 * Math.PI / 180 },
+    earthRotation: { x: -36 * Math.PI / 180, y: -37 * Math.PI / 180 },
     features: [
       {
         key: 'gdpSize',
@@ -231,7 +231,7 @@ export const countries: Country[] = [
     image: '/images/countries/usa.jpg',
     cameraPosition: { x: 2.2, y: 0.3, z: 1.5 },
     cameraTarget: { x: 0.5, y: 0.15, z: 0.4 },
-    earthRotation: { x: -50 * Math.PI / 180, y: 160 * Math.PI / 180 },
+    earthRotation: { x: -40 * Math.PI / 180, y: 164 * Math.PI / 180 },
     features: [
       {
         key: 'gdpSize',
