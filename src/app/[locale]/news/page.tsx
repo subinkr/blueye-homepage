@@ -6,28 +6,6 @@ import { Navigation } from '@/components/navigation'
 import { NewsList } from '@/components/news-list'
 import { NewsHero } from '@/components/news-hero'
 import { useLocale } from 'next-intl'
-import type { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: '뉴스 - Blueye',
-  description: '글로벌 부동산 투자와 해외 라이프스타일 관련 최신 뉴스와 시장 동향을 확인하세요.',
-  openGraph: {
-    title: '뉴스 - Blueye',
-    description: '글로벌 부동산 투자와 해외 라이프스타일 관련 최신 뉴스와 시장 동향을 확인하세요.',
-    url: 'https://blueye.com/news',
-    images: ['/api/og'],
-  },
-  twitter: {
-    title: '뉴스 - Blueye',
-    description: '글로벌 부동산 투자와 해외 라이프스타일 관련 최신 뉴스와 시장 동향을 확인하세요.',
-    images: ['/api/og'],
-  },
-  other: {
-    'kakao:title': '뉴스 - Blueye',
-    'kakao:description': '글로벌 부동산 투자와 해외 라이프스타일 관련 최신 뉴스와 시장 동향을 확인하세요.',
-    'kakao:image': 'https://blueye.com/api/og',
-  },
-}
 
 export default function NewsPage() {
   const locale = useLocale()

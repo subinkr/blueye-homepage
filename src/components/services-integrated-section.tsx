@@ -13,7 +13,6 @@ export default function ServicesIntegratedSection() {
   const locale = useLocale()
   const [isLoading, setIsLoading] = useState(true)
   const [activeStep, setActiveStep] = useState(0)
-  const [isScrolling, setIsScrolling] = useState(false)
 
   useEffect(() => {
     // 페이지 로딩 애니메이션
@@ -369,36 +368,9 @@ export default function ServicesIntegratedSection() {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8, delay: index * 0.2 }}
                       viewport={{ once: true }}
-                      className={`text-center group transition-all duration-300 hover:scale-105 ${
-                        isScrolling ? 'cursor-wait opacity-75' : 'cursor-pointer'
-                      }`}
+                      className="text-center group cursor-pointer transition-all duration-300 hover:scale-105"
                       onClick={() => {
-                        if (isScrolling) return // 스크롤 중이면 클릭 무시
-                        
                         setActiveStep(index)
-                        setIsScrolling(true)
-                        
-                        // 해당 상세 서비스 내용으로 스크롤 이동
-                        setTimeout(() => {
-                          const detailedSection = document.getElementById(`detailed-${service.id}`)
-                          if (detailedSection) {
-                            const offset = 80 // 헤더 높이와 여백 고려
-                            const elementPosition = detailedSection.offsetTop - offset
-                            
-                            // 부드러운 스크롤 이동
-                            window.scrollTo({
-                              top: elementPosition,
-                              behavior: 'smooth'
-                            })
-                            
-                            // 스크롤 완료 후 상태 리셋
-                            setTimeout(() => {
-                              setIsScrolling(false)
-                            }, 1000)
-                          } else {
-                            setIsScrolling(false)
-                          }
-                        }, 200)
                       }}
                     >
                       <motion.div
