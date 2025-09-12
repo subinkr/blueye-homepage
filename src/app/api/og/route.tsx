@@ -63,8 +63,7 @@ export async function GET() {
               lineHeight: '1.4',
             }}
           >
-            해외 부동산 투자부터 현지 생활 지원까지,<br />
-            Blueye와 함께하는 글로벌 라이프스타일
+            해외 부동산 투자부터 현지 생활 지원까지, Blueye와 함께하는 글로벌 라이프스타일
           </div>
         </div>
       </div>
