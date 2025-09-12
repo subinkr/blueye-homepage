@@ -5,6 +5,28 @@ import { useLocale, useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
 import { Navigation } from '@/components/navigation'
 import { Button } from '@/components/ui/button'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: '라이프스타일 퀴즈 - Blueye',
+  description: '나에게 맞는 글로벌 라이프스타일을 찾아보세요. 간단한 퀴즈로 최적의 국가와 서비스를 추천해드립니다.',
+  openGraph: {
+    title: '라이프스타일 퀴즈 - Blueye',
+    description: '나에게 맞는 글로벌 라이프스타일을 찾아보세요. 간단한 퀴즈로 최적의 국가와 서비스를 추천해드립니다.',
+    url: 'https://blueye.com/lifestyle',
+    images: ['/api/og'],
+  },
+  twitter: {
+    title: '라이프스타일 퀴즈 - Blueye',
+    description: '나에게 맞는 글로벌 라이프스타일을 찾아보세요. 간단한 퀴즈로 최적의 국가와 서비스를 추천해드립니다.',
+    images: ['/api/og'],
+  },
+  other: {
+    'kakao:title': '라이프스타일 퀴즈 - Blueye',
+    'kakao:description': '나에게 맞는 글로벌 라이프스타일을 찾아보세요. 간단한 퀴즈로 최적의 국가와 서비스를 추천해드립니다.',
+    'kakao:image': 'https://blueye.com/api/og',
+  },
+}
 import { 
   Heart, 
   GraduationCap, 

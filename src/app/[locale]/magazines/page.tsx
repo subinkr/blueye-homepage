@@ -6,6 +6,28 @@ import { Navigation } from '@/components/navigation'
 import { MagazineGrid } from '@/components/magazine-grid'
 import { MagazineHero } from '@/components/magazine-hero'
 import { useLocale } from 'next-intl'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: '매거진 - Blueye',
+  description: '글로벌 라이프스타일과 해외 부동산 투자에 대한 최신 정보와 인사이트를 확인하세요.',
+  openGraph: {
+    title: '매거진 - Blueye',
+    description: '글로벌 라이프스타일과 해외 부동산 투자에 대한 최신 정보와 인사이트를 확인하세요.',
+    url: 'https://blueye.com/magazines',
+    images: ['/api/og'],
+  },
+  twitter: {
+    title: '매거진 - Blueye',
+    description: '글로벌 라이프스타일과 해외 부동산 투자에 대한 최신 정보와 인사이트를 확인하세요.',
+    images: ['/api/og'],
+  },
+  other: {
+    'kakao:title': '매거진 - Blueye',
+    'kakao:description': '글로벌 라이프스타일과 해외 부동산 투자에 대한 최신 정보와 인사이트를 확인하세요.',
+    'kakao:image': 'https://blueye.com/api/og',
+  },
+}
 
 export default function MagazinePage() {
   const locale = useLocale()

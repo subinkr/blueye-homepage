@@ -38,11 +38,20 @@ export const metadata: Metadata = {
     title: 'Blueye - 글로벌 프리미엄 라이프 솔루션',
     description: '해외 부동산 투자부터 현지 생활 지원까지, Blueye와 함께하는 글로벌 라이프스타일',
     siteName: 'Blueye',
+    images: [
+      {
+        url: '/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Blueye - 글로벌 프리미엄 라이프 솔루션',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Blueye - 글로벌 프리미엄 라이프 솔루션',
     description: '해외 부동산 투자부터 현지 생활 지원까지, Blueye와 함께하는 글로벌 라이프스타일',
+    images: ['/api/og'],
   },
   robots: {
     index: true,
@@ -54,6 +63,11 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  other: {
+    'kakao:title': 'Blueye - 글로벌 프리미엄 라이프 솔루션',
+    'kakao:description': '해외 부동산 투자부터 현지 생활 지원까지, Blueye와 함께하는 글로벌 라이프스타일',
+    'kakao:image': 'https://blueye.com/api/og',
   },
 }
 

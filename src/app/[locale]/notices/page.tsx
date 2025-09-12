@@ -6,6 +6,28 @@ import { Navigation } from '@/components/navigation'
 import { NoticeList } from '@/components/notice-list'
 import { NoticeHero } from '@/components/notice-hero'
 import { useLocale } from 'next-intl'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: '공지사항 - Blueye',
+  description: 'Blueye의 최신 공지사항과 서비스 업데이트 소식을 확인하세요.',
+  openGraph: {
+    title: '공지사항 - Blueye',
+    description: 'Blueye의 최신 공지사항과 서비스 업데이트 소식을 확인하세요.',
+    url: 'https://blueye.com/notices',
+    images: ['/api/og'],
+  },
+  twitter: {
+    title: '공지사항 - Blueye',
+    description: 'Blueye의 최신 공지사항과 서비스 업데이트 소식을 확인하세요.',
+    images: ['/api/og'],
+  },
+  other: {
+    'kakao:title': '공지사항 - Blueye',
+    'kakao:description': 'Blueye의 최신 공지사항과 서비스 업데이트 소식을 확인하세요.',
+    'kakao:image': 'https://blueye.com/api/og',
+  },
+}
 
 export default function NoticesPage() {
   const locale = useLocale()
